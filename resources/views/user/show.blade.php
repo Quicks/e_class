@@ -7,7 +7,7 @@
                 Some User!
                 User Email -
                 User Name -
-                User
+                User Type -
             </div>
         </div>
     </div>
