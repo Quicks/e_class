@@ -1,18 +1,15 @@
 .view {
-    background: url("https://focus.ua/files/images/63/5498535.jpg")no-repeat center center;
+    background-color: transparent;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     height: 110vh;
 }
-/*.view {*/
-    /*background: url("/public/biblioteka.jpg") no-repeat center center fixed;*/
-    /*-webkit-background-size: cover;*/
-    /*-moz-background-size: cover;*/
-    /*-o-background-size: cover;*/
-    /*background-size: cover;*/
-/*}*/
+.view .logo{
+  margin-left: 25% !important;
+    margin-top: 15%;
+}
 .full-bg-img {
     color: #fff;
 }
