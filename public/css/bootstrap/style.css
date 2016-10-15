@@ -36,3 +36,7 @@ input[type="text"]:not([readonly])+label {
 input[type="text"]:focus:not([readonly])+label {
     color:#fff;
 }
+
+footer{
+    margin-top: 0px !important;
+}

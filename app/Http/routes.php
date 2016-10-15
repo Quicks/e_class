@@ -22,3 +22,7 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 Route::resource('user', 'UsersController');
+
+Route::get('teacher',function (){
+    return view('teacher');
+});
