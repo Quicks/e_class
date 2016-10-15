@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use App\Timetable;
 use App\Http\Requests;
 
-class UsersController extends Controller
+class TimetableController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +19,6 @@ class UsersController extends Controller
     }
 
     /**
-     *
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -48,8 +47,9 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
-        return view('user.show', array('user' => $user));
+        $timetable = Timetable::find($id);
+//        dd($timetable);
+        return view('timetable.show', array('timetable' => $timetable));   //
     }
 
     /**

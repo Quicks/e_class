@@ -17,37 +17,78 @@ class DatabaseSeeder extends Seeder
             'name' => str_random(10),
             'type' => str_random(3).'_type',
             'email' => str_random(10).'@gmail.com',
-            'password' => bcrypt('secret'),
+            'password' => bcrypt('secret')
         ]);
         DB::table('users')->insert([
             'name' => str_random(10),
             'type' => str_random(3).'_type',
             'email' => str_random(10).'@gmail.com',
-            'password' => bcrypt('secret'),
+            'password' => bcrypt('secret')
         ]);
         DB::table('users')->insert([
             'name' => str_random(10),
             'type' => str_random(3).'_type',
             'email' => str_random(10).'@gmail.com',
-            'password' => bcrypt('secret'),
+            'password' => bcrypt('secret')
         ]);
         DB::table('users')->insert([
             'name' => str_random(10),
             'type' => str_random(3).'_type',
             'email' => str_random(10).'@gmail.com',
-            'password' => bcrypt('secret'),
+            'password' => bcrypt('secret')
         ]);
         DB::table('users')->insert([
             'name' => str_random(10),
             'type' => str_random(3).'_type',
             'email' => str_random(10).'@gmail.com',
-            'password' => bcrypt('secret'),
+            'password' => bcrypt('secret')
         ]);
-        DB::table('user_tasks')->insert([
+        DB::table('users')->insert([
             'name' => str_random(10),
             'type' => str_random(3).'_type',
             'email' => str_random(10).'@gmail.com',
-            'password' => bcrypt('secret'),
+            'password' => bcrypt('secret')
+        ]);
+        DB::table('Timetable')->insert([
+            'subject' => str_random(10).'_subject',
+            'home_task' => str_random(3).'_task',
+            'variable' => str_random(2)
+        ]);
+        DB::table('Timetable')->insert([
+            'subject' => str_random(10).'_subject',
+            'home_task' => str_random(3).'_task',
+            'variable' => str_random(2)
+        ]);
+        DB::table('Timetable')->insert([
+            'subject' => str_random(10).'_subject',
+            'home_task' => str_random(3).'_task',
+            'variable' => str_random(2)
+        ]);
+        DB::table('Timetable')->insert([
+            'subject' => str_random(10).'_subject',
+            'home_task' => str_random(3).'_task',
+            'variable' => str_random(2)
+        ]);
+        DB::table('Timetable')->insert([
+            'subject' => str_random(10).'_subject',
+            'home_task' => str_random(3).'_task',
+            'variable' => str_random(2),
+        ]);
+        DB::table('Timetable')->insert([
+            'subject' => str_random(10).'_subject',
+            'home_task' => str_random(3).'_task',
+            'variable' => str_random(2)
+        ]);
+        DB::table('Timetable')->insert([
+            'subject' => str_random(10).'_subject',
+            'home_task' => str_random(3).'_task',
+            'variable' => str_random(2)
+        ]);
+        DB::table('Timetable')->insert([
+            'subject' => str_random(10).'_subject',
+            'home_task' => str_random(3).'_task',
+            'variable' => str_random(2)
+
         ]);
     }
 }

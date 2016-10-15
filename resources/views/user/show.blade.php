@@ -5,9 +5,11 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 Some User!
-                User Email -
-                User Name -
-                User Type -
+                User Email - {{ $user -> email }};
+                <br />
+                User Name - {{ $user -> name }};
+                <br />
+                User Type - {{ $user -> type }};
             </div>
         </div>
     </div>
