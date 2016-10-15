@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class LessonsTimetable extends Migration
+class CreateSchoolListTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,10 @@ class LessonsTimetable extends Migration
      */
     public function up()
     {
-        Schema::create('Timetable', function (Blueprint $table) {
+        Schema::create('schoolList', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('subject');
-            $table->string('home_task');
-            $table->integer('variable');
-            $table->timestamps();
+            $table->string('name');
+            $table->string('number');
         });
     }
 
@@ -28,6 +26,6 @@ class LessonsTimetable extends Migration
      */
     public function down()
     {
-        Schema::drop('Timetable');
+        Schema::drop('classList');
     }
 }

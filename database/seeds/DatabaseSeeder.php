@@ -49,46 +49,113 @@ class DatabaseSeeder extends Seeder
             'email' => str_random(10).'@gmail.com',
             'password' => bcrypt('secret')
         ]);
-        DB::table('Timetable')->insert([
-            'subject' => str_random(10).'_subject',
-            'home_task' => str_random(3).'_task',
-            'variable' => str_random(2)
+        DB::table('teachers') ->insert([
+            'class' => str_random(3).'X',
+            'name' => str_random(30).'_ПІБ',
+            'email' => str_random(10).'@gmail.com'
         ]);
-        DB::table('Timetable')->insert([
-            'subject' => str_random(10).'_subject',
-            'home_task' => str_random(3).'_task',
-            'variable' => str_random(2)
+        DB::table('teachers') ->insert([
+            'class' => str_random(3).'X',
+            'name' => str_random(30).'_ПІБ',
+            'email' => str_random(10).'@gmail.com'
         ]);
-        DB::table('Timetable')->insert([
-            'subject' => str_random(10).'_subject',
-            'home_task' => str_random(3).'_task',
-            'variable' => str_random(2)
+        DB::table('teachers') ->insert([
+            'class' => str_random(3).'X',
+            'name' => str_random(30).'_ПІБ',
+            'email' => str_random(10).'@gmail.com'
         ]);
-        DB::table('Timetable')->insert([
-            'subject' => str_random(10).'_subject',
-            'home_task' => str_random(3).'_task',
-            'variable' => str_random(2)
+        DB::table('teachers') ->insert([
+            'class' => str_random(3).'X',
+            'name' => str_random(30).'_ПІБ',
+            'email' => str_random(10).'@gmail.com'
         ]);
-        DB::table('Timetable')->insert([
-            'subject' => str_random(10).'_subject',
-            'home_task' => str_random(3).'_task',
-            'variable' => str_random(2),
+        DB::table('teachers') ->insert([
+            'class' => str_random(3).'X',
+            'name' => str_random(30).'_ПІБ',
+            'email' => str_random(10).'@gmail.com'
         ]);
-        DB::table('Timetable')->insert([
-            'subject' => str_random(10).'_subject',
-            'home_task' => str_random(3).'_task',
-            'variable' => str_random(2)
+        DB::table('teachers') ->insert([
+            'class' => str_random(3).'X',
+            'name' => str_random(30).'_ПІБ',
+            'email' => str_random(10).'@gmail.com'
         ]);
-        DB::table('Timetable')->insert([
-            'subject' => str_random(10).'_subject',
-            'home_task' => str_random(3).'_task',
-            'variable' => str_random(2)
+        DB::table('teachers') ->insert([
+            'class' => str_random(3).'X',
+            'name' => str_random(30).'_ПІБ',
+            'email' => str_random(10).'@gmail.com'
         ]);
-        DB::table('Timetable')->insert([
-            'subject' => str_random(10).'_subject',
-            'home_task' => str_random(3).'_task',
-            'variable' => str_random(2)
-
+        DB::table('teachers') ->insert([
+            'class' => str_random(3).'X',
+            'name' => str_random(30).'_ПІБ',
+            'email' => str_random(10).'@gmail.com'
+        ]);
+        DB::table('teachers') ->insert([
+            'class' => str_random(3).'X',
+            'name' => str_random(30).'_ПІБ',
+            'email' => str_random(10).'@gmail.com'
+        ]);
+        DB::table('classList') ->insert([
+            'school' => str_random(3).'A',
+            'teacher' => str_random(30).'_ПІБ',
+            'name' => str_random(3).'A'
+        ]);
+        DB::table('classList') ->insert([
+            'school' => str_random(3).'A',
+            'teacher' => str_random(30).'_ПІБ',
+            'name' => str_random(3).'A'
+        ]);
+        DB::table('classList') ->insert([
+            'school' => str_random(3).'A',
+            'teacher' => str_random(30).'_ПІБ',
+            'name' => str_random(3).'A'
+        ]);
+        DB::table('classList') ->insert([
+            'school' => str_random(3).'A',
+            'teacher' => str_random(30).'_ПІБ',
+            'name' => str_random(3).'A'
+        ]);
+        DB::table('classList') ->insert([
+            'school' => str_random(3).'A',
+            'teacher' => str_random(30).'_ПІБ',
+            'name' => str_random(3).'A'
+        ]);
+        DB::table('classList') ->insert([
+            'school' => str_random(3).'A',
+            'teacher' => str_random(30).'_ПІБ',
+            'name' => str_random(3).'A'
+        ]);
+        DB::table('classList') ->insert([
+            'school' => str_random(3).'A',
+            'teacher' => str_random(30).'_ПІБ',
+            'name' => str_random(3).'A'
+        ]);
+        DB::table('schoolList') ->insert([
+            'number' =>  str_random(3).'A',
+            'name' => str_random(20).'school_name'
+        ]);
+        DB::table('schoolList') ->insert([
+            'number' =>  str_random(3).'A',
+            'name' => str_random(20).'school_name'
+        ]);
+        DB::table('schoolList') ->insert([
+            'number' =>  str_random(3).'A',
+            'name' => str_random(20).'school_name'
+        ]);
+        DB::table('schoolList') ->insert([
+            'number' =>  str_random(3).'A',
+            'name' => str_random(20).'school_name'
+        ]);
+        DB::table('schoolList') ->insert([
+            'number' =>  str_random(3).'A',
+            'name' => str_random(20).'school_name'
+        ]);
+        DB::table('schoolList') ->insert([
+            'number' =>  str_random(3).'A',
+            'name' => str_random(20).'school_name'
+        ]);
+        DB::table('schoolList') ->insert([
+            'number' =>  str_random(3).'A',
+            'name' => str_random(20).'school_name'
         ]);
     }
 }
