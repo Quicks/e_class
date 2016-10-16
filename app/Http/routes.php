@@ -22,3 +22,8 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 Route::resource('user', 'UsersController');
+Route::resource('timetable', 'TimetableController');
+Route::resource('teachers', 'TeacherController');
+Route::resource('schools', 'SchoolController');
+Route::resource('studentsClass', 'ClassController');
+
