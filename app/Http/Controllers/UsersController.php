@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\User;
+use App\Teacher;
+use App\Students_class;
 use App\Http\Requests;
 
 class UsersController extends Controller
@@ -49,6 +52,15 @@ class UsersController extends Controller
     public function show($id)
     {
         $user = User::find($id);
+
+        $teacher = Teacher::find(4);
+        $students = Students_class::find(3);
+      dd($teacher->students_class()->detach($students->id));
+//        dd($students->teacher);
+
+//        dd($teacher->students_class);
+        dd($teacher->save());
+
         return view('user.show', array('user' => $user));
     }
 
