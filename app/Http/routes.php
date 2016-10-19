@@ -12,10 +12,8 @@
 */
 
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-//get('/',['as' => 'posts', 'users' => 'PostController@index']);
+
+Route::get('profile', 'UserController@profile');
 Route::get('/', 'PostController@index');
 
 Route::auth();
@@ -26,3 +24,6 @@ Route::resource('user', 'UsersController');
 Route::get('teacher',function (){
     return view('teacher');
 });
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
