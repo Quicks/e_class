@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Teacher extends Model
 {
     protected $table = 'Teachers';
-
+    public function test() {
+        dd('teacher');
+    }
     public function students_class() {
 
-        return $this->belongsTo('app/Students_class');
+        return $this->belongsToMany('App\Students_class', 'teachers_to_class', 'id_teachers', 'id_classes');
 
     }
 }
