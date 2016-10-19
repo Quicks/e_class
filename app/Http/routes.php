@@ -12,18 +12,21 @@
 */
 
 
-
-Route::get('profile', 'UserController@profile');
+//Route::get('/', function () {
+//    return view('teacher');
+//});
+//get('/',['as' => 'posts', 'users' => 'PostController@index']);
 Route::get('/', 'PostController@index');
-
+//Route::get('/', 'PostController@teacher');
+Route::get('/profile', 'PostController@profile');
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
 Route::resource('user', 'UsersController');
+Route::resource('timetable', 'TimetableController');
+Route::resource('teachers', 'TeacherController');
+Route::resource('schools', 'SchoolController');
+Route::resource('studentsClass', 'ClassController');
 
-Route::get('teacher',function (){
-    return view('teacher');
-});
-Route::auth();
 
-Route::get('/home', 'HomeController@index');
+

@@ -30,5 +30,24 @@ class UsersTableSeeder extends Seeder
 //            'email' => str_random(10).'@gmail.com',
 //            'password' => bcrypt('secret'),
 //        ]);
+        //
+//        DB::table('users')->insert([
+//            'name' => str_random(10),
+//            'type' => str_random(3).'_type',
+//            'email' => str_random(10).'@gmail.com',
+//            'password' => bcrypt('secret'),
+//        ]);
+//        DB::table('users')->insert([
+//            'name' => str_random(10),
+//            'type' => str_random(3).'_type',
+//            'email' => str_random(10).'@gmail.com',
+//            'password' => bcrypt('secret'),
+//        ]);
+//        DB::table('users')->insert([
+//            'name' => str_random(10),
+//            'type' => str_random(3).'_type',
+//            'email' => str_random(10).'@gmail.com',
+//            'password' => bcrypt('secret'),
+//        ]);
     }
 }
