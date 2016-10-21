@@ -69,3 +69,5 @@ crashlytics-build.properties
 fabric.properties
 
 .idea/blade.xml
+resources/views/mail/
+resources/views/widgets/
