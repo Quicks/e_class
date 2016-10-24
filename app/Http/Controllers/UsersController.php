@@ -51,7 +51,6 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-
         $user = User::find($id);
 //        dd($user);
 //        $teacher = Teacher::find(1);
