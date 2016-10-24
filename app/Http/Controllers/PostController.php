@@ -20,4 +20,8 @@ class PostController extends Controller{
     public function profile(){
         return view('profile');
     }
+
+    public function timetable() {
+        return view('timetable\show');
+    }
 }

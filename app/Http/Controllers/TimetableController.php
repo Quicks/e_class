@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
 use App\Http\Requests;
 
-class SchoolController extends Controller
+class TimetableController extends Controller
 {
     //
 }
