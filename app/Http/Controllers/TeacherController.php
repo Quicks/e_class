@@ -17,8 +17,8 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $teacher = Teacher::all();
-        return view ('timetable.show', ['teacher' => $teacher]);
+        $teachers = Teacher::all();
+        return view ('teachers.index', ['teachers' => $teachers]);
     }
 
     /**
@@ -52,8 +52,8 @@ class TeacherController extends Controller
     public function show($id)
     {
         $teacher = Teacher::find($id);
-        dd($teacher->name);
-        return view ('timetable.show', ['teacher' => $teacher]);
+//        dd($teacher->name);
+        return view ('teachers.show', ['teacher' => $teacher]);
     }
 
     /**
@@ -64,7 +64,8 @@ class TeacherController extends Controller
      */
     public function edit($id)
     {
-        //
+        $teacher = Teacher::find($id);
+        return view ('teachers.edit', ['teacher'=> $teacher]);
     }
 
     /**
@@ -76,7 +77,7 @@ class TeacherController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($request->all());
     }
 
     /**
