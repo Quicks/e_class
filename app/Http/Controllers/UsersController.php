@@ -52,12 +52,13 @@ class UsersController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-       $teacher = Teacher::find(1);
-//      $students = Students_class::find(3);
- //    dd($teacher->students_class()->detach($students->id));
+//        dd($user);
+//        $teacher = Teacher::find(1);
+//        $students = Students_class::find(1);
+//      dd($teacher->students_class()->detach($students->id));
  //       dd($students->teacher);
 
-        dd($teacher->students_class);
+//        dd($teacher->students);
 //        dd($teacher->save());
 
         return view('user.show', array('user' => $user));

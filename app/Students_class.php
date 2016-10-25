@@ -12,10 +12,4 @@ class Students_class extends Model
 
         return $this->belongsToMany('App\Teacher', 'teachers_to_class', 'id_classes', 'id_teachers');
     }
-
-    public function school()
-    {
-        return $this->belongsTo('App\School');
-    }
-
 }
