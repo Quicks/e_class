@@ -16,7 +16,7 @@ class ComposerStaticInitb6700482fb84ff947a44d1a628fd0d0f
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
-        '752af1c2bdb339e8474c3c31b22b7d54' => __DIR__ . '/..' . '/illuminate/html/helpers.php',
+        'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -68,7 +68,6 @@ class ComposerStaticInitb6700482fb84ff947a44d1a628fd0d0f
         ),
         'I' => 
         array (
-            'Illuminate\\Html\\' => 16,
             'Illuminate\\' => 11,
         ),
         'F' => 
@@ -82,6 +81,7 @@ class ComposerStaticInitb6700482fb84ff947a44d1a628fd0d0f
         ),
         'C' => 
         array (
+            'Collective\\Html\\' => 16,
             'ClassPreloader\\' => 15,
             'Carbon\\' => 7,
         ),
@@ -194,10 +194,6 @@ class ComposerStaticInitb6700482fb84ff947a44d1a628fd0d0f
         array (
             0 => __DIR__ . '/..' . '/league/flysystem/src',
         ),
-        'Illuminate\\Html\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/illuminate/html',
-        ),
         'Illuminate\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
@@ -213,6 +209,10 @@ class ComposerStaticInitb6700482fb84ff947a44d1a628fd0d0f
         'Doctrine\\Instantiator\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
+        ),
+        'Collective\\Html\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laravelcollective/html/src',
         ),
         'ClassPreloader\\' => 
         array (
@@ -320,6 +320,13 @@ class ComposerStaticInitb6700482fb84ff947a44d1a628fd0d0f
         'ClassPreloader\\Parser\\FileVisitor' => __DIR__ . '/..' . '/classpreloader/classpreloader/src/Parser/FileVisitor.php',
         'ClassPreloader\\Parser\\NodeTraverser' => __DIR__ . '/..' . '/classpreloader/classpreloader/src/Parser/NodeTraverser.php',
         'ClassPreloader\\Parser\\StrictTypesVisitor' => __DIR__ . '/..' . '/classpreloader/classpreloader/src/Parser/StrictTypesVisitor.php',
+        'Collective\\Html\\Componentable' => __DIR__ . '/..' . '/laravelcollective/html/src/Componentable.php',
+        'Collective\\Html\\Eloquent\\FormAccessible' => __DIR__ . '/..' . '/laravelcollective/html/src/Eloquent/FormAccessible.php',
+        'Collective\\Html\\FormBuilder' => __DIR__ . '/..' . '/laravelcollective/html/src/FormBuilder.php',
+        'Collective\\Html\\FormFacade' => __DIR__ . '/..' . '/laravelcollective/html/src/FormFacade.php',
+        'Collective\\Html\\HtmlBuilder' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlBuilder.php',
+        'Collective\\Html\\HtmlFacade' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlFacade.php',
+        'Collective\\Html\\HtmlServiceProvider' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlServiceProvider.php',
         'CreateClassListTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_15_130356_create_classList_table.php',
         'CreateClassroomsTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_23_184600_create_classrooms_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
@@ -1184,11 +1191,6 @@ class ComposerStaticInitb6700482fb84ff947a44d1a628fd0d0f
         'Illuminate\\Foundation\\Validation\\ValidationException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Validation/ValidationException.php',
         'Illuminate\\Hashing\\BcryptHasher' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Hashing/BcryptHasher.php',
         'Illuminate\\Hashing\\HashServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Hashing/HashServiceProvider.php',
-        'Illuminate\\Html\\FormBuilder' => __DIR__ . '/..' . '/illuminate/html/FormBuilder.php',
-        'Illuminate\\Html\\FormFacade' => __DIR__ . '/..' . '/illuminate/html/FormFacade.php',
-        'Illuminate\\Html\\HtmlBuilder' => __DIR__ . '/..' . '/illuminate/html/HtmlBuilder.php',
-        'Illuminate\\Html\\HtmlFacade' => __DIR__ . '/..' . '/illuminate/html/HtmlFacade.php',
-        'Illuminate\\Html\\HtmlServiceProvider' => __DIR__ . '/..' . '/illuminate/html/HtmlServiceProvider.php',
         'Illuminate\\Http\\Exception\\HttpResponseException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/Exception/HttpResponseException.php',
         'Illuminate\\Http\\Exception\\PostTooLargeException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/Exception/PostTooLargeException.php',
         'Illuminate\\Http\\JsonResponse' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/JsonResponse.php',
