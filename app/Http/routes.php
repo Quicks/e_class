@@ -18,6 +18,7 @@
 //get('/',['as' => 'posts', 'users' => 'PostController@index']);
 Route::get('/', 'PostController@index');
 //Route::get('/', 'PostController@teacher');
+Route::get('/teacher', 'PostController@teacher');
 Route::get('/profile', 'PostController@profile');
 Route::auth();
 
@@ -27,7 +28,7 @@ Route::resource('timetable', 'TimetableController');
 Route::resource('teachers', 'TeacherController');
 Route::resource('teachers.timetables', 'TimetableController');
 Route::resource('schools', 'SchoolController');
-Route::resource('studentsClass', 'ClassController');
+
 
 
 
