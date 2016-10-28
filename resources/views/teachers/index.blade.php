@@ -2,7 +2,7 @@
 @section('content')
     <nav class="navbar navbar-inverse">
         <ul class="nav navbar-nav">
-            <li><a href="{{ route('teachers.create') }}">Create a Teacher</a>
+            <li><a href="{{ route('teachers.create')}}">Create a Teacher</a>
         </ul>
     </nav>
     <table class="table">
