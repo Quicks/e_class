@@ -6,7 +6,9 @@ use App\Teacher;
 use Request;
 use Redirect;
 use Validator;
-
+use Html;
+use Form;
+use Session;
 class TeacherController extends Controller
 {
     /**
@@ -39,10 +41,11 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
+//        dd(Request::all());
 //        $input = Request::all();
         $rules = array(
-            'class_name'       => 'required',
-            'name'      => 'required',
+            'class_name' => 'required',
+            'name'  => 'required',
             'email' => 'required|email'
         );
         $validator = Validator::make(Request::all(), $rules);
@@ -117,14 +120,31 @@ class TeacherController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $teacher = Teacher::find($id);
-        $teacher->update($request->all());
-        dd($request);
-//        $teacher = Teacher::find($id);
-//        $teacher->name = $request->name;
-//        $teacher->email = $request->email;
-        //        $teacher->update($request->input());
-        return redirect('teachers.index');
+
+        $rules = array(
+            'class_name' => 'required',
+            'name'       => 'required',
+            'email'      => 'required|email',
+        );
+        $validator = Validator::make(Request::all(), $rules);
+
+        // process the login
+        if ($validator->fails()) {
+            return Redirect::to('teachers')
+                ->withErrors($validator)
+                ->withInput(Request::except('password'));
+        } else {
+            // store
+            $nerd = Teacher::find($id);
+            $nerd->class_name = Request::get('class_name');
+            $nerd->name = Request::get('name');
+            $nerd->email = Request::get('email');
+            $nerd->save();
+
+            // redirect
+            Session::flash('message', 'Successfully updated teacher!');
+            return Redirect::to('teachers');
+        }
     }
 
     /**
