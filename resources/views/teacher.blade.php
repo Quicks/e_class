@@ -137,7 +137,7 @@
         <!--Card content-->
         <div class="card-block">
             <!--Title-->
-            <h4 class="card-title">ПІБ вчителя</h4>
+            <h4 class="card-title">{{ $name }}</h4>
         {{--{{$user->name}}--}}
             <!--Text-->
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>

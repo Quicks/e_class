@@ -41,4 +41,25 @@ class UserController extends Controller
         return view('profile', array('user' => Auth::user()));
 
     }
+    public function index(){
+
+        return view('post.index');
+    }
+
+    public function teacher(){
+        $data = [
+            'name' => 'ПІБ вчителя'
+        ];
+        return view('teacher', $data);
+    }
+
+public function register(){
+    return view('passwords.register');
+}
+    public function login(){
+        return view('passwords.login');
+    }
+    public function password(){
+        return view('emails.password');
+    }
 }
