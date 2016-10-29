@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Teacher;
-use App\Http\Requests;
-
-
-
+use Request;
+use Redirect;
+use Validator;
+use Html;
+use Form;
+use Session;
 class TeacherController extends Controller
 {
     /**
@@ -29,7 +30,7 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        //
+        return view ('teachers.create');
     }
 
     /**
@@ -40,7 +41,48 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+//        dd(Request::all());
+//        $input = Request::all();
+        $rules = array(
+            'class_name' => 'required',
+            'name'  => 'required',
+            'email' => 'required|email'
+        );
+        $validator = Validator::make(Request::all(), $rules);
+
+        // process the login
+        if ($validator->fails()) {
+            return Redirect::to('teachers/create')
+                ->withErrors($validator)
+                ->withInput(Request::except('password'));
+        } else {
+            // store
+            $teacher = new Teacher();
+            $teacher->class_name = Request::get('class_name');
+            $teacher->name = Request::get('name');
+            $teacher->email = Request::get('email');
+            $teacher->save();
+
+            // redirect
+            Session::flash('message', 'Successfully created Teacher!');
+            return Redirect::to('teachers');
+        }
+//        $teacher = Teacher($id);
+//        $teacher->name = input::get('name');
+//        $teacher->email  = input::get('email');
+//        $this->validate($request, [
+//            'teacher.name' => 'required',
+//            'teacher.email' => 'required',
+//        ]);
+//        if ($validator->fails()) {
+//            return redirect('post/create')
+//                ->withErrors($validator)
+//                ->withInput();
+//        }
+//        $name = $request->input('name');
+//        $email = $request->input('email');
+//        $input = Request::all();
+//        return redirect('teachers');
     }
 
     /**
@@ -65,6 +107,7 @@ class TeacherController extends Controller
     public function edit($id)
     {
         $teacher = Teacher::find($id);
+
         return view ('teachers.edit', ['teacher'=> $teacher]);
     }
 
@@ -77,7 +120,31 @@ class TeacherController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request->all());
+
+        $rules = array(
+            'class_name' => 'required',
+            'name'       => 'required',
+            'email'      => 'required|email',
+        );
+        $validator = Validator::make(Request::all(), $rules);
+
+        // process the login
+        if ($validator->fails()) {
+            return Redirect::to('teachers')
+                ->withErrors($validator)
+                ->withInput(Request::except('password'));
+        } else {
+            // store
+            $nerd = Teacher::find($id);
+            $nerd->class_name = Request::get('class_name');
+            $nerd->name = Request::get('name');
+            $nerd->email = Request::get('email');
+            $nerd->save();
+
+            // redirect
+            Session::flash('message', 'Successfully updated teacher!');
+            return Redirect::to('teachers');
+        }
     }
 
     /**

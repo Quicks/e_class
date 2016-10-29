@@ -2,42 +2,41 @@
 @section('content')
 
     <!--Form without header-->
-    <form action="{{route('teachers.update', [$teacher->id])}}" method="POST">
-        <input name="_method" type="hidden" value="PUT">
-        {{csrf_field()}}
-    <div class="card">
-        <div class="card-block">
-
-            <!--Header-->
-            <div class="text-xs-center">
-                <h3><i class="fa fa-pencil"></i> Subscribe:</h3>
-                <hr class="m-t-2 m-b-2">
-            </div>
-
-            <!--Body-->
-            <p>We'll write rarely, but only the best content.</p>
-            <br>
-
-            <!--Body-->
-            <div class="md-form">
-                <i class="fa fa-user prefix"></i>
-                <input type="text" id="form3" class="form-control">
-                <label for="form3">Your name</label>
-            </div>
-
-            <div class="md-form">
-                <i class="fa fa-envelope prefix"></i>
-                <input type="text" name="test" id="form2" class="form-control">
-                <label for="form2">Your email</label>
-            </div>
-
-            <div class="text-xs-center">
-                <button class="btn btn-deep-orange">Send</button>
-            </div>
-
-        </div>
-    </div>
-    </form>
+    {{--<form action="{{route('teachers.update', [$teacher->id])}}" method="POST">--}}
+        {{--{{csrf_field()}}--}}
+        {{--<div class="form-group">--}}
+            {{--<label for="Email">Email</label>--}}
+            {{--<input type="email"  name ="email" class="form-control" id="Email" placeholder="Email">--}}
+        {{--</div>--}}
+        {{--<div class="form-group">--}}
+            {{--<label for="name-teacher">Name</label>--}}
+            {{--<input type="text" class="form-control" id="name-teacher" name="name" placeholder="Name">--}}
+        {{--</div>--}}
+        {{--<button type="submit" class="btn btn-default">Submit</button>--}}
+    {{--</form>--}}
     <!--/Form without header-->
+
+    {{ Html::ul($errors->all()) }}
+
+    {{ Form::model($teacher, array('route' => array('teachers.update', $teacher->id), 'method' => 'PUT')) }}
+
+    <div class="form-group">
+        {{ Form::label('class_name', 'Class_name') }}
+        {{ Form::text('class_name', null, array('class' => 'form-control')) }}
+    </div>
+
+    <div class="form-group">
+        {{ Form::label('name', 'Name') }}
+        {{ Form::text('name', null, array('class' => 'form-control')) }}
+    </div>
+
+    <div class="form-group">
+        {{ Form::label('email', 'Email') }}
+        {{ Form::email('email', null, array('class' => 'form-control')) }}
+    </div>
+
+    {{ Form::submit('Edit the Teacher!', array('class' => 'btn btn-primary')) }}
+
+    {{ Form::close() }}
 
 @endsection
