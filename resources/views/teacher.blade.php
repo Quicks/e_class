@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.app')
 
 @section('content')
     <link href='css/jquery-ui.css' rel="stylesheet" xmlns="http://www.w3.org/1999/html">
@@ -11,34 +11,12 @@
 
     <style>
 
-        body {
-
-            font-family: "Trebuchet MS", sans-serif;
-            margin: 50px;
-            height: 100vh;
-        }
-
-        .demoHeaders {
-            margin-top: 2em;
-        }
-
-        #dialog-link {
-            padding: .4em 1em .4em 20px;
-            text-decoration: none;
-            position: relative;
-        }
-
-        #dialog-link span.ui-icon {
+        #dialog-link span {
             margin: 0 5px 0 0;
             position: absolute;
             left: .2em;
             top: 50%;
             margin-top: -8px;
-        }
-
-        #icons {
-            margin: 0;
-            padding: 0;
         }
 
         #icons li {
@@ -50,20 +28,18 @@
             list-style: none;
         }
 
-        #icons span.ui-icon {
+        #icons span {
             float: left;
             margin: 0 4px;
         }
 
-        .fakewindowcontain .ui-widget-overlay {
+        .fakewindowcontain  {
             position: absolute;
         }
 
         select {
             width: 200px;
         }
-
-
 
         .btn {
             float: right;
