@@ -44,7 +44,7 @@
                     <a class="nav-link"  href="#about-us">Про нас</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link">Вхід</a>
+                    <a class="nav-link" href="{{ url('/login') }}">Вхід</a>
                 </li>
 
             </ul>
@@ -125,7 +125,7 @@
 
 <script>
     $(document).ready(function(){
-        $("#menu").on("click","a", function (event) {
+        $("#menu").on("click","a[href='#about-us']", function (event) {
             //отменяем стандартную обработку нажатия по ссылке
             event.preventDefault();
 

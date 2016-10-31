@@ -28,6 +28,6 @@ class CreateSchoolListTable extends Migration
      */
     public function down()
     {
-        Schema::drop('classList');
+        Schema::drop('schoolList');
     }
 }
