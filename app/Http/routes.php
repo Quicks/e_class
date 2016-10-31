@@ -16,10 +16,13 @@
 //    return view('teacher');
 //});
 //get('/',['as' => 'posts', 'users' => 'PostController@index']);
-Route::get('/', 'PostController@index');
+Route::get('/', 'UsersController@index');
 //Route::get('/', 'PostController@teacher');
-Route::get('/teacher', 'PostController@teacher');
-Route::get('/profile', 'PostController@profile');
+Route::get('/teacher', 'UsersController@teacher');
+Route::get('/profile', 'UsersController@profile');
+Route::get('/password', 'UsersController@password');
+Route::get('/login', 'UsersController@login');
+Route::get('/register', 'UsersController@register');
 Route::auth();
 
 Route::get('/home', 'HomeController@index');

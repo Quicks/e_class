@@ -14,6 +14,10 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
+    <link rel="stylesheet" href="{{ URL::asset('css/bootstrap/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ URL::asset('css/bootstrap/mdb.min.css') }}" />
+    <link rel="stylesheet" href="{{ URL::asset('css/bootstrap/style.css') }}" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
     <style>
         body {
@@ -23,10 +27,14 @@
         .fa-btn {
             margin-right: 6px;
         }
+        .navbar-nav>li>a{
+            color: cornsilk!important;
+        }
+
     </style>
 </head>
 <body id="app-layout">
-    <nav class="navbar navbar-default navbar-static-top">
+    <nav class="navbar navbar-default navbar-static-top navbar-dark bg-primary">
         <div class="container">
             <div class="navbar-header">
 
@@ -40,22 +48,23 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Laravel
+                    <img src="Logo2.png">
                 </a>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
+              <!--  <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">Home</a></li>
-                </ul>
+                </ul>-->
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}">Register</a></li>
+                        <li><a href="{{ url('/login') }}">Вхід</a></li>
+                        <li><a href="{{ url('/register') }}">Реєстрація</a></li>
+                        <li id="menu"><a   href="#about-us">Про нас</a></li>
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -64,6 +73,7 @@
 
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                                <li class="nav-item"><a class="nav-link"  href="#about-us">Про нас</a></li>
                             </ul>
                         </li>
                     @endif
@@ -73,10 +83,91 @@
     </nav>
 
     @yield('content')
+    <footer class="page-footer center-on-small-only">
 
+        <!--Footer Links-->
+        <div class="container-fluid">
+            <div class="row">
+
+                <!--First column-->
+                <div class="col-md-3 offset-md-1" id="about-us">
+                    <h5 class="title">Про наш проект</h5>
+                    <p>Даний проект розроблений спеціалістами для покращення якості шкільної освіти. </p>
+
+                    <p>Електронний клас покращує взаємодію між вчителями, учнями та батьками.</p>
+                </div>
+                <!--Second column-->
+                <div class="col-md-2 col-md-offset-1">
+                    <p class="column-title white-text">Над проектом працювали</p>
+
+                    <ul>
+                        <li><a href="#">Юлія Сторожук</a></li>
+                        <li><a href="#">Ігор Грицишин</a></li>
+                        <li><a href="#">Юлія Мусієнко</a></li>
+                        <li><a href="#">Назар Кушнірук</a></li>
+
+                    </ul>
+
+                </div>
+                <!--/.Second column-->
+
+                <!--Third column-->
+                <div class="col-md-2">
+                    <p class="column-title white-text">Куратори проекту</p>
+
+                    <ul>
+                        <li><a href="#">Олександр Панченко</a></li>
+                        <li><a href="#">Андрій Нізіньковський</a></li>
+
+                    </ul>
+                </div>
+                <!--/.Third column-->
+
+                <!--Fourth column-->
+                <div class="col-md-2">
+                    <p class="column-title white-text">Директор ІТ Академії</p>
+
+                    <ul>
+                        <li><a href="#">Роман Мельник</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="footer-copyright">
+            <div class="container-fluid">
+                © 2016  IT-Academy: <a href="http://ita.in.ua/">ita.in.ua</a>
+
+            </div>
+        </div>
+    </footer>
+    <script type="text/javascript" src="{{ URL::asset('js/bootstrap/jquery-2.2.3.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('js/bootstrap/tether.min.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ URL::asset('js/bootstrap/bootstrap.min.js') }}" ></script>
+    <script type="text/javascript" src="{{ URL::asset('js/bootstrap/mdb.min.js') }}" ></script>
+
+    <script>
+        $(document).ready(function(){
+            $("#menu").on("click","a", function (event) {
+                //отменяем стандартную обработку нажатия по ссылке
+                event.preventDefault();
+
+                //забираем идентификатор бока с атрибута href
+                var id  = $(this).attr('href'),
+
+                        //узнаем высоту от начала страницы до блока на который ссылается якорь
+                        top = $(id).offset().top;
+
+                //анимируем переход на расстояние - top за 1500 мс
+                $('body,html').animate({scrollTop: top}, 1500);
+            });
+        });
+
+    </script>
     <!-- JavaScripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+
 </body>
 </html>

@@ -16,10 +16,40 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index(){
+
+        return view('post.index');
     }
+
+    public function teacher(){
+        return view('teacher');
+    }
+
+    public function profile()
+    {
+        return view('profile');
+    }
+        public function password()
+        {
+            return view('emails.password');
+        }
+
+    public function login(){
+        return view('passwords.login');
+    }
+
+    public function register(){
+        return view('passwords.register');
+    }
+
+
+    public function timetable() {
+        return view('timetable\show');
+    }
+//    public function index()
+//    {
+//        //
+//    }
 
     /**
      *

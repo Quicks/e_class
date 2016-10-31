@@ -38,12 +38,26 @@
             <!--Navbar Brand-->
             <a class="navbar-brand"> <img src="Logo2.png"> </a>
             <!--Links-->
-            <ul class="nav navbar-nav" id="menu">
+            <ul class="nav navbar-nav navbar-right" id="menu">
+                @if (Auth::guest())
+                    <li><a href="{{ url('/login') }}">Вхід</a></li>
+                    <li><a href="{{ url('/register') }}">Реєстрація</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link"  href="#about-us">Про нас</a>
+                    </li>
+                @else
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
 
-                <li class="nav-item">
-                    <a class="nav-link"  href="#about-us">Про нас</a>
-                </li>
-                <li class="nav-item">
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                        </ul>
+                    </li>
+                @endif
+
+               <!-- <li class="nav-item">
                     <a class="nav-link">Вхід</a>
                 </li>
 
@@ -125,7 +139,7 @@
 
 <script>
     $(document).ready(function(){
-        $("#menu").on("click","a", function (event) {
+        $("#menu").on("click","a[href='#about-us']", function (event) {
             //отменяем стандартную обработку нажатия по ссылке
             event.preventDefault();
 

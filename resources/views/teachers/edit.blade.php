@@ -15,7 +15,12 @@
         {{--<button type="submit" class="btn btn-default">Submit</button>--}}
     {{--</form>--}}
     <!--/Form without header-->
-
+    <nav class="navbar navbar-inverse">
+        <ul class="nav navbar-nav">
+            <li><a href="{{ route('teachers.index') }}">View All Teachers</a></li>
+            <li><a href="{{ route('teachers.create') }}">Create a Teacher</a>
+        </ul>
+    </nav>
     {{ Html::ul($errors->all()) }}
 
     {{ Form::model($teacher, array('route' => array('teachers.update', $teacher->id), 'method' => 'PUT')) }}
