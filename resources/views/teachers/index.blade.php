@@ -25,7 +25,11 @@
                     <td>
                         <a href="{{route('teachers.show', [$teacher->id])}}" class="btn btn-primary">Show</a>
                         <a href="{{route('teachers.edit', [$teacher->id])}}" class="btn btn-primary">Edit</a>
-                        <a href="{{route('teachers.destroy', [$teacher->id])}}" class="btn btn-primary">Destroy</a>
+
+                        {{ Form::open(array('url' => 'teachers/' . $teacher->id, 'class' => 'pull-right')) }}
+                        {{ Form::hidden('_method', 'DELETE') }}
+                        {{ Form::submit('Delete', array('class' => 'btn btn-primary')) }}
+                        {{ Form::close() }}
 
                         <a class="blue-text"><i class="fa fa-user"></i></a>
                         <a class="teal-text"><i class="fa fa-pencil"></i></a>

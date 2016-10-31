@@ -41,8 +41,6 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-//        dd(Request::all());
-//        $input = Request::all();
         $rules = array(
             'class_name' => 'required',
             'name'  => 'required',
@@ -62,27 +60,9 @@ class TeacherController extends Controller
             $teacher->name = Request::get('name');
             $teacher->email = Request::get('email');
             $teacher->save();
-
-            // redirect
             Session::flash('message', 'Successfully created Teacher!');
             return Redirect::to('teachers');
         }
-//        $teacher = Teacher($id);
-//        $teacher->name = input::get('name');
-//        $teacher->email  = input::get('email');
-//        $this->validate($request, [
-//            'teacher.name' => 'required',
-//            'teacher.email' => 'required',
-//        ]);
-//        if ($validator->fails()) {
-//            return redirect('post/create')
-//                ->withErrors($validator)
-//                ->withInput();
-//        }
-//        $name = $request->input('name');
-//        $email = $request->input('email');
-//        $input = Request::all();
-//        return redirect('teachers');
     }
 
     /**
@@ -94,7 +74,6 @@ class TeacherController extends Controller
     public function show($id)
     {
         $teacher = Teacher::find($id);
-//        dd($teacher->name);
         return view ('teachers.show', ['teacher' => $teacher]);
     }
 
@@ -155,6 +134,11 @@ class TeacherController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $nerd = Teacher::find($id);
+        $nerd->delete();
+
+        // redirect
+        Session::flash('message', 'Successfully deleted the teacher!');
+        return Redirect::to('teachers');
     }
 }
