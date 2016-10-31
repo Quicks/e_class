@@ -139,7 +139,7 @@
 
 <script>
     $(document).ready(function(){
-        $("#menu").on("click","a", function (event) {
+        $("#menu").on("click","a[href='#about-us']", function (event) {
             //отменяем стандартную обработку нажатия по ссылке
             event.preventDefault();
 
