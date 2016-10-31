@@ -39,5 +39,6 @@
             @endforeach
         </tbody>
     </table>
-
+    <?php echo $teachers->render(); ?>
+    {{--<div class="pagination"> {{ $teachers->links() }} </div>--}}
 @endsection
