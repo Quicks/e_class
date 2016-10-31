@@ -28,6 +28,7 @@ Route::resource('timetable', 'TimetableController');
 Route::resource('teachers', 'TeacherController');
 Route::resource('teachers.timetables', 'TimetableController');
 Route::resource('schools', 'SchoolController');
+Route::resource('sc','StudentsClassController');
 
 
 
