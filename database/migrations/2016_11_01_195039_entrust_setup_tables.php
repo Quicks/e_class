@@ -1,3 +1,4 @@
+
 <?php
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -25,11 +26,10 @@ class EntrustSetupTables extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('role_id')->unsigned();
 
-            $table->foreign('user_id')->references('id')->on('')
+            $table->foreign('user_id')->references('id')->on('users')
                 ->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('role_id')->references('id')->on('roles')
                 ->onUpdate('cascade')->onDelete('cascade');
-
             $table->primary(['user_id', 'role_id']);
         });
 
@@ -39,7 +39,7 @@ class EntrustSetupTables extends Migration
             $table->string('name')->unique();
             $table->string('display_name')->nullable();
             $table->string('description')->nullable();
-            $table->timestamps();
+//
         });
 
         // Create table for associating permissions to roles (Many-to-Many)
