@@ -6,8 +6,8 @@
         body {
 
             font-family: "Trebuchet MS", sans-serif;
-            margin: 50px;
-            height: 100vh;
+            /*margin: 50px;*/
+            /*height: 100vh;*/
         }
         /*.main-conteiner{*/
 
@@ -30,7 +30,7 @@
 
         </style>
     <body>
-
+    <div class="main-conteiner">
         <div class="card">
 
             <!--Card image-->
@@ -43,7 +43,9 @@
                 <!--Title-->
                 <div class="md-form">
                     <input value="ПІБ" type="text" id="form6" class="form-control">
+
                     <label class="active" for="form6"></label>
+
                 </div>
                 <div class="md-form">
                     <input value="телефон" type="text" id="form6" class="form-control">
@@ -63,6 +65,6 @@
             <!--/.Card content-->
 
         </div>
-
+</div>
     </body>
 @stop

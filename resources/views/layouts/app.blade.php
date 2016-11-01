@@ -37,15 +37,6 @@
     <nav class="navbar navbar-default navbar-static-top navbar-dark bg-primary">
         <div class="container">
             <div class="navbar-header">
-
-                <!-- Collapsed Hamburger -->
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                    <span class="sr-only">Toggle Navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="Logo2.png">
@@ -54,27 +45,24 @@
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
-              <!--  <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
-                </ul>-->
+
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}">Вхід</a></li>
-                        <li><a href="{{ url('/register') }}">Реєстрація</a></li>
                         <li id="menu"><a   href="#about-us">Про нас</a></li>
                     @else
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                        <li>
+                            <a href="#" class="nav-item"  role="button" aria-expanded="false">
+                                {{ Auth::user()->name }}
                             </a>
+                        </li>
 
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-                                <li class="nav-item"><a class="nav-link"  href="#about-us">Про нас</a></li>
-                            </ul>
+                        <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out "></i>Вийти</a></li>
+                        <li id="menu"><a   href="#about-us">Про нас</a></li>
+
                         </li>
                     @endif
                 </ul>
