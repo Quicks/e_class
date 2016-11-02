@@ -78,6 +78,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
+                                    {{--<a href="{{url('/teacher')}}" style="color: white">--}}
                                     <i class="fa fa-btn fa-user"></i> Зареєструватися
                                 </button>
                             </div>

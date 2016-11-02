@@ -59,8 +59,22 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
+
                                 <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-sign-in"></i> Вхід
+                                    <i class="fa fa-btn fa-sign-in"></i>
+                                    {{--<a href="{{url('/teacher')}}" style="color: white">--}}
+
+                                    {{--</a>--}}
+                                    Вхід
+                                </button>
+                                {{--<button type="submit" class="btn btn-primary">--}}
+                                    {{--<i class="fa fa-btn fa-user"></i>--}}
+                                    {{--<a href="{{ url('/register') }}">Реєстрація</a>--}}
+                                    {{--</button>--}}
+
+                                <button type="submit" class="btn btn-primary fa fa-btn fa-user">
+                                    <a href="{{ url('/register') }}" style="color: mintcream">Реєстрація</a>
+                                    {{--<i class="fa fa-btn fa-user"></i> --}}
                                 </button>
 
                                 <a class="btn btn-link" href="{{ url('/password/reset') }}">Забули Ваш пароль?</a>
