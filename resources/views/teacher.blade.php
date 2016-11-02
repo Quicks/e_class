@@ -101,19 +101,19 @@
     </style>
 <body>
 <div class="main-conteiner">
-<div class="left-box"
+<div class="left-box">
     <!--Card-->
     <div class="card">
 
         <!--Card image-->
-        <img class="img-fluid" src="http://mdbootstrap.com/images/regular/nature/img%20(28).jpg" alt="Card image cap" style="width: 150px; height: 150px; border-radius: 50%; margin-left: 25%;">
+        <img class="img-fluid" src="default.jpg" alt="Card image cap" style="width: 150px; height: 150px; border-radius: 50%; margin-left: 25%;">
         {{--<img class="img-fluid" src="/uploads/avatars/{{$user->avatar}}" style="width: 150px; height: 150px; float: left; border-radius: 50%; margin-right: 25px";>--}}
         <!--/.Card image-->
 
         <!--Card content-->
         <div class="card-block">
             <!--Title-->
-            <h4 class="card-title">ПІБ вчителя</h4>
+            <h4 class="card-title">{{ Auth::user()->name }}</h4>
         {{--{{$user->name}}--}}
             <!--Text-->
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
