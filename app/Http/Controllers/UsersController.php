@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Role;
 use App\Teacher;
 use App\Students_class;
 use App\Http\Requests;
@@ -16,10 +17,10 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
-
-        return view('post.index');
-    }
+//    public function index(){
+//
+//        return view('post.index');
+//    }
 
     public function teacher(){
         return view('teacher');
@@ -42,10 +43,10 @@ class UsersController extends Controller
         return view('passwords.register');
     }
 
-    public function index_user(Request $request)
+    public function index(Request $request)
     {
         $data = User::orderBy('id','DESC')->paginate(5);
-        return view('users.index',compact('data'))
+        return view('user.index',compact('data'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
     /**
@@ -83,7 +84,7 @@ class UsersController extends Controller
             $user->attachRole($value);
         }
 
-        return redirect()->route('user.index_user')
+        return redirect()->route('user.index')
             ->with('success','User created successfully');
     }
 
@@ -147,7 +148,7 @@ class UsersController extends Controller
             $user->attachRole($value);
         }
 
-        return redirect()->route('user.index_user')
+        return redirect()->route('user.index')
             ->with('success','User updated successfully');
     }
 
@@ -160,7 +161,7 @@ class UsersController extends Controller
     public function destroy($id)
     {
         User::find($id)->delete();
-        return redirect()->route('user.index_user')
+        return redirect()->route('user.index')
             ->with('success','User deleted successfully');
     }
 }
