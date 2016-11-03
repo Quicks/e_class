@@ -42,15 +42,12 @@ class UsersController extends Controller
         return view('passwords.register');
     }
 
-
-    public function timetable() {
-        return view('timetable\show');
+    public function index_user(Request $request)
+    {
+        $data = User::orderBy('id','DESC')->paginate(5);
+        return view('users.index',compact('data'))
+            ->with('i', ($request->input('page', 1) - 1) * 5);
     }
-//    public function index()
-//    {
-//        //
-//    }
-
     /**
      *
      * Show the form for creating a new resource.
@@ -59,7 +56,8 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Role::lists('display_name','id');
+        return view('user.create',compact('roles'));
     }
 
     /**
@@ -70,7 +68,23 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|same:confirm-password',
+            'roles' => 'required'
+        ]);
+
+        $input = $request->all();
+        $input['password'] = Hash::make($input['password']);
+
+        $user = User::create($input);
+        foreach ($request->input('roles') as $key => $value) {
+            $user->attachRole($value);
+        }
+
+        return redirect()->route('user.index_user')
+            ->with('success','User created successfully');
     }
 
     /**
@@ -82,16 +96,8 @@ class UsersController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-//        dd($user);
-//        $teacher = Teacher::find(1);
-//        $students = Students_class::find(1);
-//      dd($teacher->students_class()->detach($students->id));
- //       dd($students->teacher);
 
-//        dd($teacher->students);
-//        dd($teacher->save());
-
-        return view('user.show', array('user' => $user));
+        return view('user.show', ['user' => $user]);
     }
 
     /**
@@ -102,7 +108,11 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        $roles = Role::lists('display_name','id');
+        $userRole = $user->roles->lists('id','id')->toArray();
+
+        return view('user.edit',compact('user','roles','userRole'));
     }
 
     /**
@@ -114,7 +124,31 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email,'.$id,
+            'password' => 'same:confirm-password',
+            'roles' => 'required'
+        ]);
+
+        $input = $request->all();
+        if(!empty($input['password'])){
+            $input['password'] = Hash::make($input['password']);
+        }else{
+            $input = array_except($input,array('password'));
+        }
+
+        $user = User::find($id);
+        $user->update($input);
+        DB::table('role_user')->where('user_id',$id)->delete();
+
+
+        foreach ($request->input('roles') as $key => $value) {
+            $user->attachRole($value);
+        }
+
+        return redirect()->route('user.index_user')
+            ->with('success','User updated successfully');
     }
 
     /**
@@ -125,6 +159,8 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::find($id)->delete();
+        return redirect()->route('user.index_user')
+            ->with('success','User deleted successfully');
     }
 }
