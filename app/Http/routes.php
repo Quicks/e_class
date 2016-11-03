@@ -12,13 +12,11 @@
 */
 
 
-//Route::get('/', function () {
-//    return view('teacher');
-//});
-//get('/',['as' => 'posts', 'users' => 'PostController@index']);
+
 Route::get('/', 'UsersController@index');
-//Route::get('/', 'PostController@teacher');
+
 Route::get('/teacher', 'UsersController@teacher');
+Route::post('teacher', 'UsersController@update_avatar');
 Route::get('/profile', 'UsersController@profile');
 Route::get('/password', 'UsersController@password');
 Route::get('/login', 'UsersController@login');
