@@ -18,6 +18,11 @@ class RoleTableSeeder extends Seeder
         $admin->description = 'User is allowed to manage and edit other users'; // optional
         $admin->save();
 
+        $owner = new Role();
+        $owner->name         = 'user';
+        $owner->display_name = 'User'; // optional
+        $owner->description  = 'User of a given project'; // optional
+        $owner->save();
         $permissions = Permission::pluck('id');
         foreach ($permissions as $permission) {
             $admin->attachPermission($permission);
