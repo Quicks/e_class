@@ -280,6 +280,7 @@ class ComposerStaticInitb6700482fb84ff947a44d1a628fd0d0f
 
     public static $classMap = array (
         'CreateClassroomsTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_23_184600_create_classrooms_table.php',
+        'CreateItemsTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_03_210135_create_items_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreatePermissionRoleTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_01_184049_create_permission_role_table.php',
         'CreateRoleUserTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_01_184009_create_role_user_table.php',
@@ -292,7 +293,7 @@ class ComposerStaticInitb6700482fb84ff947a44d1a628fd0d0f
         'CreateTimetablesTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_21_171328_create_timetables_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
-        'EntrustSetupTables' => __DIR__ . '/../..' . '/database/migrations/2016_11_01_191237_entrust_setup_tables.php',
+        'EntrustSetupTables' => __DIR__ . '/../..' . '/database/migrations/2016_11_01_195039_entrust_setup_tables.php',
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
         'File_Iterator_Factory' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Factory.php',
