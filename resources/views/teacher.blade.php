@@ -106,8 +106,10 @@
     <div class="card">
 
         <!--Card image-->
-        <img class="img-fluid" src="default.jpg" alt="Card image cap" style="width: 150px; height: 150px; border-radius: 50%; margin-left: 25%;">
-        {{--<img class="img-fluid" src="/uploads/avatars/{{$user->avatar}}" style="width: 150px; height: 150px; float: left; border-radius: 50%; margin-right: 25px";>--}}
+        {{--<img class="img-fluid" src="default.jpg" alt="Card image cap" style="width: 150px; height: 150px; border-radius: 50%; margin-left: 25%;">--}}
+        <img class="img-fluid" src="/uploads/avatars/{{Auth::user()->avatar}}" style="width: 150px; height: 150px; float: left; border-radius: 50%; margin-left: 25%";>
+
+
         <!--/.Card image-->
 
         <!--Card content-->
@@ -118,6 +120,12 @@
             <!--Text-->
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             <a href="{{url('/profile')}}" class="btn btn-primary" style="margin-right: 30%;">Мої дані</a>
+            {{--<form enctype="multipart/form-data" action="/teacher" method="post">--}}
+                {{--<label>Update profile image</label>--}}
+                {{--<input type="file" name="avatar">--}}
+                {{--<input type="hidden" name="_token" value="{{ csrf_token() }}">--}}
+                {{--<input type="submit" class="pull-right btn btn-sm btn-primary">--}}
+            {{--</form>--}}
         </div>
         <!--/.Card content-->
 

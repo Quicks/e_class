@@ -12,6 +12,7 @@
 */
 
 
+
 //Route::get('/', function () {
 //    return view('teacher');
 //});
@@ -19,6 +20,7 @@
 Route::get('/', 'PostController@index');
 //Route::get('/', 'UsersController@index');
 Route::get('/teacher', 'UsersController@teacher');
+Route::post('/profile', 'UsersController@update_avatar');
 Route::get('/profile', 'UsersController@profile');
 Route::get('/password', 'UsersController@password');
 Route::get('/login', 'UsersController@login');

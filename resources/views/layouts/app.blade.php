@@ -54,8 +54,10 @@
                         <li><a href="{{ url('/login') }}">Вхід</a></li>
                         <li id="menu"><a   href="#about-us">Про нас</a></li>
                     @else
+
                         <li>
-                            <a href="#" class="nav-item"  role="button" aria-expanded="false">
+                            <a href="{{ url('/teacher') }}" class="nav-item"  role="button" aria-expanded="false" style="position: relative; padding-left: 50px;">
+                                <img src="/uploads/avatars/{{Auth::user()->avatar}}" style="width: 32px; height: 32px; position: absolute; left: 10px; top: 10px;  border-radius: 50%;">
                                 {{ Auth::user()->name }}
                             </a>
                         </li>
@@ -64,6 +66,7 @@
                         <li id="menu"><a   href="#about-us">Про нас</a></li>
 
                         </li>
+
                     @endif
                 </ul>
             </div>
