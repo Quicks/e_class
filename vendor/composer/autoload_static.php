@@ -25,6 +25,10 @@ class ComposerStaticInitb6700482fb84ff947a44d1a628fd0d0f
         array (
             'phpDocumentor\\Reflection\\' => 25,
         ),
+        'Z' => 
+        array (
+            'Zizaco\\Entrust\\' => 15,
+        ),
         'X' => 
         array (
             'XdgBaseDir\\' => 11,
@@ -104,6 +108,10 @@ class ComposerStaticInitb6700482fb84ff947a44d1a628fd0d0f
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+        ),
+        'Zizaco\\Entrust\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/zizaco/entrust/src/Entrust',
         ),
         'XdgBaseDir\\' => 
         array (
@@ -291,7 +299,11 @@ class ComposerStaticInitb6700482fb84ff947a44d1a628fd0d0f
 
     public static $classMap = array (
         'CreateClassroomsTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_23_184600_create_classrooms_table.php',
+        'CreateItemsTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_03_210135_create_items_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+        'CreatePermissionRoleTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_01_184049_create_permission_role_table.php',
+        'CreateRoleUserTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_01_184009_create_role_user_table.php',
+        'CreateRolesTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_01_183942_create_roles_table.php',
         'CreateSchoolListTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_15_130423_create_schoolList_table.php',
         'CreateSubjectsTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_22_185801_create_subjects_table.php',
         'CreateTeacherToClassTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_21_154523_create_teacher_to_class_table.php',
@@ -300,6 +312,7 @@ class ComposerStaticInitb6700482fb84ff947a44d1a628fd0d0f
         'CreateTimetablesTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_21_171328_create_timetables_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
+        'EntrustSetupTables' => __DIR__ . '/../..' . '/database/migrations/2016_11_01_195039_entrust_setup_tables.php',
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
         'File_Iterator_Factory' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Factory.php',
@@ -767,6 +780,8 @@ class ComposerStaticInitb6700482fb84ff947a44d1a628fd0d0f
         'PHP_Token_XOR_EQUAL' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD_FROM' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PermissionTableSeeder' => __DIR__ . '/../..' . '/database/seeds/PermissionTableSeeder.php',
+        'RoleTableSeeder' => __DIR__ . '/../..' . '/database/seeds/RoleTableSeeder.php',
         'SebastianBergmann\\Comparator\\ArrayComparator' => __DIR__ . '/..' . '/sebastian/comparator/src/ArrayComparator.php',
         'SebastianBergmann\\Comparator\\Comparator' => __DIR__ . '/..' . '/sebastian/comparator/src/Comparator.php',
         'SebastianBergmann\\Comparator\\ComparisonFailure' => __DIR__ . '/..' . '/sebastian/comparator/src/ComparisonFailure.php',
@@ -806,6 +821,7 @@ class ComposerStaticInitb6700482fb84ff947a44d1a628fd0d0f
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
         'UsersTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UsersTableSeeder.php',
+        'Zizaco\\Entrust\\MigrationCommand' => __DIR__ . '/..' . '/zizaco/entrust/src/commands/MigrationCommand.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

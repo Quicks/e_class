@@ -88,45 +88,6 @@ class DatabaseSeeder extends Seeder
             'name' => str_random(30).'_ПІБ',
             'email' => str_random(10).'@gmail.com'
         ]);
-        DB::table('classList')->insert([
-            'name' => str_random(3).'A',
-            'school' => str_random(3).'A',
-            'teacher' => str_random(30).'_ПІБ'
-        ]);
-        DB::table('classList')->insert([
-            'name' => str_random(3).'A',
-            'school' => str_random(3).'A',
-            'teacher' => str_random(30).'_ПІБ'
-        ]);
-        DB::table('classList')->insert([
-            'name' => str_random(3).'A',
-            'school' => str_random(3).'A',
-            'teacher' => str_random(30).'_ПІБ'
-        ]);
-        DB::table('classList')->insert([
-            'name' => str_random(3).'A',
-            'school' => str_random(3).'A',
-            'teacher' => str_random(30).'_ПІБ'
-        ]);
-        DB::table('classList')->insert([
-            'name' => str_random(3).'A',
-            'school' => str_random(3).'A',
-            'teacher' => str_random(30).'_ПІБ'
-        ]);
-        DB::table('classList')->insert([
-            'name' => str_random(3).'A',
-            'school' => str_random(3).'A',
-            'teacher' => str_random(30).'_ПІБ'
-        ]);
-        DB::table('classList')->insert([
-            'name' => str_random(3).'A',
-            'school' => str_random(3).'A',
-            'teacher' => str_random(30).'_ПІБ'
-        ]);
-        DB::table('schoolList')->insert([
-            'number' =>  str_random(3).'A',
-            'name' => str_random(20).'school_name'
-        ]);
         DB::table('teachers_to_class')->insert([
 //            'teachers_id' => 1,
 //            'classes_id' => 2

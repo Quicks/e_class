@@ -13,7 +13,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        if (!class_exists('Memcached')) {
+//            include ("memcached.php");
+        }
     }
 
     /**

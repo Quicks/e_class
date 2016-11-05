@@ -7,7 +7,11 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'CreateClassroomsTable' => $baseDir . '/database/migrations/2016_10_23_184600_create_classrooms_table.php',
+    'CreateItemsTable' => $baseDir . '/database/migrations/2016_11_03_210135_create_items_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+    'CreatePermissionRoleTable' => $baseDir . '/database/migrations/2016_11_01_184049_create_permission_role_table.php',
+    'CreateRoleUserTable' => $baseDir . '/database/migrations/2016_11_01_184009_create_role_user_table.php',
+    'CreateRolesTable' => $baseDir . '/database/migrations/2016_11_01_183942_create_roles_table.php',
     'CreateSchoolListTable' => $baseDir . '/database/migrations/2016_10_15_130423_create_schoolList_table.php',
     'CreateSubjectsTable' => $baseDir . '/database/migrations/2016_10_22_185801_create_subjects_table.php',
     'CreateTeacherToClassTable' => $baseDir . '/database/migrations/2016_10_21_154523_create_teacher_to_class_table.php',
@@ -16,6 +20,7 @@ return array(
     'CreateTimetablesTable' => $baseDir . '/database/migrations/2016_10_21_171328_create_timetables_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
+    'EntrustSetupTables' => $baseDir . '/database/migrations/2016_11_01_195039_entrust_setup_tables.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
     'File_Iterator_Facade' => $vendorDir . '/phpunit/php-file-iterator/src/Facade.php',
     'File_Iterator_Factory' => $vendorDir . '/phpunit/php-file-iterator/src/Factory.php',
@@ -483,6 +488,8 @@ return array(
     'PHP_Token_XOR_EQUAL' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PHP_Token_YIELD' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PHP_Token_YIELD_FROM' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
+    'PermissionTableSeeder' => $baseDir . '/database/seeds/PermissionTableSeeder.php',
+    'RoleTableSeeder' => $baseDir . '/database/seeds/RoleTableSeeder.php',
     'SebastianBergmann\\Comparator\\ArrayComparator' => $vendorDir . '/sebastian/comparator/src/ArrayComparator.php',
     'SebastianBergmann\\Comparator\\Comparator' => $vendorDir . '/sebastian/comparator/src/Comparator.php',
     'SebastianBergmann\\Comparator\\ComparisonFailure' => $vendorDir . '/sebastian/comparator/src/ComparisonFailure.php',
@@ -522,4 +529,5 @@ return array(
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
     'UsersTableSeeder' => $baseDir . '/database/seeds/UsersTableSeeder.php',
+    'Zizaco\\Entrust\\MigrationCommand' => $vendorDir . '/zizaco/entrust/src/commands/MigrationCommand.php',
 );
