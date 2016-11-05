@@ -71,3 +71,4 @@ fabric.properties
 resources/views/mail/
 resources/views/widgets/
 /.env
+.idea
