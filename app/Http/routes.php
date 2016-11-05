@@ -13,10 +13,10 @@
 
 
 
-Route::get('/', 'UsersController@index');
+Route::get('/', 'PostController@index');
 
 Route::get('/teacher', 'UsersController@teacher');
-Route::post('teacher', 'UsersController@update_avatar');
+Route::post('/profile', 'UsersController@update_avatar');
 Route::get('/profile', 'UsersController@profile');
 Route::get('/password', 'UsersController@password');
 Route::get('/login', 'UsersController@login');

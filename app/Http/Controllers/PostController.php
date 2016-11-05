@@ -8,5 +8,8 @@ use App\Http\Requests;
 
 class PostController extends Controller{
 
+    public function index(){
 
+        return view('post.index');
+    }
 }
