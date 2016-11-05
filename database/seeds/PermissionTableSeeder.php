@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Permission;
+use App\Role;
 class PermissionTableSeeder extends Seeder
 {
     /**
@@ -54,7 +55,6 @@ class PermissionTableSeeder extends Seeder
                 'description' => 'Delete Item'
             ]
         ];
-
         foreach ($permission as $key => $value) {
             Permission::create($value);
         }

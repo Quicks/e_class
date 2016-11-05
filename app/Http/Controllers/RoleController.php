@@ -59,6 +59,24 @@ class RoleController extends Controller
 
         return redirect()->route('roles.index')
             ->with('success','Role created successfully');
+
+            $owner = new Role();
+            $owner->name         = 'owner';
+            $owner->display_name = 'Project Owner'; // optional
+            $owner->description  = 'User is the owner of a given project'; // optional
+            $owner->save();
+            $admin = new Role();
+            $admin->name         = 'admin';
+            $admin->display_name = 'User Administrator'; // optional
+            $admin->description  = 'User is allowed to manage and edit other users'; // optional
+            $admin->save();
+//        $user = User::where('name', '=', 'yulia')->first();
+//
+//// role attach alias
+//        $user->attachRole($admin); // parameter can be an Role object, array, or id
+//
+//// or eloquent's original technique
+//        $user->roles()->attach($admin->id); // id only
     }
     /**
      * Display the specified resource.

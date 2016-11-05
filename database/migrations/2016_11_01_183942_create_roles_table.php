@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use App\Role;
 
 class CreateRolesTable extends Migration
 {
@@ -12,7 +13,7 @@ class CreateRolesTable extends Migration
      */
     public function up()
     {
-        //
+
     }
 
     /**
