@@ -176,5 +176,17 @@ class DatabaseSeeder extends Seeder
         DB::table('classrooms')->insert([
             'number' => 19,
         ]);
+        DB::table('roles')->insert([
+            'title' => 'Admin',
+            'description' => 'Admin'
+        ]);
+        DB::table('roles')->insert([
+            'title' => 'Teacher',
+            'description' => 'Teacher'
+        ]);
+        DB::table('roles')->insert([
+            'title' => 'Student',
+            'description' => 'Student'
+        ]);
     }
 }
