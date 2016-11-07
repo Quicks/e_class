@@ -184,5 +184,9 @@ class DatabaseSeeder extends Seeder
             'title' => 'Teacher',
             'description' => 'Teacher'
         ]);
+        DB::table('roles')->insert([
+            'title' => 'Student',
+            'description' => 'Student'
+        ]);
     }
 }
