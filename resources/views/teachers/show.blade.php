@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.app')
 @section('content')
     <nav class="navbar navbar-inverse">
          <ul class="nav navbar-nav">
