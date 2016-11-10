@@ -91,8 +91,7 @@ class UserRolesController extends Controller
     }
     public function changeUserRole($id) {
 
-        $user = User::all($id);
-
+        $user = User::find($id);
         return view ('admin.userRoles.changeUserRole', ['user'=> $user]);
     }
 }

@@ -1,1 +1,1 @@
-dd({{$user->name}})
+{{dd($user->name)}}
