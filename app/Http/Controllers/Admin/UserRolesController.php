@@ -54,7 +54,7 @@ class UserRolesController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -91,12 +91,12 @@ class UserRolesController extends Controller
         //
     }
     public function usersList() {
+        dd($roles = User::find(1)->roles);
     	$users = User::all();
-    	return view('admin.userRoles.usersList', ['users'=>$users]);
+//    	return view('admin.userRoles.usersList', ['users'=>$users]);
     }
 
     public function changeUserRole($id) {
-
         $user = User::find($id);
         return view ('admin.userRoles.changeUserRole', ['user'=> $user]);
     }
