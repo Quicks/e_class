@@ -91,9 +91,13 @@ class UserRolesController extends Controller
         //
     }
     public function usersList() {
-        dd($roles = User::find(1)->roles);
+       // dd($roles = User::find(1)->roles);
+
+        $user = User::find(1);
     	$users = User::all();
-//    	return view('admin.userRoles.usersList', ['users'=>$users]);
+        $roles = Role::all(1);
+        dd($user->roles->title);
+    	return view('admin.userRoles.usersList', ['users'=>$users]);
     }
 
     public function changeUserRole($id) {
