@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
+use Request;
 
-use App\Http\Requests;
+use Requests;
 use App\Http\Controllers\Controller;
 use App\User;
+use Redirect;
+use Validator;
+use Html;
+use Form;
+use Session;
 
 class UserRolesController extends Controller
 {
@@ -89,9 +94,35 @@ class UserRolesController extends Controller
     	$users = User::all();
     	return view('admin.userRoles.usersList', ['users'=>$users]);
     }
+
     public function changeUserRole($id) {
 
         $user = User::find($id);
         return view ('admin.userRoles.changeUserRole', ['user'=> $user]);
+    }
+
+    public function updateUserRole(Request $request, $id) {
+        $rules = array(
+            'title' => 'required',
+            'description',
+        );
+        $validator = Validator::make(Request::all(), $rules);
+
+        // process the login
+        if ($validator->fails()) {
+            return Redirect::to('admin.userRoles.changeUserRole')
+                ->withErrors($validator)
+                ->withInput(Request::except('password'));
+        } else {
+            // store
+            $user = User::find($id);
+            $user->title = Request::get('title');
+            $user->description = Request::get('description');
+            $user->save();
+
+            // redirect
+            Session::flash('message', 'Successfully updated role!');
+            return Redirect::to('admin.userRoles.usersList');
+        }
     }
 }

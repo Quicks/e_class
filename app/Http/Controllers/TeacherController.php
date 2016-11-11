@@ -114,9 +114,9 @@ class TeacherController extends Controller
                 ->withInput(Request::except('password'));
         } else {
             // store
-            $nerd = Teacher::find($id);
-            $nerd->class_name = Request::get('class_name');
-            $nerd->name = Request::get('name');
+            $teacher = Teacher::find($id);
+            $teacher->class_name = Request::get('class_name');
+            $teacher->name = Request::get('name');
             $nerd->email = Request::get('email');
             $nerd->save();
 
@@ -134,8 +134,8 @@ class TeacherController extends Controller
      */
     public function destroy($id)
     {
-        $nerd = Teacher::find($id);
-        $nerd->delete();
+        $teacher = Teacher::find($id);
+        $teacher->delete();
 
         // redirect
         Session::flash('message', 'Successfully deleted the teacher!');
