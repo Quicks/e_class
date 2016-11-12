@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
+use Request;
 
-use App\Http\Requests;
+use Requests;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Role;
+use Redirect;
+use Validator;
+use Html;
+use Form;
+use Session;
 
 class UserRolesController extends Controller
 {
@@ -49,7 +55,7 @@ class UserRolesController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -89,9 +95,41 @@ class UserRolesController extends Controller
     	$users = User::all();
     	return view('admin.userRoles.usersList', ['users'=>$users]);
     }
-    public function changeUserRole($id) {
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function changeUserRole($id) {
         $user = User::find($id);
+//        $roles = $user->roles;
+//        dd($roles);
         return view ('admin.userRoles.changeUserRole', ['user'=> $user]);
     }
+
+    public function updateUserRole(request $request, $id) {
+        $rules = array(
+            'title' => 'required',
+            'description',
+        );
+        $validator = Validator::make(request::all(), $rules);
+
+        // process the login
+        if ($validator->fails()) {
+            return Redirect::to('admin.userRoles.changeUserRole')
+                ->withErrors($validator)
+                ->withInput(request::except('password'));
+        } else {
+            // store
+            $user = User::find($id);
+            foreach ($user->roles as $roles) {
+                $roles->title = request::get('title');
+                $roles->description = request::get('description');
+                $roles->save();
+            }
+        }
+            // redirect
+            Session::flash('message', 'Successfully updated role!');
+            return Redirect::to('admin.userRoles.usersList');
+        }
 }
