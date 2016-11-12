@@ -130,6 +130,6 @@ class UserRolesController extends Controller
         }
             // redirect
             Session::flash('message', 'Successfully updated role!');
-            return Redirect::to('admin.userRoles.usersList');
+            return Redirect::to(route('admin.roles.users_list'));
         }
 }
