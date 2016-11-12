@@ -7,6 +7,7 @@ use Request;
 use Requests;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Role;
 use Redirect;
 use Validator;
 use Html;
@@ -91,42 +92,44 @@ class UserRolesController extends Controller
         //
     }
     public function usersList() {
-       // dd($roles = User::find(1)->roles);
-
-        $user = User::find(1);
     	$users = User::all();
-        $roles = Role::all(1);
-        dd($user->roles->title);
     	return view('admin.userRoles.usersList', ['users'=>$users]);
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function changeUserRole($id) {
         $user = User::find($id);
+//        $roles = $user->roles;
+//        dd($roles);
         return view ('admin.userRoles.changeUserRole', ['user'=> $user]);
     }
 
-    public function updateUserRole(Request $request, $id) {
+    public function updateUserRole(request $request, $id) {
         $rules = array(
             'title' => 'required',
             'description',
         );
-        $validator = Validator::make(Request::all(), $rules);
+        $validator = Validator::make(request::all(), $rules);
 
         // process the login
         if ($validator->fails()) {
             return Redirect::to('admin.userRoles.changeUserRole')
                 ->withErrors($validator)
-                ->withInput(Request::except('password'));
+                ->withInput(request::except('password'));
         } else {
             // store
             $user = User::find($id);
-            $user->title = Request::get('title');
-            $user->description = Request::get('description');
-            $user->save();
-
+            foreach ($user->roles as $roles) {
+                $roles->title = request::get('title');
+                $roles->description = request::get('description');
+                $roles->save();
+            }
+        }
             // redirect
             Session::flash('message', 'Successfully updated role!');
             return Redirect::to('admin.userRoles.usersList');
         }
-    }
 }

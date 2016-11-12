@@ -6,7 +6,6 @@
         </ul>
     </nav>
     {{ Html::ul($errors->all()) }}
-
     {{ Form::model($user, array('route' => array('admin.roles.update_user_role', $user->id), 'method' => 'PUT')) }}
 
     <div class="form-group">
