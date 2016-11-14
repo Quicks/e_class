@@ -102,34 +102,22 @@ class UserRolesController extends Controller
      */
     public function changeUserRole($id) {
         $user = User::find($id);
-//        $roles = $user->roles;
-//        dd($roles);
-        return view ('admin.userRoles.changeUserRole', ['user'=> $user]);
+        $roles = [];
+
+        foreach(Role::all() as $role) {
+            $tmp = [];
+            $tmp[$role->id] = $role->title;
+            array_push($roles, $tmp);
+        }
+        return view ('admin.userRoles.changeUserRole', ['user'=> $user, 'roles' => $roles]);
     }
 
     public function updateUserRole(request $request, $id) {
-        $rules = array(
-            'title' => 'required',
-            'description',
-        );
-        $validator = Validator::make(request::all(), $rules);
-
-        // process the login
-        if ($validator->fails()) {
-            return Redirect::to('admin.userRoles.changeUserRole')
-                ->withErrors($validator)
-                ->withInput(request::except('password'));
-        } else {
-            // store
-            $user = User::find($id);
-            foreach ($user->roles as $roles) {
-                $roles->title = request::get('title');
-                $roles->description = request::get('description');
-                $roles->save();
-            }
-        }
-            // redirect
-            Session::flash('message', 'Successfully updated role!');
-            return Redirect::to(route('admin.roles.users_list'));
-        }
+       // todo add validate for role (чи є айдішка взагалі і чи обрана роль)
+        $user = User::find($id);
+        $user->roles()->attach(request::get('role'));
+        // redirect
+        Session::flash('message', 'Successfully updated role!');
+        return Redirect::to(route('admin.roles.users_list'));
+    }
 }

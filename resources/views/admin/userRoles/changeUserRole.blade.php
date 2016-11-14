@@ -10,12 +10,8 @@
 
     <div class="form-group">
         {{ Form::label('title', 'Title') }}
-        {{ Form::text('title', null, array('list' => 'option'), array('class' => 'form-control')) }}
-        <datalist id="option">
-            <option>User</option>
-            <option>Admin</option>
-            <option>Teacher</option>
-        </datalist>
+        {{--{{ Form::text('title', null, array('list' => 'option'), array('class' => 'form-control')) }}--}}
+        {{ Form::select('role',  $roles) }}
     </div>
 
     <div class="form-group">
