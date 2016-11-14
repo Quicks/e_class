@@ -15,12 +15,13 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if($request->user()->hasRole('admin')){
+        if($request->user() && $request->user()->hasRole('admin')){
 
             return $next($request);
 
         } else {
-            return redirect::to(route('teachers.index'));
+            return redirect()->guest('/');
+
         };
 
     }
