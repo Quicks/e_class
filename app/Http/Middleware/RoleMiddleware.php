@@ -23,11 +23,11 @@ class RoleMiddleware
 //                Redirect::to(route('admin.roles.update_user_role'));
 //            }
 //        }
-        if ($request->user()->hasAnyRole($role)) {
-            return $next($request);
-        } else {
-            return response('Insufficient permission', 401);
-        }
+//        if ($request->user()->hasAnyRole($role)) {
+//            return $next($request);
+//        } else {
+//            return response('Insufficient permission', 401);
+//        }
 
     }
 }

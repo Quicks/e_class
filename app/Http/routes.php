@@ -29,10 +29,11 @@ Route::resource('teachers', 'TeacherController');
 Route::resource('teachers.timetables', 'TimetableController');
 Route::resource('schools', 'SchoolController');
 Route::resource('sc','StudentsClassController');
-Route::group(['namespace'=>'Admin', 'prefix'=>'admin'], function() {
-    Route::put('changeUserRole/{id}', ['middleware' => 'roles:admin,teacher', function () {
-        return view('admin.roles.users_list');
-    }]);
+Route::group(['namespace'=>'Admin', 'prefix'=>'admin', 'middleware'=>'admin'], function() {
+    Route::get('/', 'AdminController@index');
+//    Route::put('/', ['middleware' => 'roles:admin', function () {
+//        return view('admin.roles.users_list');
+//    }]);
 	Route::resource('roles', 'UserRolesController');
 	Route::get('userList', 'UserRolesController@usersList')->name('admin.roles.users_list');
 	Route::get('changeUserRole/{id}', 'UserRolesController@changeUserRole')->name('admin.roles.change_user_role');

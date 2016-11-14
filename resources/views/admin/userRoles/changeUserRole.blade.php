@@ -10,7 +10,6 @@
 
     <div class="form-group">
         {{ Form::label('title', 'Title') }}
-        {{--{{ Form::text('title', null, array('list' => 'option'), array('class' => 'form-control')) }}--}}
         {{ Form::select('role',  $roles) }}
     </div>
 
