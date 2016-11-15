@@ -31,16 +31,11 @@ Route::resource('schools', 'SchoolController');
 Route::resource('sc','StudentsClassController');
 Route::group(['namespace'=>'Admin', 'prefix'=>'admin', 'middleware'=>'admin'], function() {
     Route::get('/', 'AdminController@index');
-//    Route::put('/', ['middleware' => 'roles:admin', function () {
-//        return view('admin.roles.users_list');
-//    }]);
 	Route::resource('roles', 'UserRolesController');
 	Route::get('userList', 'UserRolesController@usersList')->name('admin.roles.users_list');
 	Route::get('changeUserRole/{id}', 'UserRolesController@changeUserRole')->name('admin.roles.change_user_role');
     Route::put('updateUserRole/{id}', 'UserRolesController@updateUserRole')->name('admin.roles.update_user_role');
 });
-
-
 
 
 

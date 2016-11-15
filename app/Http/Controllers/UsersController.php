@@ -19,16 +19,8 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-//    public function index(){
-//
-//
-//    }
-//    public function index(){
-//
-//        return view('post.index');
-//    }
-
     public function teacher(){
+        dd(Auth::user()->name);
         return view('teacher', array('user'=>Auth::user()));
     }
 
@@ -61,10 +53,6 @@ class UsersController extends Controller
         return view('passwords.register');
     }
 
-    public function index(Request $request)
-    {
-
-    }
     /**
      *
      * Show the form for creating a new resource.

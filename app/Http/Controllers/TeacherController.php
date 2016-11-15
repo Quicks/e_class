@@ -41,28 +41,14 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        $rules = array(
-            'class_name' => 'required',
-            'name'  => 'required',
-            'email' => 'required|email'
-        );
-        $validator = Validator::make(Request::all(), $rules);
-
-        // process the login
-        if ($validator->fails()) {
-            return Redirect::to('teachers/create')
-                ->withErrors($validator)
-                ->withInput(Request::except('password'));
-        } else {
-            // store
             $teacher = new Teacher();
             $teacher->class_name = Request::get('class_name');
             $teacher->name = Request::get('name');
             $teacher->email = Request::get('email');
             $teacher->save();
+
             Session::flash('message', 'Successfully created Teacher!');
             return Redirect::to('teachers');
-        }
     }
 
     /**
@@ -100,30 +86,16 @@ class TeacherController extends Controller
     public function update(Request $request, $id)
     {
 
-        $rules = array(
-            'class_name' => 'required',
-            'name'       => 'required',
-            'email'      => 'required|email',
-        );
-        $validator = Validator::make(Request::all(), $rules);
-
-        // process the login
-        if ($validator->fails()) {
-            return Redirect::to('teachers')
-                ->withErrors($validator)
-                ->withInput(Request::except('password'));
-        } else {
-            // store
             $teacher = Teacher::find($id);
             $teacher->class_name = Request::get('class_name');
             $teacher->name = Request::get('name');
-            $nerd->email = Request::get('email');
-            $nerd->save();
+            $teacher->email = Request::get('email');
+            $teacher->save();
 
             // redirect
             Session::flash('message', 'Successfully updated teacher!');
             return Redirect::to('teachers');
-        }
+
     }
 
     /**

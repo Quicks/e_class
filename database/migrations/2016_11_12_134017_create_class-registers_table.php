@@ -12,12 +12,12 @@ class CreateClassRegistersTable extends Migration
      */
     public function up()
     {
-        Schema::create('class-registers', function ($table) {
-            $table->increments('id');
-            $table->foreign('student_id')->references('id')->on('students');
-            $table->foreign('tasks_id')->references('id')->on('tasks');
-            $table->foreign('marks_id')->references('id')->on('marks');
-        });
+//        Schema::create('class-registers', function ($table) {
+////            $table->increments('id');
+////            $table->foreign('student_id')->references('id')->on('students');
+////            $table->foreign('tasks_id')->references('id')->on('tasks');
+////            $table->foreign('marks_id')->references('id')->on('marks');
+//        });
     }
 
     /**
@@ -27,6 +27,6 @@ class CreateClassRegistersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('class-registers');
+//        Schema::drop('class-registers');
     }
 }

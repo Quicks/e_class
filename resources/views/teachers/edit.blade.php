@@ -2,7 +2,7 @@
 @section('content')
     <nav class="navbar navbar-inverse">
         <ul class="nav navbar-nav">
-            <li><a href="{{ route('admin.userList') }}">View All Users</a></li>
+            <li><a href="{{ route('teachers.index') }}">View All Users</a></li>
             <li><a href="{{ route('teachers.create') }}">Create a Teacher</a>
         </ul>
     </nav>
