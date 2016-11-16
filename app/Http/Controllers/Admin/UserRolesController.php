@@ -108,7 +108,8 @@ class UserRolesController extends Controller
             $tmp = [];
             $tmp[$role->id] = $role->title;
             array_push($roles, $tmp);
-        }
+            //$roles = array_unique($roles);
+          }
         return view ('admin.userRoles.changeUserRole', ['user'=> $user, 'roles' => $roles]);
     }
 

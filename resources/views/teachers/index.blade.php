@@ -31,9 +31,6 @@
                         {{ Form::submit('Delete', array('class' => 'btn btn-primary')) }}
                         {{ Form::close() }}
 
-                        <a class="blue-text"><i class="fa fa-user"></i></a>
-                        <a class="teal-text"><i class="fa fa-pencil"></i></a>
-                        <a class="red-text"><i class="fa fa-times"></i></a>
                     </td>
                 </tr>
             @endforeach
