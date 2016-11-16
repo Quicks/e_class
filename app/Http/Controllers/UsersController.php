@@ -20,7 +20,7 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function teacher(){
-        dd(Auth::user()->name);
+//        dd(Auth::user()->name);
         return view('teacher', array('user'=>Auth::user()));
     }
 
