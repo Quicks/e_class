@@ -188,13 +188,37 @@ class DatabaseSeeder extends Seeder
 //            'title' => 'Student',
 //            'description' => 'Student'
 //        ]);
-        DB::table('user_roles')->insert([
-            'user_id' => 1,
-            'role_id' => 2
+//        DB::table('user_roles')->insert([
+//            'user_id' => 1,
+//            'role_id' => 2
+//        ]);
+//        DB::table('user_roles')->insert([
+//            'user_id' => 2,
+//            'role_id' => 1
+//        ]);
+        DB::table('subjects')->insert([
+        'title' => 'Math',
+        'description' => 'Math'
+    ]);
+        DB::table('subjects')->insert([
+            'title' => 'Language',
+            'description' => 'Language'
         ]);
-        DB::table('user_roles')->insert([
-            'user_id' => 2,
-            'role_id' => 1
+        DB::table('subjects')->insert([
+            'title' => 'History',
+            'description' => 'History'
+        ]);
+        DB::table('subjects')->insert([
+            'title' => 'Chemistry',
+            'description' => 'Chemistry'
+        ]);
+        DB::table('subjects')->insert([
+            'title' => 'Geography',
+            'description' => 'Geographyy'
+        ]);
+        DB::table('subjects')->insert([
+            'title' => 'Literature',
+            'description' => 'Literature'
         ]);
     }
 }
