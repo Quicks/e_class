@@ -44,11 +44,13 @@ class SubjectsController extends Controller
     public function store(Request $request)
     {
         $subject = new Subject();
-        $subject->title = request::get('title');
-        $subject->save();
+//        $subject = fill($request->all());
+//        $input = $request::all();
+        $subject->title = Request::get('title');
+         $subject->save();
 
         Session::flash('message', 'Successfully created Subject!');
-        return Redirect::to('admin.subject.index');
+        return Redirect()->route('admin.subject.create');
     }
 
     /**
@@ -91,7 +93,7 @@ class SubjectsController extends Controller
 
         // redirect
         Session::flash('message', 'Successfully updated subject!');
-        return Redirect::to('admin.subject');
+        return Redirect()->route('admin.subject.index');
 
     }
 
@@ -106,9 +108,7 @@ class SubjectsController extends Controller
         $subject = Subject::find($id);
         $subject->delete();
 
-        // redirect
         Session::flash('message', 'Successfully deleted the subject!');
-        return Redirect::to('admin.subject.index');
-       // return redirect()->route('/');
+        return Redirect()->route('admin.subject.index');
     }
 }

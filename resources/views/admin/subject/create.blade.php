@@ -8,7 +8,7 @@
     </nav>
     {{ Html::ul($errors->all()) }}
 
-    {{ Form::open(array('url' => 'admin/subject')) }}
+    {{ Form::open(['url'=>'admin/subject']) }}
 
     <div class="form-group">
         {{ Form::label('title', 'Title') }}
