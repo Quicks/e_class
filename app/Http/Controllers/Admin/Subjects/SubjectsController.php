@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Teacher;
+namespace App\Http\Controllers\Admin\Subjects;
 
+use App\Subject;
 use App\Http\Controllers\Controller;
-use App\Teacher;
+use App\Http\Requests;
 use Request;
 use Redirect;
 use Validator;
 use Html;
 use Form;
 use Session;
-class TeacherController extends Controller
+class SubjectsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +20,8 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $teachers = Teacher::paginate(5);
-        return view ('teachers.index', ['teachers' => $teachers]);
+        $subjects = Subject::paginate(5);
+        return view ('admin.subject.index', ['subjects' => $subjects]);
     }
 
     /**
@@ -31,7 +32,7 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        return view ('teachers.create');
+        return view ('admin.subject.create');
     }
 
     /**
@@ -42,14 +43,12 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-            $teacher = new Teacher();
-            $teacher->class_name = Request::get('class_name');
-            $teacher->name = Request::get('name');
-            $teacher->email = Request::get('email');
-            $teacher->save();
+        $subject = new Subject();
+        $subject->title = request::get('title');
+        $subject->save();
 
-            Session::flash('message', 'Successfully created Teacher!');
-            return Redirect::to('teachers');
+        Session::flash('message', 'Successfully created Subject!');
+        return Redirect::to('admin.subject.index');
     }
 
     /**
@@ -60,8 +59,8 @@ class TeacherController extends Controller
      */
     public function show($id)
     {
-        $teacher = Teacher::find($id);
-        return view ('teachers.show', ['teacher' => $teacher]);
+        $subject = Subject::find($id);
+        return view ('admin.subject.show', ['subject' => $subject]);
     }
 
     /**
@@ -72,9 +71,8 @@ class TeacherController extends Controller
      */
     public function edit($id)
     {
-        $teacher = Teacher::find($id);
-
-        return view ('teachers.edit', ['teacher'=> $teacher]);
+        $subject = Subject::find($id);
+        return view ('admin.subject.edit', ['subject'=> $subject]);
     }
 
     /**
@@ -87,15 +85,13 @@ class TeacherController extends Controller
     public function update(Request $request, $id)
     {
 
-            $teacher = Teacher::find($id);
-            $teacher->class_name = Request::get('class_name');
-            $teacher->name = Request::get('name');
-            $teacher->email = Request::get('email');
-            $teacher->save();
+        $subject = Subject::find($id);
+        $subject->title = Request::get('title');
+        $subject->save();
 
-            // redirect
-            Session::flash('message', 'Successfully updated teacher!');
-            return Redirect::to('teachers');
+        // redirect
+        Session::flash('message', 'Successfully updated subject!');
+        return Redirect::to('admin.subject');
 
     }
 
@@ -107,11 +103,12 @@ class TeacherController extends Controller
      */
     public function destroy($id)
     {
-        $teacher = Teacher::find($id);
-        $teacher->delete();
+        $subject = Subject::find($id);
+        $subject->delete();
 
         // redirect
-        Session::flash('message', 'Successfully deleted the teacher!');
-        return Redirect::to('teachers');
+        Session::flash('message', 'Successfully deleted the subject!');
+        return Redirect::to('admin.subject.index');
+       // return redirect()->route('/');
     }
 }

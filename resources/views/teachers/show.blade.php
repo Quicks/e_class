@@ -13,5 +13,4 @@
             <strong>Class_name:</strong> {{ $teacher->class_name }}
         </p>
     </div>
-    </div>
 @endsection
