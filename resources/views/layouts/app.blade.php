@@ -20,9 +20,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
     <style>
-        body {
-            font-family: 'Lato';
-        }
+
 
         .fa-btn {
             margin-right: 6px;
@@ -30,11 +28,36 @@
         .navbar-nav>li>a{
             color: cornsilk!important;
         }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html,
+        body {
+            height: 100%;
+            font-family: 'Lato';
+
+        }
+        .wrapper {
+            position: relative;
+            min-height: 100%;
+        }
+        .content {
+            padding-bottom: 80px;
+        }
+        .footer {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 80px;
+        }
 
     </style>
 </head>
 <body id="app-layout">
-    <nav class="navbar navbar-default navbar-static-top navbar-dark bg-primary">
+<div class="wrapper">
+    <nav class=" navbar navbar-default navbar-static-top navbar-dark bg-primary">
         <div class="container">
             <div class="navbar-header">
                 <!-- Branding Image -->
@@ -72,8 +95,10 @@
             </div>
         </div>
     </nav>
-
+    <div class="content">
     @yield('content')
+    </div>
+    <div class="footer">
     <footer class="page-footer center-on-small-only">
 
         <!--Footer Links-->
@@ -81,12 +106,12 @@
             <div class="row">
 
                 <!--First column-->
-                <div class="col-md-3 offset-md-1" id="about-us">
-                    <h5 class="title">Про наш проект</h5>
-                    <p>Даний проект розроблений спеціалістами для покращення якості шкільної освіти. </p>
+                {{--<div class="col-md-3 offset-md-1" id="about-us">--}}
+                    {{--<h5 class="title">Про наш проект</h5>--}}
+                    {{--<p>Даний проект розроблений спеціалістами для покращення якості шкільної освіти. </p>--}}
 
-                    <p>Електронний клас покращує взаємодію між вчителями, учнями та батьками.</p>
-                </div>
+                    {{--<p>Електронний клас покращує взаємодію між вчителями, учнями та батьками.</p>--}}
+                {{--</div>--}}
                 <!--Second column-->
                 <div class="col-md-2 col-md-offset-1">
                     <p class="column-title white-text">Над проектом працювали</p>
@@ -112,6 +137,16 @@
 
                     </ul>
                 </div>
+                <div class="col-md-2">
+                    <p class="column-title white-text">Наші контакти</p>
+
+                    <ul>
+                        <li><a href="#">+38(068) 215 14 59</a></li>
+                        <li><a href="#">+38(097) 621 77 13</a></li>
+
+                    </ul>
+                </div>
+
                 <!--/.Third column-->
 
                 <!--Fourth column-->
@@ -122,6 +157,11 @@
                         <li><a href="#">Роман Мельник</a></li>
 
                     </ul>
+                </div>
+                <div class="col-md-2">
+                    <p class="column-title white-text"><a href="#">Про наш проект</a></p>
+
+
                 </div>
             </div>
         </div>
@@ -158,7 +198,8 @@
         });
 
     </script>
+        </div>
     <!-- JavaScripts -->
-
+</div>
 </body>
 </html>
