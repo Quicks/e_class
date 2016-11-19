@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Admin\Subjects;
 use App\Subject;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-use Request;
+
+use Illuminate\Http\Request;
 use Redirect;
 use Validator;
 use Html;
@@ -43,14 +44,14 @@ class SubjectsController extends Controller
      */
     public function store(Request $request)
     {
-        $subject = new Subject();
+        $subject = new Subject($request->all());
 //        $subject = fill($request->all());
 //        $input = $request::all();
-        $subject->title = Request::get('title');
+//        $subject->title = Request::get('title');
          $subject->save();
 
         Session::flash('message', 'Successfully created Subject!');
-        return Redirect()->route('admin.subject.create');
+        return Redirect()->route('admin.subjects.create');
     }
 
     /**
@@ -88,12 +89,11 @@ class SubjectsController extends Controller
     {
 
         $subject = Subject::find($id);
-        $subject->title = Request::get('title');
-        $subject->save();
+        $subject->update($request->all());
 
         // redirect
         Session::flash('message', 'Successfully updated subject!');
-        return Redirect()->route('admin.subject.index');
+        return Redirect()->route('admin.subjects.index');
 
     }
 
@@ -109,6 +109,6 @@ class SubjectsController extends Controller
         $subject->delete();
 
         Session::flash('message', 'Successfully deleted the subject!');
-        return Redirect()->route('admin.subject.index');
+        return Redirect()->route('admin.subjects.index');
     }
 }

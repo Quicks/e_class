@@ -2,13 +2,13 @@
 @section('content')
     <nav class="navbar navbar-inverse">
         <ul class="nav navbar-nav">
-            <li><a href="{{ route('admin.subject.index') }}">View All Subjects</a></li>
-            <li><a href="{{ route('admin.subject.create') }}">Create a Subject</a>
+            <li><a href="{{ route('admin.subjects.index') }}">View All Subjects</a></li>
+            <li><a href="{{ route('admin.subjects.create') }}">Create a Subject</a>
         </ul>
     </nav>
     {{ Html::ul($errors->all()) }}
 
-    {{ Form::model($subject, array('route' => array('admin.subject.update', $subject->id), 'method' => 'PUT')) }}
+    {{ Form::model($subject, array('route' => array('admin.subjects.update', $subject->id), 'method' => 'PUT')) }}
 
     <div class="form-group">
         {{ Form::label('title', 'Title') }}
