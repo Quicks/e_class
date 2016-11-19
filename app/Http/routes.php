@@ -42,10 +42,11 @@ Route::group(['namespace'=>'Admin', 'prefix'=>'admin'], function() {
     Route::get('destroy/{id}', ['uses'=>'Subjects\SubjectsController@destroy', 'as'=>'admin.subject.destroy']);
     Route::get('edit/{id}', ['uses'=>'Subjects\SubjectsController@edit', 'as'=>'admin.subject.edit']);
 });
-Route::group(['middleware'=>'teacher'], function() {
-    Route::get('/teacher', 'UsersController@teacher');
-    Route::resource('roles', 'Admin\UserRolesController');
-});
+Route::get('/teacher', 'UsersController@teacher');
+//Route::group(['middleware'=>'teacher'], function() {
+//    Route::get('/teacher', 'UsersController@teacher');
+//    Route::resource('roles', 'Admin\UserRolesController');
+//});
 
 
 //, 'middleware'=>'admin'
