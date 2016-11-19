@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
+use Request;
 
-use App\Http\Requests;
+use Requests;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Role;
+use Redirect;
+use Validator;
+use Html;
+use Form;
+use Session;
 
 class UserRolesController extends Controller
 {
@@ -49,7 +55,7 @@ class UserRolesController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -88,9 +94,31 @@ class UserRolesController extends Controller
     public function usersList() {
     	$users = User::all();
     	return view('admin.userRoles.usersList', ['users'=>$users]);
-
     }
-    public function changeUserRole() {
-    	
+
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function changeUserRole($id) {
+        $user = User::find($id);
+        $roles = [];
+
+        foreach(Role::all() as $role) {
+            $tmp = [];
+            $tmp[$role->id] = $role->title;
+            array_push($roles, $tmp);
+            //$roles = array_unique($roles);
+          }
+        return view ('admin.userRoles.changeUserRole', ['user'=> $user, 'roles' => $roles]);
+    }
+
+    public function updateUserRole(request $request, $id) {
+       // todo add validate for role (чи є айдішка взагалі і чи обрана роль)
+        $user = User::find($id);
+        $user->roles()->attach(request::get('role'));
+        // redirect
+        Session::flash('message', 'Successfully updated role!');
+        return Redirect::to(route('admin.roles.users_list'));
     }
 }

@@ -1,6 +1,7 @@
 /vendor
 /node_modules
 /public/storage
+/vendor/*
 Homestead.yaml
 Homestead.json
 .env
@@ -72,3 +73,4 @@ resources/views/mail/
 resources/views/widgets/
 /.env
 .idea/*
+.env

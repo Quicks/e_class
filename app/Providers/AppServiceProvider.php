@@ -11,12 +11,6 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
-    {
-        if (!class_exists('Memcached')) {
-//            include ("memcached.php");
-        }
-    }
 
     /**
      * Register any application services.
