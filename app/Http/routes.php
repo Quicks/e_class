@@ -12,8 +12,6 @@
 */
 
 Route::get('/', 'PostController@index');
-//Route::get('/', 'UsersController@index');
-//Route::get('/teacher', 'UsersController@teacher');
 Route::post('/profile', 'UsersController@update_avatar');
 Route::get('/profile', 'UsersController@profile');
 Route::get('/password', 'UsersController@password');
@@ -35,12 +33,9 @@ Route::group(['namespace'=>'Admin', 'prefix'=>'admin'], function() {
 	Route::get('userList', 'UserRolesController@usersList')->name('admin.roles.users_list');
 	Route::get('changeUserRole/{id}', 'UserRolesController@changeUserRole')->name('admin.roles.change_user_role');
     Route::put('updateUserRole/{id}', 'UserRolesController@updateUserRole')->name('admin.roles.update_user_role');
-    Route::resource('subjects', 'Subjects\SubjectsController');
-    Route::get('index', ['uses'=>'Subjects\SubjectsController@index', 'as'=>'admin.subject.index']);
-    Route::get('create', ['uses'=>'Subjects\SubjectsController@create', 'as'=>'admin.subject.create']);
-    Route::get('show/{id}', ['uses'=>'Subjects\SubjectsController@show', 'as'=>'admin.subject.show']);
-    Route::get('destroy/{id}', ['uses'=>'Subjects\SubjectsController@destroy', 'as'=>'admin.subject.destroy']);
-    Route::get('edit/{id}', ['uses'=>'Subjects\SubjectsController@edit', 'as'=>'admin.subject.edit']);
+    Route::group(['namespace' => 'Subjects'], function() {
+        Route::resource('subjects', 'SubjectsController');
+    });
 });
 Route::group(['middleware'=>'teacher'], function() {
     Route::get('/teacher', 'UsersController@teacher');
