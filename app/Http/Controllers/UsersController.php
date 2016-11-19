@@ -40,6 +40,9 @@ class UsersController extends Controller
         }
         return view('profile', array('user'=>Auth::user()));
     }
+
+
+
         public function password()
         {
             return view('emails.password');

@@ -7,98 +7,13 @@
     <link rel="stylesheet" href="{{ URL::asset('css/bootstrap/mdb.min.css') }}" />
     <link rel="stylesheet" href="{{ URL::asset('css/bootstrap/style.css') }}" />
 
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 
-    <style>
-
-        #dialog-link span {
-            margin: 0 5px 0 0;
-            position: absolute;
-            left: .2em;
-            top: 50%;
-            margin-top: -8px;
-        }
-
-        #icons li {
-            margin: 2px;
-            position: relative;
-            padding: 4px 0;
-            cursor: pointer;
-            float: left;
-            list-style: none;
-        }
-
-        #icons span {
-            float: left;
-            margin: 0 4px;
-        }
-
-        .fakewindowcontain  {
-            position: absolute;
-        }
-
-        select {
-            width: 200px;
-        }
-
-        .btn {
-            float: right;
-        }
-      .main-conteiner{
-
-          width: 100%;
-          margin-top: 5px;
-          margin-bottom: 20px;
-          clear: both;
-          background-size: cover;
-          height: 110vh;
-      }
-        .left-box{
-            float: left!important;
-            height: auto!important;
-            width: 21.6% !important;
-            clear: both;
-            display: inline-block;
-            vertical-align: bottom;
-
-        }
-        .right-box{
-            float: right!important;
-            height: auto!important;
-            width: 78%;
-        }
-.card{
-    /*float: left!important;*/
-    width: 100%;
-    height: 400px;
-    padding-top: 5px;
-}
-        .indigo{
-            background-color: #4285F4!important;
-        }
-        .fa .fa-envelope{
-            color: #1e2993;
-
-        }
-         .nav-link{
-             color: snow;
-         }
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
-    </style>
 <body>
 <div class="main-conteiner">
 <div class="left-box">
@@ -132,7 +47,10 @@
     </div>
     <!--/.Card-->
 
-    <div id="datepicker"></div>
+   <div id="datepicker">
+    <p>
+       <input type='text' class='date'></p>
+   </div>
 </div>
 
 <div class="right-box">
@@ -221,6 +139,7 @@
 
 </div>
 </div>
+
     <script src="js/jquery.js"></script>
 
     <script src="js/jquery-ui.js"></script>
@@ -236,13 +155,43 @@
     $.datepicker.setDefaults($.datepicker.regional['ru']);
     });
     </script> -->
-    <script>
-        $("#datepicker").datepicker({
-            inline: true
-        });
+<script>
+jQuery(function($) {
 
-    </script>
+$(".date").datepicker({
+onSelect: function(dateText) {
+display("Selected date: " + dateText + "; input's current value: " + this.value);
+}
+}).on("change", function() {
+display("Got change event from field");
+});
 
+function display(msg) {
+$("<p>").html(msg).appendTo(document.body);
+    }
+
+    });
+</script>
+{{--<script>--}}
+{{--$( function() {--}}
+{{--$( "#datepicker" ).datepicker();--}}
+{{--} );--}}
+{{--</script>--}}
+{{--<script>--}}
+    {{--$( function() {--}}
+        {{--$( "#datepicker" ).datepicker({--}}
+            {{--altField: "#alternate",--}}
+            {{--altFormat: "MM, d DD, yy"--}}
+        {{--});--}}
+    {{--} );--}}
+{{--</script>--}}
+<script>
+    $("#datepicker").datepicker({
+        inline: true
+
+    });
+
+</script>
 
 </body>
 @stop

@@ -37,10 +37,11 @@ Route::group(['namespace'=>'Admin', 'prefix'=>'admin'], function() {
         Route::resource('subjects', 'SubjectsController');
     });
 });
-Route::group(['middleware'=>'teacher'], function() {
-    Route::get('/teacher', 'UsersController@teacher');
-    Route::resource('roles', 'Admin\UserRolesController');
-});
+Route::get('/teacher', 'UsersController@teacher');
+//Route::group(['middleware'=>'teacher'], function() {
+//    Route::get('/teacher', 'UsersController@teacher');
+//    Route::resource('roles', 'Admin\UserRolesController');
+//});
 
 
 //, 'middleware'=>'admin'

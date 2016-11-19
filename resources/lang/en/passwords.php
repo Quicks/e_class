@@ -13,10 +13,16 @@ return [
     |
     */
 
-    'password' => 'Passwords must be at least six characters and match the confirmation.',
-    'reset' => 'Your password has been reset!',
-    'sent' => 'We have e-mailed your password reset link!',
-    'token' => 'This password reset token is invalid.',
-    'user' => "We can't find a user with that e-mail address.",
+//    'password' => 'Passwords must be at least six characters and match the confirmation.',
+//    'reset' => 'Your password has been reset!',
+//    'sent' => 'We have e-mailed your password reset link!',
+//    'token' => 'This password reset token is invalid.',
+//    'user' => "We can't find a user with that e-mail address.",
+
+    'password' => 'Пароль повинен бути не менше шести символів.',
+    'reset' => 'Ваш пароль змінено!',
+    'sent' => 'На вашу почту відправлена силка для зміни паролю',
+    'token' => 'Невірний пароль.',
+    'user' => "Користувач з данною електронною поштою не знайденний.",
 
 ];
