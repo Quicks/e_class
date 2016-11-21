@@ -2,13 +2,13 @@
 @section('content')
     <nav class="navbar navbar-inverse">
         <ul class="nav navbar-nav">
-            <li><a href="{{ route('admin.school.index') }}">View All Schools</a></li>
+            <li><a href="{{ route('admin.schoolList.index') }}">View All Schools</a></li>
         </ul>
     </nav>
     {{ Html::ul($errors->all()) }}
 
 
-    {{ Form::open(['route'=>['admin.school.store']]) }}
+    {{ Form::open(['route'=>['admin.schoolList.store']]) }}
 
     <div class="form-group">
         {{ Form::label('name', 'Name') }}

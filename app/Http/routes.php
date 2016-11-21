@@ -25,9 +25,8 @@ Route::resource('user', 'UsersController');
 Route::resource('timetable', 'TimetableController');
 Route::resource('teachers', 'Teacher\TeacherController');
 Route::resource('teachers.timetables', 'TimetableController');
-Route::resource('schools', 'SchoolController');
 Route::resource('sc','StudentsClassController');
-Route::group(['namespace'=>'Admin', 'prefix'=>'admin'], function() {
+Route::group(['namespace'=>'Admin', 'prefix'=>'admin', 'middleware'=>'admin'], function() {
     Route::get('/', 'AdminController@index');
 	Route::resource('roles', 'UserRolesController');
 	Route::get('userList', 'UserRolesController@usersList')->name('admin.roles.users_list');
@@ -43,11 +42,11 @@ Route::group(['namespace'=>'Admin', 'prefix'=>'admin'], function() {
         Route::resource('classLists', 'ClassListController');
     });
 });
-Route::get('/teacher', 'UsersController@teacher');
-//Route::group(['middleware'=>'teacher'], function() {
-//    Route::get('/teacher', 'UsersController@teacher');
-//    Route::resource('roles', 'Admin\UserRolesController');
-//});
+//Route::get('/teacher', 'UsersController@teacher');
+Route::group(['middleware'=>'teacher'], function() {
+    Route::get('/teacher', 'UsersController@teacher');
+    Route::resource('roles', 'Admin\UserRolesController');
+});
 
 
 //, 'middleware'=>'admin'

@@ -2,13 +2,13 @@
 @section('content')
     <nav class="navbar navbar-inverse">
         <ul class="nav navbar-nav">
-            <li><a href="{{ route('admin.classList.index') }}">View All Class</a></li>
-            <li><a href="{{ route('admin.classList.create') }}">Create a Class</a>
+            <li><a href="{{ route('admin.classLists.index') }}">View All Class</a></li>
+            <li><a href="{{ route('admin.classLists.create') }}">Create a Class</a>
         </ul>
     </nav>
     {{ Html::ul($errors->all()) }}
 
-    {{ Form::model($class_name, array('route' => array('admin.classList.update', $class_name->id), 'method' => 'PUT')) }}
+    {{ Form::model($class_name, array('route' => array('admin.classLists.update', $class_name->id), 'method' => 'PUT')) }}
 
     <div class="form-group">
         {{ Form::label('class_name', 'Class_name') }}

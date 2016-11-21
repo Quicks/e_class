@@ -22,7 +22,7 @@ class SchoolController extends Controller
      */
     public function index()
     {
-        $schools = School::paginate(5);
+        $schools = School::all();
         return view ('admin.school.index', ['schools' => $schools]);
     }
 
@@ -45,8 +45,9 @@ class SchoolController extends Controller
     public function store(Request $request)
     {
         $school = new School($request->all());
+        $school->save();
         Session::flash('message', 'Successfully created School!');
-        return Redirect()->route('admin.school.create');
+        return Redirect()->route('admin.schoolList.show', [$school->id]);
     }
 
     /**
@@ -86,7 +87,7 @@ class SchoolController extends Controller
         $school->update($request->all());
 
         Session::flash('message', 'Successfully updated school!');
-        return Redirect()->route('admin.school.index');
+        return Redirect()->route('admin.schoolList.index');
     }
 
     /**
@@ -101,6 +102,6 @@ class SchoolController extends Controller
         $school->delete();
 
         Session::flash('message', 'Successfully deleted the school!');
-        return Redirect()->route('admin.school.index');
+        return Redirect()->route('admin.schoolList.index');
     }
 }

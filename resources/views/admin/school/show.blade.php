@@ -2,8 +2,8 @@
 @section('content')
     <nav class="navbar navbar-inverse">
         <ul class="nav navbar-nav">
-            <li><a href="{{ route('admin.school.index') }}">View All school</a></li>
-            <li><a href="{{ route('admin.school.create') }}">Create a school</a>
+            <li><a href="{{ route('admin.schoolList.index') }}">View All school</a></li>
+            <li><a href="{{ route('admin.schoolList.create') }}">Create a school</a>
         </ul>
     </nav>
     <div class="jumbotron text-center">

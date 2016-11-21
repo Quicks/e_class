@@ -46,8 +46,9 @@ class classListController extends Controller
     public function store(Request $request)
     {
         $class_name = new ClassList($request->all());
+        $class_name->save();
         Session::flash('message', 'Successfully created Class!');
-        return Redirect()->route('admin.classList.create');
+        return Redirect()->route('admin.classList.create', [$class_name->id]);
     }
 
     /**
@@ -87,7 +88,7 @@ class classListController extends Controller
         $class_name->update($request->all());
 
         Session::flash('message', 'Successfully updated Class!');
-        return Redirect()->route('admin.classList.index');
+        return Redirect()->route('admin.classLists.index');
     }
 
     /**
@@ -102,6 +103,6 @@ class classListController extends Controller
         $class_name->delete();
 
         Session::flash('message', 'Successfully updated Class!');
-        return Redirect()->route('admin.classList.index');
+        return Redirect()->route('admin.classLists.index');
     }
 }
