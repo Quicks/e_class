@@ -24,10 +24,11 @@ class ClassListController extends Controller
     public function index($schoolList)
     {
        $school = School::find($schoolList);
+        //
 
 //        dd($school->classList);
  //       dd($school->classList());
-        
+
        $classList = $school->classList;
 
         return view ('admin.school.classList.index', ['classList' => $classList, 'school' => $school]);
