@@ -7,13 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class School extends Model
 {
     protected $table = 'schoolList';
-
-    public function studentsClass()
+    public $timestamps = false;
+    protected $fillable = ['name', 'number'];
+    public function classList()
     {
-        return $this->hasMany('App\Students_class');
-    }
-    public function teachers()
-    {
-        return $this->hasMany('App\Teachers');
+        return $this->hasMany('App\ClassList');
     }
 }
