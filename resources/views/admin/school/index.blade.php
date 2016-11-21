@@ -8,7 +8,7 @@
     <table class="table">
         <thead>
         <tr>
-            <th>School</th>
+            <th>Shcool</th>
         </tr>
         </thead>
         <tbody>

@@ -2,7 +2,7 @@
 @section('content')
     <nav class="navbar navbar-inverse">
         <ul class="nav navbar-nav">
-            <li><a href="{{ route('admin.classLists.index') }}">View All Subjects</a></li>
+            <li><a href="{{ route('admin.schoolList.classList.index', [$school->id]) }}">View Klass</a></li>
         </ul>
     </nav>
     {{ Html::ul($errors->all()) }}

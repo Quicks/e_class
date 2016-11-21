@@ -2,7 +2,7 @@
 @section('content')
     <nav class="navbar navbar-inverse">
         <ul class="nav navbar-nav">
-            <li><a href="{{ route('admin.classLists.create') }}">Create a Class</a>
+            <li><a href="{{ route('admin.schoolList.classList.create', [$school->id]) }}">Create a Class</a>
         </ul>
     </nav>
     <table class="table">
@@ -18,10 +18,10 @@
                 <td>{{$classes->number}}</td>
                 <td>{{$classes->school}}</td>
                 <td>
-                    <a href="{{route('admin.classLists.show', [$classes->id])}}" class="btn btn-primary">Show</a>
-                    <a href="{{route('admin.classLists.edit', [$classes->id])}}" class="btn btn-primary">Edit</a>
+                    <a href="{{route('admin.schoolList.classList.show', [$school->id, $classes->id])}}" class="btn btn-primary">Show</a>
+                    <a href="{{route('admin.schoolList.classList.edit', [$school->id, $classes->id])}}" class="btn btn-primary">Edit</a>
 
-                    {{ Form::open(['route'=>['admin.classLists.destroy', $classes->id],'class' => 'pull-right']) }}
+                    {{ Form::open(['route'=>['admin.schoolList.classList.destroy', $classes->id],'class' => 'pull-right']) }}
                     {{ Form::hidden('_method', 'DELETE') }}
                     {{ Form::submit('Delete', array('class' => 'btn btn-primary')) }}
                     {{ Form::close() }}
@@ -31,5 +31,5 @@
         @endforeach
         </tbody>
     </table>
-    <?php echo $classList->render(); ?>
+<!--    --><?php //echo $classList->render(); ?>
 @endsection

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Klass;
+namespace App\Http\Controllers\Admin\Schools\Klass;
 
-
+use App\School;
 use App\ClassList;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
@@ -14,17 +14,23 @@ use Html;
 use Form;
 use Session;
 
-class classListController extends Controller
+class ClassListController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($schoolList)
     {
-        $classList = ClassList::paginate(5);
-        return view ('admin.classList.index', ['classList' => $classList]);
+       $school = School::find($schoolList);
+
+//        dd($school->classList);
+ //       dd($school->classList());
+        
+       $classList = $school->classList;
+
+        return view ('admin.school.classList.index', ['classList' => $classList, 'school' => $school]);
     }
 
     /**
@@ -34,7 +40,7 @@ class classListController extends Controller
      */
     public function create()
     {
-        return view ('admin.classList.create');
+        return view ('admin.school.classList.create');
     }
 
     /**

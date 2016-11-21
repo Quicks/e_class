@@ -37,10 +37,11 @@ Route::group(['namespace'=>'Admin', 'prefix'=>'admin', 'middleware'=>'admin'], f
     });
     Route::group(['namespace' => 'Schools'], function() {
         Route::resource('schoolList', 'SchoolController');
+        Route::resource('schoolList.classList', 'Klass\ClassListController');
     });
-    Route::group(['namespace' => 'Klass'], function() {
-        Route::resource('classLists', 'ClassListController');
-    });
+//    Route::group(['namespace' => 'Klass'], function() {
+//        Route::resource('classList', 'ClassListController');
+//    });
 });
 //Route::get('/teacher', 'UsersController@teacher');
 Route::group(['middleware'=>'teacher'], function() {
