@@ -36,6 +36,12 @@ Route::group(['namespace'=>'Admin', 'prefix'=>'admin'], function() {
     Route::group(['namespace' => 'Subjects'], function() {
         Route::resource('subjects', 'SubjectsController');
     });
+    Route::group(['namespace' => 'Schools'], function() {
+        Route::resource('schoolList', 'SchoolController');
+    });
+    Route::group(['namespace' => 'Klass'], function() {
+        Route::resource('classLists', 'ClassListController');
+    });
 });
 Route::get('/teacher', 'UsersController@teacher');
 //Route::group(['middleware'=>'teacher'], function() {
