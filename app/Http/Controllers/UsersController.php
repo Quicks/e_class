@@ -19,6 +19,13 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function admin(){
+//        dd(Auth::user()->name);
+        return view('admin.index', array('user'=>Auth::user()));
+    }
+    
+    
     public function teacher(){
 //        dd(Auth::user()->name);
         return view('teacher', array('user'=>Auth::user()));

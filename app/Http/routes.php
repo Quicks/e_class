@@ -50,4 +50,8 @@ Route::get('/teacher', 'UsersController@teacher');
 //});
 
 
-//, 'middleware'=>'admin'
+Route::group( ['middleware' => 'admin'], function () {
+    Route::get('/admin','UsersController@admin');
+    //   Route::resource('roles', 'Admin\UserRolesController');
+});
+
