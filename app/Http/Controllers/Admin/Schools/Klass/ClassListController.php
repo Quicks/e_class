@@ -28,7 +28,6 @@ class ClassListController extends Controller
 
 //        dd($school->classList);
  //       dd($school->classList());
-
        $classList = $school->classList;
 
         return view ('admin.school.classList.index', ['classList' => $classList, 'school' => $school]);
@@ -39,9 +38,10 @@ class ClassListController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($schoolList)
     {
-        return view ('admin.school.classList.create');
+        $school = School::find($schoolList);
+        return view ('admin.school.classList.create', ['school' => $school]);
     }
 
     /**
@@ -50,12 +50,13 @@ class ClassListController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $schoolList)
     {
+        $school = School::find($schoolList);
         $class_name = new ClassList($request->all());
         $class_name->save();
         Session::flash('message', 'Successfully created Class!');
-        return Redirect()->route('admin.classList.create', [$class_name->id]);
+        return Redirect()->route('admin.schoolList.classList.create', [$class_name->id, $school->id]);
     }
 
     /**
@@ -64,10 +65,11 @@ class ClassListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, $schoolList)
     {
+        $school = School::find($schoolList);
         $class_name = ClassList::find($id);
-        return view ('admin.classList.show', ['class_name' => $class_name]);
+        return view ('admin.school.classList.show', ['class_name' => $class_name, 'school' => $school]);
     }
 
     /**
@@ -79,7 +81,7 @@ class ClassListController extends Controller
     public function edit($id)
     {
         $class_name = ClassList::find($id);
-        return view ('admin.classList.edit', ['class_name' => $class_name]);
+        return view ('admin.school.classList.edit', ['class_name' => $class_name]);
     }
 
     /**
@@ -95,7 +97,7 @@ class ClassListController extends Controller
         $class_name->update($request->all());
 
         Session::flash('message', 'Successfully updated Class!');
-        return Redirect()->route('admin.classLists.index');
+        return Redirect()->route('admin.schoolList.classList.index');
     }
 
     /**
@@ -110,6 +112,6 @@ class ClassListController extends Controller
         $class_name->delete();
 
         Session::flash('message', 'Successfully updated Class!');
-        return Redirect()->route('admin.classLists.index');
+        return Redirect()->route('admin.schoolList.classList.index');
     }
 }
