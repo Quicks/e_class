@@ -220,5 +220,32 @@ class DatabaseSeeder extends Seeder
 //            'title' => 'Literature',
 //            'description' => 'Literature'
 //        ]);
+        $arr_name = ['Yulia Mysienko', 'Yulia Storozhuk', 'Nazar Kushniruk', 'Oleksandr Kushnir', 'Vasya'];
+        $arr_email = ['Yulia_Mysienko', 'Yulia_Storozhuk', 'Nazar_Kushniruk', 'Oleksandr_Kushnir', 'Vasya'];
+        $type = 'admin';
+        for ($users = 0; $users < 5; $users++) {
+            DB::table('users')->insert([
+            'name' => $arr_name[$users],
+            'type' => $type.'_type',
+            'email' => $arr_email[$users].'@gmail.com'
+        ]);
+        }
+
+        for($schools = 0; $schools < 36; $schools++) {
+            DB::table('schoolList')->insert([
+            'name' => str_random(3).$schools,
+            'number' => $schools
+            ]);
+
+            for ($classList = 0; $classList < 33; $classList++){
+                for($k = 0; $k < 3; $k++) {
+                    DB::table('classList')->insert([
+                    'class_name' => str_random(1),
+                    'number' => $classList,
+                    'school' => $schools,
+                    ]);
+                }
+            }
+        }
     }
 }
