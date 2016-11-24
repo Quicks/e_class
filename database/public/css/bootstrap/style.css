@@ -1,0 +1,131 @@
+.view {
+    background-color: transparent;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 110vh;
+}
+.view .logo{
+  margin-left: 25% !important;
+    margin-top: 15%;
+}
+.full-bg-img {
+    color: #fff;
+}
+
+.title {
+    font-weight:100;
+}
+
+.payment .fa:not(:first-child) {
+    margin-left:10px;
+    color:rgba(255,255,255,.8);
+}
+
+input[type="text"]:focus:not([readonly]) {
+    border-color:#C00;
+    box-shadow:0 1px 0 0 #C00;
+    color: #1c1c1c;
+}
+
+input[type="text"]:not([readonly])+label {
+    color: rgba(28, 28, 28, 0.96);
+}
+
+input[type="text"]:focus:not([readonly])+label {
+    color: #1c1c1c;
+}
+
+footer{
+    margin-top: 0px !important;
+}
+
+
+ #dialog-link span {
+     margin: 0 5px 0 0;
+     position: absolute;
+     left: .2em;
+     top: 50%;
+     margin-top: -8px;
+ }
+
+#icons li {
+    margin: 2px;
+    position: relative;
+    padding: 4px 0;
+    cursor: pointer;
+    float: left;
+    list-style: none;
+}
+
+#icons span {
+    float: left;
+    margin: 0 4px;
+}
+
+.fakewindowcontain  {
+    position: absolute;
+}
+
+select {
+    width: 200px;
+}
+
+.btn {
+    float: right;
+}
+.main-conteiner{
+
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    clear: both;
+    background-size: cover;
+    height: 110vh;
+}
+.left-box{
+    float: left!important;
+    height: auto!important;
+    width: 21.6% !important;
+    clear: both;
+    display: inline-block;
+    vertical-align: bottom;
+
+}
+.right-box{
+    float: right!important;
+    height: auto!important;
+    width: 78%;
+}
+.card{
+    /*float: left!important;*/
+    width: 100%;
+    height: 400px;
+    padding-top: 5px;
+}
+.indigo{
+    background-color: #4285F4!important;
+}
+.fa .fa-envelope{
+    color: #1e2993;
+
+}
+.nav-link{
+    color: snow;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}

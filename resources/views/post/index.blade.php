@@ -20,4 +20,6 @@
             </div>
     </div>
 
+    {{ Form::select('product_id', $schools, null, array('class' => 'form-control')) }}
+
 @stop
