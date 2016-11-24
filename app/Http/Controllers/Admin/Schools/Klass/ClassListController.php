@@ -68,7 +68,6 @@ class ClassListController extends Controller
     {
         $school = School::find($schoolList);
         $class_name = $school->classList()->find($classList);
-//        $class_name = ClassList::find($classList);
         return view ('admin.school.classList.show', ['class_name' => $class_name, 'school' => $school]);
     }
 
@@ -78,10 +77,13 @@ class ClassListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id, $schoolList)
+    public function edit($schoolList, $classList)
     {
         $school = School::find($schoolList);
-        $class_name = ClassList::find($id);
+        $class_name = $school->classList()->find($classList);
+//        dd($schoolList);
+//        dd($class_name);
+
         return view ('admin.school.classList.edit', ['class_name' => $class_name, 'school' => $school]);
     }
 
@@ -92,14 +94,17 @@ class ClassListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id, $schoolList)
+    public function update(Request $request, $schoolList, $classList)
     {
         $school = School::find($schoolList);
-        $class_name = ClassList::find($id);
+        $class_name = $school->classList()->find($classList);
         $class_name->update($request->all());
+//        dd($request->all());
+//        dd($class_name);
+//        $class_name->update($request->all());
 
         Session::flash('message', 'Successfully updated Class!');
-        return Redirect()->route('admin.schoolList.classList.index', ['school' => $school]);
+        return Redirect()->route('admin.schoolList.classList.index', ['school' => $school, 'class_name' => $class_name]);
     }
 
     /**
@@ -108,10 +113,10 @@ class ClassListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, $schoolList)
+    public function destroy($schoolList, $classList)
     {
         $school = School::find($schoolList);
-        $class_name = ClassList::find($id);
+        $class_name = $school->classList()->find($classList);
         $class_name->delete();
 
         Session::flash('message', 'Successfully updated Class!');
