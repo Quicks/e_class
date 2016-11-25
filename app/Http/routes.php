@@ -49,6 +49,7 @@ Route::group(['middleware'=>'teacher'], function() {
 
 Route::group( ['middleware' => 'admin'], function () {
     Route::get('/admin','UsersController@admin');
-    //   Route::resource('roles', 'Admin\UserRolesController');
+       Route::resource('roles', 'Admin\UserRolesController');
 });
-
+//'middleware'=>'admin'
+//

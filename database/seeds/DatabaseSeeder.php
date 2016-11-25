@@ -237,12 +237,12 @@ class DatabaseSeeder extends Seeder
             'number' => $schools
             ]);
 
-            for ($classList = 0; $classList < 33; $classList++){
+            for ($classList = 0; $classList < 11; $classList++){
                 for($k = 0; $k < 3; $k++) {
-                    DB::table('classList')->insert([
+                    DB::table('classLists')->insert([
                     'class_name' => str_random(1),
                     'number' => $classList,
-                    'school' => $schools,
+                    'school_id' => $schools,
                     ]);
                 }
             }

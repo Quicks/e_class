@@ -16,7 +16,7 @@
     </div>
     <div class="form-group">
         {{ Form::label('number', 'Number') }}
-        {{ Form::text('number', Input::old('number'), array('class' => 'form-control')) }}
+        {{ Form::number('number', Input::old('number'), array('class' => 'form-control')) }}
     </div>
     {{ Form::submit('Create the School!', array('class' => 'btn btn-primary')) }}
 

@@ -16,7 +16,7 @@
     </div>
     <div class="form-group">
         {{ Form::label('number', 'Number') }}
-        {{ Form::text('class_name', null, array('class' => 'form-control')) }}
+        {{ Form::number('number', null, array('class' => 'form-control')) }}
     </div>
     {{ Form::submit('Edit the Class!', array('class' => 'btn btn-primary')) }}
 
