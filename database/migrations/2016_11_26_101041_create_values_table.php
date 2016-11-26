@@ -12,7 +12,11 @@ class CreateValuesTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('values', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('value');
+            $table->date('date');
+        });
     }
 
     /**
@@ -22,6 +26,6 @@ class CreateValuesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('values');
     }
 }
