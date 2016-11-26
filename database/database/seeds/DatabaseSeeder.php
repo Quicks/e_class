@@ -13,36 +13,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 //          $this->call(UsersTableSeeder::class);
-//        DB::table('users')->insert([
-//            'name' => str_random(10),
-//            'type' => str_random(3).'_type',
-//            'email' => str_random(10).'@gmail.com',
-//        ]);
-//        DB::table('users')->insert([
-//            'name' => str_random(10),
-//            'type' => str_random(3).'_type',
-//            'email' => str_random(10).'@gmail.com',
-//        ]);
-//        DB::table('users')->insert([
-//            'name' => str_random(10),
-//            'type' => str_random(3).'_type',
-//            'email' => str_random(10).'@gmail.com',
-//        ]);
-//        DB::table('users')->insert([
-//            'name' => str_random(10),
-//            'type' => str_random(3).'_type',
-//            'email' => str_random(10).'@gmail.com',
-//        ]);
-//        DB::table('users')->insert([
-//            'name' => str_random(10),
-//            'type' => str_random(3).'_type',
-//            'email' => str_random(10).'@gmail.com',
-//        ]);
-//        DB::table('users')->insert([
-//            'name' => str_random(10),
-//            'type' => str_random(3).'_type',
-//            'email' => str_random(10).'@gmail.com',
-//        ]);
+
 //        DB::table('teachers')->insert([
 //            'class_name' => str_random(3).'X',
 //            'name' => str_random(30).'_ПІБ',
@@ -96,86 +67,6 @@ class DatabaseSeeder extends Seeder
 ////            'teachers_id' => 3,
 ////            'classes_id' => 4
 //        ]);
-//        DB::table('timetables')->insert([
-//            'day' => 'monday',
-//            'number' => 1
-//        ]);
-//        DB::table('timetables')->insert([
-//            'day' => 'tuesday',
-//            'number' => 2
-//        ]);
-//        DB::table('timetables')->insert([
-//            'day' => 'wednesday',
-//            'number' => 3
-//        ]);
-//        DB::table('timetables')->insert([
-//            'day' => "thursday",
-//            'number' => 4
-//        ]);
-//        DB::table('timetables')->insert([
-//            'day' => 'friday',
-//            'number' => 5
-//        ]);
-//        DB::table('times')->insert([
-//            'time' => '8.30 - 9.15',
-//        ]);
-//        DB::table('times')->insert([
-//            'time' => '9.25 - 10.10',
-//        ]);
-//        DB::table('times')->insert([
-//            'time' => '10.20 - 11.05',
-//        ]);
-//        DB::table('times')->insert([
-//            'time' => '11.25 - 12.10',
-//        ]);
-//        DB::table('times')->insert([
-//            'time' => '12.20 - 13.05',
-//        ]);
-//        DB::table('times')->insert([
-//            'time' => '13.15 - 14.00',
-//        ]);
-//        DB::table('subjects')->insert([
-//            'subject' => 'math',
-//        ]);
-//        DB::table('subjects')->insert([
-//            'subject' => 'language',
-//        ]);
-//        DB::table('subjects')->insert([
-//            'subject' => 'english',
-//        ]);
-//        DB::table('subjects')->insert([
-//            'subject' => 'painting',
-//        ]);
-//        DB::table('subjects')->insert([
-//            'subject' => 'geometry',
-//        ]);
-//        DB::table('subjects')->insert([
-//            'subject' => 'music',
-//        ]);
-//        DB::table('subjects')->insert([
-//            'subject' => 'math',
-//        ]);
-//        DB::table('subjects')->insert([
-//            'subject' => 'math',
-//        ]);
-//        DB::table('classrooms')->insert([
-//            'number' => 54,
-//        ]);
-//        DB::table('classrooms')->insert([
-//            'number' => 45,
-//        ]);
-//        DB::table('classrooms')->insert([
-//            'number' => 48,
-//        ]);
-//        DB::table('classrooms')->insert([
-//            'number' => 42,
-//        ]);
-//        DB::table('classrooms')->insert([
-//            'number' => 17,
-//        ]);
-//        DB::table('classrooms')->insert([
-//            'number' => 19,
-//        ]);
 //        DB::table('roles')->insert([
 //            'title' => 'Admin',
 //            'description' => 'Admin'
@@ -220,5 +111,31 @@ class DatabaseSeeder extends Seeder
 //            'title' => 'Literature',
 //            'description' => 'Literature'
 //        ]);
+
+        $arr_name = ['Yulia Mysienko', 'Yulia Storozhuk', 'Nazar Kushniruk', 'Oleksandr Kushnir', 'Vasya'];
+        $arr_email = ['Yulia_Mysienko', 'Yulia_Storozhuk', 'Nazar_Kushniruk', 'Oleksandr_Kushnir', 'Vasya'];
+        $type = 'admin';
+        for ($users = 0; $users < 5; $users++) {
+            DB::table('users')->insert([
+                'name' => $arr_name[$users],
+                'type' => $type.'_type',
+                'email' => $arr_email[$users].'@gmail.com'
+            ]);
+        }
+        for($schools = 0; $schools < 36; $schools++) {
+            DB::table('schoolList')->insert([
+                'name' => str_random(3).$schools,
+                'number' => $schools
+            ]);
+            for ($classList = 0; $classList < 11; $classList++){
+                for($k = 0; $k < 3; $k++) {
+                    DB::table('classLists')->insert([
+                        'class_name' => str_random(1),
+                        'number' => $classList,
+                        'school_id' => $schools,
+                    ]);
+                }
+            }
+        }
     }
 }
