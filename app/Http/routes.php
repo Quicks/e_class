@@ -40,6 +40,7 @@ Route::group(['namespace'=>'Admin', 'prefix'=>'admin'], function() {
         Route::resource('schoolList', 'SchoolController');
         Route::resource('schoolList.classList', 'Klass\ClassListController');
     });
+
 });
 Route::group(['middleware'=>'teacher'], function() {
     Route::get('/teacher', 'UsersController@teacher');
