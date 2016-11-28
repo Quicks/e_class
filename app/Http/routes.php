@@ -18,14 +18,9 @@ Route::get('/password', 'UsersController@password');
 Route::get('/login', 'UsersController@login');
 Route::get('/register', 'UsersController@register');
 Route::auth();
-
 Route::get('/home', 'HomeController@index');
-Route::resource('item', 'ItemController');
 Route::resource('user', 'UsersController');
-Route::resource('timetable', 'TimetableController');
 Route::resource('teachers', 'Teacher\TeacherController');
-Route::resource('teachers.timetables', 'TimetableController');
-Route::resource('sc','StudentsClassController');
 Route::group(['namespace'=>'Admin', 'prefix'=>'admin'], function() {
     Route::get('/', 'AdminController@index');
 	Route::resource('roles', 'UserRolesController');
