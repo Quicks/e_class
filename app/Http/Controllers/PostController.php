@@ -11,4 +11,7 @@ class PostController extends Controller{
     public function index(){
         return view('post.index');
     }
+    public function  aboutUs(){
+        return view('aboutUs');
+    }
 }

@@ -17,7 +17,13 @@
     <link rel="stylesheet" href="{{ URL::asset('css/bootstrap/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ URL::asset('css/bootstrap/mdb.min.css') }}" />
     <link rel="stylesheet" href="{{ URL::asset('css/bootstrap/style.css') }}" />
+
+    <link rel="stylesheet" href="{{ URL::asset('js/css/select2.min.css') }}" />
+
     <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+
+    {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>--}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
     <style>
 
@@ -52,6 +58,16 @@
             width: 100%;
             height: 80px;
         }
+        img{
+            /*-webkit-filter: grayscale(1);*/
+            cursor: pointer;
+            transition: all .5s ease;
+        }
+        img:hover{
+            -webkit-filter: grayscale(0);
+            transform: scale(1.2,1.2);
+        }
+
 
     </style>
 </head>
@@ -98,7 +114,7 @@
     <div class="content">
     @yield('content')
     </div>
-    <div class="footer">
+    <div class="footer " id="about-us">
     <footer class="page-footer center-on-small-only">
 
         <!--Footer Links-->
@@ -180,6 +196,7 @@
     <script type="text/javascript" src="{{ URL::asset('js/bootstrap/bootstrap.min.js') }}" ></script>
     <script type="text/javascript" src="{{ URL::asset('js/bootstrap/mdb.min.js') }}" ></script>
 
+        <script type="text/javascript" src="{{ URL::asset('js/js/select2.min.js') }}" ></script>
     <script>
         $(document).ready(function(){
             $("#menu").on("click","a", function (event) {
