@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Request;
 
-use App\Http\Requests;
-use App\School;
+use App\MySchool;
+use Request;
+use Requests;
 
 class PostController extends Controller{
 
-
-    public function index()
+    public function schmindex()
     {
-        $schools = School::all();
-        dd($schools);
-//        return view ('post.index', ['schools'=> $schools]);
+        echo('hello');
+//        $schools = MySchool::all();
+       return view ('post.index')
+//->withSchools($schools)
+;
     }
-
-
 }

@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'PostController@index');
+
 Route::post('/profile', 'UsersController@update_avatar');
 Route::get('/profile', 'UsersController@profile');
 Route::get('/password', 'UsersController@password');
@@ -44,8 +44,10 @@ Route::group(['middleware'=>'teacher'], function() {
 
 
 Route::group( ['middleware' => 'admin'], function () {
-    Route::get('/admin','UsersController@admin');
+//    Route::get('/admin','UsersController@admin');
        Route::resource('roles', 'Admin\UserRolesController');
 });
 //'middleware'=>'admin'
 //
+
+Route::get('/testsashapage', 'TestSashaController@index');
