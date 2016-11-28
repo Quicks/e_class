@@ -1,25 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-    <style>
-        .view {
-            /*background: url("scool.png")no-repeat center center  0.5;*/
-            background: linear-gradient(#f4fffc, #1b31ff);
-            background-size: 100% 100% !important;
-            height: 100vh;
 
-        }
-    </style>
 
 
     <div class="view hm-black-strong">
         <div class="logo">
-        <a> <img src="Logo.png">
+            <a> <img src="Logo.png">
             </a>
-
-            </div>
+Test test!!!
+            {{dump($schools)}}
+        </div>
     </div>
-
-    {{ Form::select('product_id', $schools, null, array('class' => 'form-control')) }}
-
-@stop
+{{--    {{dd($schools)}}--}}
+    <form action="">
+        <select name="school_id">
+            @foreach($schools as $school)
+            <option value="{{$school->id}}">{{$school->name}}</option>
+            @endforeach
+        </select>
+    </form>
+{{--    {{ Form::select('schools', $schools, null, array('class' => 'form-control')) }}--}}
+@endsection

@@ -67,50 +67,50 @@ class DatabaseSeeder extends Seeder
 ////            'teachers_id' => 3,
 ////            'classes_id' => 4
 //        ]);
-//        DB::table('roles')->insert([
-//            'title' => 'Admin',
-//            'description' => 'Admin'
-//        ]);
-//        DB::table('roles')->insert([
-//            'title' => 'Teacher',
-//            'description' => 'Teacher'
-//        ]);
-//        DB::table('roles')->insert([
-//            'title' => 'Student',
-//            'description' => 'Student'
-//        ]);
-//        DB::table('user_roles')->insert([
-//            'user_id' => 1,
-//            'role_id' => 2
-//        ]);
-//        DB::table('user_roles')->insert([
-//            'user_id' => 2,
-//            'role_id' => 1
-//        ]);
-//        DB::table('subjects')->insert([
-//        'title' => 'Math',
-//        'description' => 'Math'
-//    ]);
-//        DB::table('subjects')->insert([
-//            'title' => 'Language',
-//            'description' => 'Language'
-//        ]);
-//        DB::table('subjects')->insert([
-//            'title' => 'History',
-//            'description' => 'History'
-//        ]);
-//        DB::table('subjects')->insert([
-//            'title' => 'Chemistry',
-//            'description' => 'Chemistry'
-//        ]);
-//        DB::table('subjects')->insert([
-//            'title' => 'Geography',
-//            'description' => 'Geographyy'
-//        ]);
-//        DB::table('subjects')->insert([
-//            'title' => 'Literature',
-//            'description' => 'Literature'
-//        ]);
+        DB::table('roles')->insert([
+            'title' => 'Admin',
+            'description' => 'Admin'
+        ]);
+        DB::table('roles')->insert([
+            'title' => 'Teacher',
+            'description' => 'Teacher'
+        ]);
+        DB::table('roles')->insert([
+            'title' => 'Student',
+            'description' => 'Student'
+        ]);
+        DB::table('user_roles')->insert([
+            'user_id' => 1,
+            'role_id' => 2
+        ]);
+        DB::table('user_roles')->insert([
+            'user_id' => 2,
+            'role_id' => 1
+        ]);
+        DB::table('subjects')->insert([
+        'title' => 'Math',
+        'description' => 'Math'
+    ]);
+        DB::table('subjects')->insert([
+            'title' => 'Language',
+            'description' => 'Language'
+        ]);
+        DB::table('subjects')->insert([
+            'title' => 'History',
+            'description' => 'History'
+        ]);
+        DB::table('subjects')->insert([
+            'title' => 'Chemistry',
+            'description' => 'Chemistry'
+        ]);
+        DB::table('subjects')->insert([
+            'title' => 'Geography',
+            'description' => 'Geographyy'
+        ]);
+        DB::table('subjects')->insert([
+            'title' => 'Literature',
+            'description' => 'Literature'
+        ]);
 
         $arr_name = ['Yulia Mysienko', 'Yulia Storozhuk', 'Nazar Kushniruk', 'Oleksandr Kushnir', 'Vasya'];
         $arr_email = ['Yulia_Mysienko', 'Yulia_Storozhuk', 'Nazar_Kushniruk', 'Oleksandr_Kushnir', 'Vasya'];
