@@ -12,6 +12,7 @@ Test test!!!
             {{dump($schools)}}
         </div>
     </div>
+<<<<<<< HEAD
 {{--    {{dd($schools)}}--}}
     <form action="">
         <select name="school_id">
@@ -22,3 +23,7 @@ Test test!!!
     </form>
 {{--    {{ Form::select('schools', $schools, null, array('class' => 'form-control')) }}--}}
 @endsection
+=======
+
+@stop
+>>>>>>> parent of 0f94023... commit after creating on the user side by developers Musienko and Kushnir

@@ -116,10 +116,7 @@ class UserRolesController extends Controller
     public function updateUserRole(request $request, $id) {
        // todo add validate for role (чи є айдішка взагалі і чи обрана роль)
         $user = User::find($id);
-        if (!$user->hasRole(request::get('role'))){
-            $user->roles()->attach(request::get('role'));
-        };
-
+        $user->roles()->attach(request::get('role'));
         // redirect
         Session::flash('message', 'Successfully updated role!');
         return Redirect::to(route('admin.roles.users_list'));
