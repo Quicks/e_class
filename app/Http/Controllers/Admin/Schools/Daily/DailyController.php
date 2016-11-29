@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\Admin\Schools\Daily;
+use App\Daily;
 use App\Subject;
+use App\User;
+use App\ClassList;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -14,10 +17,12 @@ class DailyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($classList)
     {
-        $subjects = Subject::paginate(5);
-        return view ('admin.subject.index', ['subjects' => $subjects]);
+        $klass = ClassList::find($classList);
+        $dailies = $klass->dailies;
+
+        return view ('admin.school.daily.index', ['dailies' => $dailies, 'klass' => $klass]);
     }
 
     /**
@@ -28,7 +33,7 @@ class DailyController extends Controller
      */
     public function create()
     {
-        return view ('admin.subject.create');
+        return view ('admin.school.daily.create');
     }
 
     /**
