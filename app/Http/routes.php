@@ -27,13 +27,11 @@ Route::group(['namespace'=>'Admin', 'prefix'=>'admin'], function() {
 	Route::get('userList', 'UserRolesController@usersList')->name('admin.roles.users_list');
 	Route::get('changeUserRole/{id}', 'UserRolesController@changeUserRole')->name('admin.roles.change_user_role');
     Route::put('updateUserRole/{id}', 'UserRolesController@updateUserRole')->name('admin.roles.update_user_role');
-
-    Route::group(['namespace' => 'Subjects'], function() {
-        Route::resource('subjects', 'SubjectsController');
-    });
     Route::group(['namespace' => 'Schools'], function() {
+        Route::resource('subjects', 'Subjects\SubjectsController');
         Route::resource('schoolList', 'SchoolController');
         Route::resource('schoolList.classList', 'Klass\ClassListController');
+        Route::resource('schoolList.classList.daily', 'Daily\DailyController');
     });
 
 });

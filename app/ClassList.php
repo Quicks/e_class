@@ -13,6 +13,11 @@ class ClassList extends Model
     {
         return $this->belongsTo('App\School');
     }
+    public function daily() {
+        return $this->hasMany('App\Daily');
 
-
+    }
+    public function user() {
+        return $this->hasMany('App\User');
+    }
 }
