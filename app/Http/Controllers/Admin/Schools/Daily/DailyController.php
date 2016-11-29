@@ -1,13 +1,19 @@
 <?php
 
 namespace App\Http\Controllers\Admin\Schools\Daily;
+
 use App\Daily;
+use App\School;
 use App\Subject;
 use App\User;
 use App\ClassList;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Redirect;
+use Validator;
+use Html;
+use Form;
+use Session;
 use App\Http\Requests;
 
 class DailyController extends Controller
@@ -17,12 +23,14 @@ class DailyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($classList)
+    public function index($schoolList, $classList)
     {
+        $school = School::find($schoolList);
         $klass = ClassList::find($classList);
-        $dailies = $klass->dailies;
-
-        return view ('admin.school.daily.index', ['dailies' => $dailies, 'klass' => $klass]);
+//        dd($school);
+//        dd($klass);
+        $dailies = $klass->daily;
+        return view ('admin.school.daily.index', ['dailies' => $dailies, 'klass' => $klass, 'school' => $school]);
     }
 
     /**
@@ -31,9 +39,11 @@ class DailyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($schoolList, $classList)
     {
-        return view ('admin.school.daily.create');
+        $school = School::find($schoolList);
+        $klass = ClassList::find($classList);
+         return view ('admin.school.daily.create', ['klass' => $klass, 'school' => $school]);
     }
 
     /**
@@ -42,16 +52,13 @@ class DailyController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $schoolList, $classList)
     {
-        $subject = new Subject($request->all());
-//        $subject = fill($request->all());
-//        $input = $request::all();
-//        $subject->title = Request::get('title');
-        $subject->save();
-
-        Session::flash('message', 'Successfully created Subject!');
-        return Redirect()->route('admin.subjects.create');
+        $daily = new Daily($request->all());
+        $daily->save();
+//        dd($request->class_id);
+         Session::flash('message', 'Successfully created Daily!');
+        return Redirect()->route('admin.schoolList.classList.daily.index', [$daily->id, $schoolList, $classList]);
     }
 
     /**
@@ -60,10 +67,12 @@ class DailyController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, $schoolList, $classList)
     {
-        $subject = Subject::find($id);
-        return view ('admin.subject.show', ['subject' => $subject]);
+        $school = School::find($schoolList);
+        $klass = ClassList::find($classList);
+        $daily = $klass->daily()->find($id);
+        return view ('admin.school.classList.show', ['daily' => $daily, 'school' => $school, 'klass' => $klass]);
     }
 
     /**
