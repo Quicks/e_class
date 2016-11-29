@@ -11,7 +11,7 @@
 |
 */
 
-
+Route::get('/', 'PostController@index');
 Route::post('/profile', 'UsersController@update_avatar');
 Route::get('/profile', 'UsersController@profile');
 Route::get('/password', 'UsersController@password');
@@ -50,4 +50,3 @@ Route::group( ['middleware' => 'admin'], function () {
 //'middleware'=>'admin'
 //
 
-Route::get('/testsashapage', 'TestSashaController@index');
