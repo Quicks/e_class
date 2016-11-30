@@ -17,7 +17,6 @@
             <tr>
                 <td>{{$daily->subject}}</td>
                 <td>
-                    {{--                    {{dump($classes)}}--}}
                     <a href="{{route('admin.schoolList.classList.daily.show', [$school->id, $klass->id, $daily->id])}}" class="btn btn-primary">Show</a>
                     <a href="{{route('admin.schoolList.classList.daily.edit', [$school->id, $klass->id, $daily->id])}}" class="btn btn-primary">Edit</a>
 

@@ -43,7 +43,7 @@ class DailyController extends Controller
     {
         $school = School::find($schoolList);
         $klass = ClassList::find($classList);
-         return view ('admin.school.daily.create', ['klass' => $klass, 'school' => $school]);
+         return view ('admin.school.daily.create', ['klass' => $klass, 'school' => $school, "classList" => $classList]);
     }
 
     /**
@@ -56,9 +56,8 @@ class DailyController extends Controller
     {
         $daily = new Daily($request->all());
         $daily->save();
-//        dd($request->class_id);
          Session::flash('message', 'Successfully created Daily!');
-        return Redirect()->route('admin.schoolList.classList.daily.index', [$daily->id, $schoolList, $classList]);
+        return Redirect()->route('admin.schoolList.classList.daily.index', [$schoolList, $classList]);
     }
 
     /**
@@ -67,12 +66,14 @@ class DailyController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id, $schoolList, $classList)
+    public function show($schoolList, $classList, $id)
     {
+       // dd($id);
         $school = School::find($schoolList);
         $klass = ClassList::find($classList);
-        $daily = $klass->daily()->find($id);
-        return view ('admin.school.classList.show', ['daily' => $daily, 'school' => $school, 'klass' => $klass]);
+        $daily = $klass->daily->find($id);
+//        dd($daily = Daily::find($id));
+        return view ('admin.school.daily.show', ['daily' => $daily, 'school' => $school, 'klass' => $klass]);
     }
 
     /**
@@ -81,10 +82,12 @@ class DailyController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($schoolList, $classList, $id)
     {
-        $subject = Subject::find($id);
-        return view ('admin.subject.edit', ['subject'=> $subject]);
+        $school = School::find($schoolList);
+        $klass = ClassList::find($classList);
+        $daily = $klass->daily->find($id);
+        return view ('admin.school.daily.edit', ['daily' => $daily, 'school' => $school, 'klass' => $klass]);
     }
 
     /**
@@ -94,15 +97,15 @@ class DailyController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $schoolList, $classList, $id)
     {
 
-        $subject = Subject::find($id);
-        $subject->update($request->all());
+        $daily = Daily::find($id);
+        $daily->update($request->all());
 
         // redirect
         Session::flash('message', 'Successfully updated subject!');
-        return Redirect()->route('admin.subjects.index');
+        return Redirect()->route('admin.schoolList.classList.daily.index', [$schoolList, $classList]);
 
     }
 
@@ -112,12 +115,12 @@ class DailyController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($schoolList, $classList, $id)
     {
-        $subject = Subject::find($id);
-        $subject->delete();
+        $daily = Daily::find($id);
+        $daily->delete();
 
         Session::flash('message', 'Successfully deleted the subject!');
-        return Redirect()->route('admin.subjects.index');
+        return Redirect()->route('admin.schoolList.classList.daily.index', [$schoolList, $classList]);
     }
 }

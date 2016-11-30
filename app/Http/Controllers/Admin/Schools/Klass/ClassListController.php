@@ -81,9 +81,6 @@ class ClassListController extends Controller
     {
         $school = School::find($schoolList);
         $class_name = $school->classList()->find($classList);
-//        dd($schoolList);
-//        dd($class_name);
-
         return view ('admin.school.classList.edit', ['class_name' => $class_name, 'school' => $school]);
     }
 

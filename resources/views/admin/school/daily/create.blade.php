@@ -8,8 +8,8 @@
     {{ Html::ul($errors->all()) }}
 
 
-    {{ Form::open(['route'=>['admin.schoolList.classList.daily.store', $school->id, $klass->id]]) }}
-    {{Form::hidden('class_id', $klass->class_id)}}
+    {{ Form::open(['route'=>['admin.schoolList.classList.daily.store', $school->id, $klass->id, $classList]]) }}
+    {{Form::hidden('class_id', $classList)}}
     <div class="form-group">
         {{ Form::label('subject', 'Subject') }}
         {{ Form::text('subject', Input::old('subject'), array('class' => 'form-control')) }}
