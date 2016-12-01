@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Schools\Value;
 
 use App\Daily;
+use App\Value;
 use App\School;
 use App\Subject;
 use App\User;
@@ -23,14 +24,15 @@ class ValueController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($schoolList, $classList)
+    public function index($schoolList, $classList, $daily)
     {
         $school = School::find($schoolList);
         $klass = ClassList::find($classList);
-//        dd($school);
-//        dd($klass);
-        $dailies = $klass->daily;
-        return view ('admin.school.daily.index', ['dailies' => $dailies, 'klass' => $klass, 'school' => $school]);
+        $daily = Daily::find($daily);
+//        dd($daily);
+        $values = $daily->value;
+//        dd($values);
+        return view ('admin.school.value.index', ['values' => $values,'daily' => $daily, 'klass' => $klass, 'school' => $school]);
     }
 
     /**
@@ -39,11 +41,14 @@ class ValueController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($schoolList, $classList)
+    public function create($schoolList, $classList, $daily_id)
     {
+
         $school = School::find($schoolList);
         $klass = ClassList::find($classList);
-        return view ('admin.school.daily.create', ['klass' => $klass, 'school' => $school, "classList" => $classList]);
+        $daily = Daily::find($daily_id);
+//        dd($daily_id);
+        return view ('admin.school.value.create', ['klass' => $klass, 'school' => $school, 'daily_id' => $daily_id]);
     }
 
     /**
@@ -52,12 +57,13 @@ class ValueController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $schoolList, $classList)
+    public function store(Request $request, $schoolList, $classList, $daily_id)
     {
-        $daily = new Daily($request->all());
-        $daily->save();
-        Session::flash('message', 'Successfully created Daily!');
-        return Redirect()->route('admin.schoolList.classList.daily.index', [$schoolList, $classList]);
+        $value = new Value($request->all());
+        $value->save();
+        dd($daily_id);
+        Session::flash('message', 'Successfully created Value!');
+        return Redirect()->route('admin.schoolList.classList.daily.value.index', [$schoolList, $classList, $daily_id]);
     }
 
     /**
@@ -66,14 +72,15 @@ class ValueController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($schoolList, $classList, $id)
+    public function show($schoolList, $classList, $daily_id, $id)
     {
         // dd($id);
         $school = School::find($schoolList);
         $klass = ClassList::find($classList);
-        $daily = $klass->daily->find($id);
+        $daily = Daily::find($daily_id);
+        $value = $daily->value->find($id);
 //        dd($daily = Daily::find($id));
-        return view ('admin.school.daily.show', ['daily' => $daily, 'school' => $school, 'klass' => $klass]);
+        return view ('admin.school.daily.show', ['daily' => $daily, 'school' => $school, 'klass' => $klass, 'value' => $value]);
     }
 
     /**

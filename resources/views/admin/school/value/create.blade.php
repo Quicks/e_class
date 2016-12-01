@@ -9,7 +9,8 @@
     {{ Html::ul($errors->all()) }}
 
 
-    {{ Form::open(['route'=>['admin.schoolList.classList.daily.value.store', $school->id, $klass->id, $daily->id]]) }}
+    {{ Form::open(['route'=>['admin.schoolList.classList.daily.value.store', $school->id, $klass->id, $daily_id]]) }}
+    {{Form::hidden('daily_id', $daily_id)}}
     <div class="form-group">
         {{ Form::label('value', 'Value') }}
         {{ Form::text('value', Input::old('value'), array('class' => 'form-control')) }}

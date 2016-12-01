@@ -12,6 +12,6 @@ class Value extends Model
 
     public function class_register()
     {
-        return $this->belongsTo('App\Daily');
+        return $this->belongsTo('App\Daily', 'daily_id');
     }
 }
