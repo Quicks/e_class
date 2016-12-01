@@ -2,21 +2,17 @@
 @section('content')
     <nav class="navbar navbar-inverse">
         <ul class="nav navbar-nav">
-            <li><a href="{{ route('admin.schoolList.classList.daily.value.index', [$school->id, $klass->id, $daily->id]) }}">View All Value</a></li>
-            <li><a href="{{ route('admin.schoolList.classList.daily.value.create', [$school->id, $klass->id, $daily->id]) }}">Create a Value</a>
+            <li><a href="{{ route('admin.schoolList.classList.daily.index', [$school->id, $klass->id]) }}">View Daily</a></li>
         </ul>
     </nav>
     {{ Html::ul($errors->all()) }}
 
 
-    {{ Form::open(['route'=>['admin.schoolList.classList.daily.value.store', $school->id, $klass->id, $daily->id]]) }}
+    {{ Form::open(['route'=>['admin.schoolList.classList.daily.store', $school->id, $klass->id, $classList]]) }}
+    {{Form::hidden('class_id', $classList)}}
     <div class="form-group">
-        {{ Form::label('value', 'Value') }}
-        {{ Form::text('value', Input::old('value'), array('class' => 'form-control')) }}
-    </div>
-    <div class="form-group">
-        {{ Form::label('date', 'Date') }}
-        {{ Form::text('date', Input::old('value'), array('class' => 'form-control')) }}
+        {{ Form::label('subject', 'Subject') }}
+        {{ Form::text('subject', Input::old('subject'), array('class' => 'form-control')) }}
     </div>
     {{ Form::submit('Create the Daily!', array('class' => 'btn btn-primary')) }}
 

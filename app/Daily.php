@@ -18,6 +18,10 @@ class Daily extends Model
 
         return $this->hasMany('App\Value');
     }
+    public function subject() {
+
+        return $this->belongsTo('App\Subject');
+    }
 //    public function classes() {
 //
 //        return $this->hasManyThrough('App\ClassList', 'App\User');
