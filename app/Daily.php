@@ -14,10 +14,14 @@ class Daily extends Model
     {
         return $this->belongsTo('App\ClassList', 'class_id');
     }
-//    public function subject()
-//    {
-//        return $this->belongsTo('App\Subject');
-//    }
+    public function value() {
+
+        return $this->hasMany('App\Value');
+    }
+    public function subject() {
+
+        return $this->belongsTo('App\Subject');
+    }
 //    public function classes() {
 //
 //        return $this->hasManyThrough('App\ClassList', 'App\User');
