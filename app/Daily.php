@@ -22,8 +22,9 @@ class Daily extends Model
 
         return $this->belongsTo('App\Subject');
     }
-//    public function classes() {
-//
-//        return $this->hasManyThrough('App\ClassList', 'App\User');
-//    }
+    public function user() {
+
+        return $this->hasManyThrough(User::class, ClassList::class);
+    }
+
 }
