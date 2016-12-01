@@ -34,7 +34,7 @@
         {{--{{$user->name}}--}}
             <!--Text-->
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="{{url('/profile')}}" class="btn btn-primary" style="margin-right: 30%;">Мої дані</a>
+            <a href="{{url('/profile')}}" class="btn btn-primary my-data" style="margin-right: 30%;">Мої дані</a>
             {{--<form enctype="multipart/form-data" action="/teacher" method="post">--}}
                 {{--<label>Update profile image</label>--}}
                 {{--<input type="file" name="avatar">--}}
@@ -128,10 +128,7 @@
 
         <!--Panel 3-->
         <div class="tab-pane fade" id="panel7" role="tabpanel">
-            <br>
-
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione porro voluptate odit minima.</p>
-
+            ggdgdfggdfgdgfdgf
         </div>
         <!--/.Panel 3-->
 
@@ -192,6 +189,15 @@ $("<p>").html(msg).appendTo(document.body);
     });
 
 </script>
-
+<script>
+    $(document).ready(function(){
+        $(".my-data").click(function(e){
+            var text = $(this).text();
+            $(".card-text").html(text);
+            e.preventDefault();
+        });
+    });
+</script>
 </body>
+
 @stop

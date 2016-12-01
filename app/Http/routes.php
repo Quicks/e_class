@@ -14,6 +14,7 @@
 Route::get('/', 'PostController@index');
 Route::post('/profile', 'UsersController@update_avatar');
 Route::get('/profile', 'UsersController@profile');
+Route::get('/aboutUs', 'PostController@aboutUs');
 Route::get('/password', 'UsersController@password');
 Route::get('/login', 'UsersController@login');
 Route::get('/register', 'UsersController@register');
