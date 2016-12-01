@@ -1,34 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Schools\Klass;
-
-use App\School;
-use App\ClassList;
-use App\Http\Controllers\Controller;
-use App\Http\Requests;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Redirect;
-use Validator;
-use Html;
-use Form;
-use Session;
 
-class ClassListController extends Controller
+use App\Http\Requests;
+
+class ValueController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index($schoolList)
     {
-       $school = School::find($schoolList);
+        $school = School::find($schoolList);
         //
 
 //        dd($school->classList);
- //       dd($school->classList());
-       $classList = $school->classList;
+        //       dd($school->classList());
+        $classList = $school->classList;
 
         return view ('admin.school.classList.index', ['classList' => $classList, 'school' => $school]);
     }
@@ -81,6 +68,9 @@ class ClassListController extends Controller
     {
         $school = School::find($schoolList);
         $class_name = $school->classList()->find($classList);
+//        dd($schoolList);
+//        dd($class_name);
+
         return view ('admin.school.classList.edit', ['class_name' => $class_name, 'school' => $school]);
     }
 
@@ -119,13 +109,4 @@ class ClassListController extends Controller
         Session::flash('message', 'Successfully updated Class!');
         return Redirect()->route('admin.schoolList.classList.index', ['school' => $school]);
     }
-//    public static function addClass($data, $schoolList){
-//
-//        $school = School::find($schoolList);
-//        $classList = $school->classList;
-//        $classList->name()->attach(request::get('name'));
-//
-//        $add = ClassList::create($data);
-//        return $add;
-//    }
 }

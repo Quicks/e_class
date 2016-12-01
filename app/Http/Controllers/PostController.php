@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\School;
+use Request;
+use Requests;
 
 class PostController extends Controller{
 
@@ -21,3 +23,4 @@ class PostController extends Controller{
 
 
 }
+

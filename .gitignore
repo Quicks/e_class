@@ -4,7 +4,7 @@
 /vendor/*
 Homestead.yaml
 Homestead.json
-.env
+#.env
 /resources/views/user/show_.blade.php
 ### Laravel template
 vendor/
@@ -16,8 +16,8 @@ app/storage/
 
 # Laravel 5 & Lumen specific
 bootstrap/cache/
-.env.*.php
-.env.php
+#.env.*.php
+#.env.php
 
 # Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
 .rocketeer/
@@ -71,6 +71,6 @@ fabric.properties
 .idea/blade.xml
 resources/views/mail/
 resources/views/widgets/
-/.env
+#/.env
 .idea/*
 .env

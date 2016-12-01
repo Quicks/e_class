@@ -19,28 +19,22 @@ Route::get('/password', 'UsersController@password');
 Route::get('/login', 'UsersController@login');
 Route::get('/register', 'UsersController@register');
 Route::auth();
-
 Route::get('/home', 'HomeController@index');
-Route::resource('item', 'ItemController');
 Route::resource('user', 'UsersController');
-Route::resource('timetable', 'TimetableController');
 Route::resource('teachers', 'Teacher\TeacherController');
-Route::resource('teachers.timetables', 'TimetableController');
-Route::resource('sc','StudentsClassController');
-Route::group(['namespace'=>'Admin', 'prefix'=>'admin', 'middleware'=>'admin'], function() {
+Route::group(['namespace'=>'Admin', 'prefix'=>'admin'], function() {
     Route::get('/', 'AdminController@index');
 	Route::resource('roles', 'UserRolesController');
 	Route::get('userList', 'UserRolesController@usersList')->name('admin.roles.users_list');
 	Route::get('changeUserRole/{id}', 'UserRolesController@changeUserRole')->name('admin.roles.change_user_role');
     Route::put('updateUserRole/{id}', 'UserRolesController@updateUserRole')->name('admin.roles.update_user_role');
-
-    Route::group(['namespace' => 'Subjects'], function() {
-        Route::resource('subjects', 'SubjectsController');
-    });
     Route::group(['namespace' => 'Schools'], function() {
+        Route::resource('subjects', 'Subjects\SubjectsController');
         Route::resource('schoolList', 'SchoolController');
         Route::resource('schoolList.classList', 'Klass\ClassListController');
+        Route::resource('schoolList.classList.daily', 'Daily\DailyController');
     });
+
 });
 Route::group(['middleware'=>'teacher'], function() {
     Route::get('/teacher', 'UsersController@teacher');
@@ -49,8 +43,9 @@ Route::group(['middleware'=>'teacher'], function() {
 
 
 Route::group( ['middleware' => 'admin'], function () {
-    Route::get('/admin','UsersController@admin');
+//    Route::get('/admin','UsersController@admin');
        Route::resource('roles', 'Admin\UserRolesController');
 });
 //'middleware'=>'admin'
 //
+
