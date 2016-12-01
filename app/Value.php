@@ -8,9 +8,10 @@ class Value extends Model
 {
     public $timestamps = false;
     protected $table = 'values';
-    protected $fillable = ['value', 'date'];
+    protected $fillable = ['value', 'date', 'id_student'];
+
     public function class_register()
     {
-        return $this->belongsTo('App\Class_register');
+        return $this->belongsTo('App\Daily');
     }
 }
