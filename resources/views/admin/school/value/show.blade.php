@@ -1,4 +1,4 @@
-@@extends('layouts.app')
+@extends('layouts.app')
 @section('content')
     <nav class="navbar navbar-inverse">
         <ul class="nav navbar-nav">
@@ -7,9 +7,20 @@
         </ul>
     </nav>
     <div class="jumbotron text-center">
-        <p>
-        <td>{{$value->value}}</td>
-        <td>{{$value->date}}</td>
-        </p>
+        <table>
+            <thead>
+            <tr>
+                <th>Value</th>
+                <th>Date</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{$value->value}}</td>
+                    <td>{{$value->date}}</td>
+                    {{--<td>{{$value->id_student}}</td>--}}
+                </tr>
+            </tbody>
+        </table>
     </div>
 @endsection

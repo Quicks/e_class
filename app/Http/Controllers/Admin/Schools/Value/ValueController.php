@@ -29,10 +29,8 @@ class ValueController extends Controller
         $school = School::find($schoolList);
         $klass = ClassList::find($classList);
         $daily = Daily::find($daily);
-//        dd($daily);
         $values = $daily->value;
-//        dd($values);
-        return view ('admin.school.value.index', ['values' => $values,'daily' => $daily, 'klass' => $klass, 'school' => $school]);
+        return view ('admin.school.value.index', ['school' => $school, 'klass' => $klass, 'daily' => $daily, 'values' => $values]);
     }
 
     /**
@@ -47,8 +45,8 @@ class ValueController extends Controller
         $school = School::find($schoolList);
         $klass = ClassList::find($classList);
         $daily = Daily::find($daily_id);
-//        dd($daily_id);
-        return view ('admin.school.value.create', ['klass' => $klass, 'school' => $school, 'daily_id' => $daily_id]);
+//        dd($daily->id);
+        return view ('admin.school.value.create', ['klass' => $klass, 'school' => $school, 'daily' => $daily, 'daily_id' => $daily->id]);
     }
 
     /**
@@ -61,7 +59,7 @@ class ValueController extends Controller
     {
         $value = new Value($request->all());
         $value->save();
-        dd($daily_id);
+//        dd($daily_id);
         Session::flash('message', 'Successfully created Value!');
         return Redirect()->route('admin.schoolList.classList.daily.value.index', [$schoolList, $classList, $daily_id]);
     }
@@ -80,7 +78,7 @@ class ValueController extends Controller
         $daily = Daily::find($daily_id);
         $value = $daily->value->find($id);
 //        dd($daily = Daily::find($id));
-        return view ('admin.school.daily.show', ['daily' => $daily, 'school' => $school, 'klass' => $klass, 'value' => $value]);
+        return view ('admin.school.value.show', ['daily' => $daily, 'school' => $school, 'klass' => $klass, 'value' => $value]);
     }
 
     /**
@@ -89,12 +87,13 @@ class ValueController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($schoolList, $classList, $id)
+    public function edit($schoolList, $classList, $daily_id, $id)
     {
         $school = School::find($schoolList);
         $klass = ClassList::find($classList);
-        $daily = $klass->daily->find($id);
-        return view ('admin.school.daily.edit', ['daily' => $daily, 'school' => $school, 'klass' => $klass]);
+        $daily = Daily::find($daily_id);
+        $value = $daily->value->find($id);
+        return view ('admin.school.value.edit', ['value' => $value, 'daily' => $daily, 'school' => $school, 'klass' => $klass]);
     }
 
     /**
@@ -104,15 +103,15 @@ class ValueController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $schoolList, $classList, $id)
+    public function update(Request $request, $schoolList, $classList, $daily_id, $id)
     {
 
-        $daily = Daily::find($id);
-        $daily->update($request->all());
+        $value = Value::find($id);
+        $value->update($request->all());
 
         // redirect
-        Session::flash('message', 'Successfully updated subject!');
-        return Redirect()->route('admin.schoolList.classList.daily.index', [$schoolList, $classList]);
+        Session::flash('message', 'Successfully updated value!');
+        return Redirect()->route('admin.schoolList.classList.daily.value.index', [$schoolList, $classList, $daily_id]);
 
     }
 
@@ -122,12 +121,13 @@ class ValueController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($schoolList, $classList, $id)
+    public function destroy($schoolList, $classList,$daily_id, $id)
     {
-        $daily = Daily::find($id);
-        $daily->delete();
+        $value = Value::find($id);
+        $value->delete();
 
         Session::flash('message', 'Successfully deleted the subject!');
-        return Redirect()->route('admin.schoolList.classList.daily.index', [$schoolList, $classList]);
+        return Redirect()->route('admin.schoolList.classList.daily.value.index', [$schoolList, $classList, $daily_id]);
+
     }
 }

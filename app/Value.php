@@ -8,7 +8,7 @@ class Value extends Model
 {
     public $timestamps = false;
     protected $table = 'values';
-    protected $fillable = ['value', 'date', 'id_student'];
+    protected $fillable = ['value', 'date', 'id_student', 'daily_id'];
 
     public function class_register()
     {

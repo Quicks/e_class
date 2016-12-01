@@ -8,7 +8,8 @@
     <table class="table">
         <thead>
         <tr>
-            <th>Daily</th>
+            <th>Value</th>
+            <th>Date</th>
         </tr>
         </thead>
         <tbody>
@@ -18,10 +19,10 @@
                 <td>{{$value->date}}</td>
                 {{--<td>{{$value->id_student}}</td>--}}
                 <td>
-                    <a href="{{route('admin.schoolList.classList.daily.value.show', [$school->id, $klass->id, $daily->id])}}" class="btn btn-primary">Show</a>
-                    <a href="{{route('admin.schoolList.classList.daily.value.edit', [$school->id, $klass->id, $daily->id])}}" class="btn btn-primary">Edit</a>
+                    <a href="{{route('admin.schoolList.classList.daily.value.show', [$school->id, $klass->id, $daily->id, $value->id])}}" class="btn btn-primary">Show</a>
+                    <a href="{{route('admin.schoolList.classList.daily.value.edit', [$school->id, $klass->id, $daily->id, $value->id])}}" class="btn btn-primary">Edit</a>
 
-                    {{ Form::open(['route'=>['admin.schoolList.classList.daily.value.edit', [$school->id, $klass->id, $daily->id, $value->id]],'class' => 'pull-right']) }}
+                    {{ Form::open(['route'=>['admin.schoolList.classList.daily.value.destroy', $school->id, $klass->id, $daily->id, $value->id],'class' => 'pull-right']) }}
                     {{ Form::hidden('_method', 'DELETE') }}
                     {{ Form::submit('Delete', array('class' => 'btn btn-primary')) }}
                     {{ Form::close() }}

@@ -8,7 +8,7 @@
     </nav>
     {{ Html::ul($errors->all()) }}
 
-    {{ Form::model($daily, array('route' => array('admin.schoolList.classList.daily.value.update', $school->id, $klass->id, $daily->id, $value->id), 'method' => 'PUT')) }}
+    {{ Form::model($value, array('route' => array('admin.schoolList.classList.daily.value.update', $school->id, $klass->id, $daily->id, $value->id), 'method' => 'PUT')) }}
 
     <div class="form-group">
         {{ Form::label('value', 'Value') }}
