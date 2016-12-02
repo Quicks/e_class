@@ -10,6 +10,7 @@ class Teacher extends Model
     public $timestamps = false;
 
     public function class_registers() {
+
         return $this->hasMany('App\Class_register');
     }
 
