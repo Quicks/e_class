@@ -19,6 +19,11 @@ class User extends Authenticatable
 
         return $this->belongsTo('App\ClassList');
     }
+    public function daily() {
+
+        return $this->belongsTo('App\Daily');
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *
