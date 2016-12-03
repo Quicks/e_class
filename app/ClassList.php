@@ -22,6 +22,6 @@ class ClassList extends Model
 
     public function user() {
 
-        return $this->hasMany('App\User');
+        return $this->hasMany('App\User', 'class_id');
     }
 }

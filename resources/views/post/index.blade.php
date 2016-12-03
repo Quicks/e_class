@@ -30,11 +30,11 @@
             </a>
         </div>
         <form action="">
-            <select name="school_id">
-                @foreach($schools as $school)
-                    <option value="{{$school->id}}">{{$school->name}}</option>
-                @endforeach
-            </select>
+            {{--<select name="school_id">--}}
+                {{--@foreach($schools as $school)--}}
+                    {{--<option value="{{$school->id}}">{{$school->name}}</option>--}}
+                {{--@endforeach--}}
+            {{--</select>--}}
         </form>
     </div>
 <script> $(document).ready(function(){
