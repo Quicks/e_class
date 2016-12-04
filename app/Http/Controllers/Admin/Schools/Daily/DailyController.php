@@ -30,6 +30,7 @@ class DailyController extends Controller
 //        dd($school);
 //        dd($klass);
         $dailies = $klass->daily;
+        dd($users = $klass->user);
         return view ('admin.school.daily.index', ['dailies' => $dailies, 'klass' => $klass, 'school' => $school]);
     }
 
@@ -43,7 +44,7 @@ class DailyController extends Controller
     {
         $school = School::find($schoolList);
         $klass = ClassList::find($classList);
-         return view ('admin.school.daily.create', ['klass' => $klass, 'school' => $school, "classList" => $classList]);
+         return view ('admin.school.daily.create', ['klass' => $klass, 'school' => $school, 'classList' => $classList]);
     }
 
     /**

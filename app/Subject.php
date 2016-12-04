@@ -11,6 +11,8 @@ class Subject extends Model
     protected $fillable = ['title', 'description'];
 
     public function daily() {
+
         return $this->hasMany('App\Daily');
+
     }
 }

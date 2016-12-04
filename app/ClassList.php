@@ -16,10 +16,12 @@ class ClassList extends Model
     }
 
     public function daily() {
+
         return $this->hasMany('App\Daily', 'class_id');
     }
 
     public function user() {
-        return $this->hasMany('App\User');
+
+        return $this->hasMany('App\User', 'class_id');
     }
 }
