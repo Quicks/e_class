@@ -2,19 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 
-
-use App\MySchool;
-use Request;
-use Requests;
+use App\Http\Requests;
+use App\School;
+//use Request;
+//use Requests;
 
 class PostController extends Controller{
 
-    public function schmindex()
+
+    public function index()
     {
-        echo('hello');
-//        $schools = MySchool::all();
-       return view ('post.index')
-//->withSchools($schools)
-;
+        $schools = School::all();
+        return view ('post.index', ['schools'=> $schools]);
+    }
+    public function  aboutUs(){
+        return view('aboutUs');
+    }
+
+
+}
 

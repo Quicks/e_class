@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Subjects;
+namespace App\Http\Controllers\Admin\Schools\Subjects;
 
 use App\Subject;
 use App\Http\Controllers\Controller;

@@ -1,112 +1,133 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\Schools\Value;
 
+use App\Daily;
+use App\Value;
+use App\School;
+use App\Subject;
+use App\User;
+use App\ClassList;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Redirect;
+use Validator;
+use Html;
+use Form;
+use Session;
 use App\Http\Requests;
 
 class ValueController extends Controller
 {
-    public function index($schoolList)
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index($schoolList, $classList, $daily)
     {
         $school = School::find($schoolList);
-        //
-
-//        dd($school->classList);
-        //       dd($school->classList());
-        $classList = $school->classList;
-
-        return view ('admin.school.classList.index', ['classList' => $classList, 'school' => $school]);
+        $klass = ClassList::find($classList);
+        $daily = Daily::find($daily);
+        $values = $daily->value;
+        return view ('admin.school.value.index', ['school' => $school, 'klass' => $klass, 'daily' => $daily, 'values' => $values]);
     }
 
     /**
+     *
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($schoolList)
+    public function create($schoolList, $classList, $daily_id)
     {
-        //$school = School::find($schoolList);
-        return view ('admin.school.classList.create', ['school_id' => $schoolList]);
+
+        $school = School::find($schoolList);
+        $klass = ClassList::find($classList);
+        $daily = Daily::find($daily_id);
+//        dd($daily->id);
+        return view ('admin.school.value.create', ['klass' => $klass, 'school' => $school, 'daily' => $daily, 'daily_id' => $daily->id]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $schoolList, $classList, $daily_id)
     {
-        $class_name = new ClassList($request->all());
-        $class_name->save();
-        Session::flash('message', 'Successfully created Class!');
-        return Redirect()->route('admin.schoolList.classList.index', [$request->school_id, $class_name->id]);
+        $value = new Value($request->all());
+        $value->save();
+//        dd($daily_id);
+        Session::flash('message', 'Successfully created Value!');
+        return Redirect()->route('admin.schoolList.classList.daily.value.index', [$schoolList, $classList, $daily_id]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($schoolList, $classList)
+    public function show($schoolList, $classList, $daily_id, $id)
     {
+        // dd($id);
         $school = School::find($schoolList);
-        $class_name = $school->classList()->find($classList);
-        return view ('admin.school.classList.show', ['class_name' => $class_name, 'school' => $school]);
+        $klass = ClassList::find($classList);
+        $daily = Daily::find($daily_id);
+        $value = $daily->value->find($id);
+//        dd($daily = Daily::find($id));
+        return view ('admin.school.value.show', ['daily' => $daily, 'school' => $school, 'klass' => $klass, 'value' => $value]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($schoolList, $classList)
+    public function edit($schoolList, $classList, $daily_id, $id)
     {
         $school = School::find($schoolList);
-        $class_name = $school->classList()->find($classList);
-//        dd($schoolList);
-//        dd($class_name);
-
-        return view ('admin.school.classList.edit', ['class_name' => $class_name, 'school' => $school]);
+        $klass = ClassList::find($classList);
+        $daily = Daily::find($daily_id);
+        $value = $daily->value->find($id);
+        return view ('admin.school.value.edit', ['value' => $value, 'daily' => $daily, 'school' => $school, 'klass' => $klass]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $schoolList, $classList)
+    public function update(Request $request, $schoolList, $classList, $daily_id, $id)
     {
-        $school = School::find($schoolList);
-        $class_name = $school->classList()->find($classList);
-        $class_name->update($request->all());
-//        dd($request->all());
-//        dd($class_name);
-//        $class_name->update($request->all());
 
-        Session::flash('message', 'Successfully updated Class!');
-        return Redirect()->route('admin.schoolList.classList.index', ['school' => $school, 'class_name' => $class_name]);
+        $value = Value::find($id);
+        $value->update($request->all());
+
+        // redirect
+        Session::flash('message', 'Successfully updated value!');
+        return Redirect()->route('admin.schoolList.classList.daily.value.index', [$schoolList, $classList, $daily_id]);
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($schoolList, $classList)
+    public function destroy($schoolList, $classList,$daily_id, $id)
     {
-        $school = School::find($schoolList);
-        $class_name = $school->classList()->find($classList);
-        $class_name->delete();
+        $value = Value::find($id);
+        $value->delete();
 
-        Session::flash('message', 'Successfully updated Class!');
-        return Redirect()->route('admin.schoolList.classList.index', ['school' => $school]);
+        Session::flash('message', 'Successfully deleted the subject!');
+        return Redirect()->route('admin.schoolList.classList.daily.value.index', [$schoolList, $classList, $daily_id]);
+
     }
 }

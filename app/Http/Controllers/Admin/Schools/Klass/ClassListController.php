@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Schools\Klass;
 
 use App\School;
+use App\User;
 use App\ClassList;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
@@ -25,11 +26,9 @@ class ClassListController extends Controller
     {
        $school = School::find($schoolList);
         //
-
 //        dd($school->classList);
  //       dd($school->classList());
        $classList = $school->classList;
-
         return view ('admin.school.classList.index', ['classList' => $classList, 'school' => $school]);
     }
 
@@ -81,9 +80,6 @@ class ClassListController extends Controller
     {
         $school = School::find($schoolList);
         $class_name = $school->classList()->find($classList);
-//        dd($schoolList);
-//        dd($class_name);
-
         return view ('admin.school.classList.edit', ['class_name' => $class_name, 'school' => $school]);
     }
 
