@@ -5,13 +5,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <style>
         .view {
-            /*background: url("scool.png")no-repeat center center  0.5;*/
             background: linear-gradient(#f4fffc, #1b31ff);
             background-size: 100% 100% !important;
-            height: 100vh;
-
         }
+
+
+
     </style>
+    <div class="view hm-black-strong">
+    {{--<div class="container">--}}
     <div class="select-test">
         <select id="test">
             <option></option>
@@ -24,19 +26,21 @@
     </div>
 
 
-    <div class="view hm-black-strong">
-        <div class="logo">
-            <a> <img src="Logo.png">
-            </a>
+
+            <div class="logo">
+                <a> <img src="Logo.png">
+                </a>
+            </div>
         </div>
-        <form action="">
-            <select name="school_id">
-                @foreach($schools as $school)
-                    <option value="{{$school->id}}">{{$school->name}}</option>
-                @endforeach
-            </select>
-        </form>
-    </div>
+        {{--</div>--}}
+        {{--<form action="">--}}
+            {{--<select name="school_id">--}}
+                {{--@foreach($schools as $school)--}}
+                    {{--<option value="{{$school->id}}">{{$school->name}}</option>--}}
+                {{--@endforeach--}}
+            {{--</select>--}}
+        {{--</form>--}}
+    {{--</div>--}}
 <script> $(document).ready(function(){
 
         $('select').select2({

@@ -25,8 +25,9 @@
     {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>--}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-    <style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
 
+    <style>
 
         .fa-btn {
             margin-right: 6px;
@@ -41,16 +42,17 @@
         html,
         body {
             height: 100%;
+            width: 100%;
             font-family: 'Lato';
-
+            position: absolute;
         }
         .wrapper {
             position: relative;
             min-height: 100%;
         }
-        .content {
-            padding-bottom: 80px;
-        }
+        /*.content {*/
+            /*padding-bottom: 80px;*/
+        /*}*/
         .footer {
             position: absolute;
             left: 0;
@@ -62,55 +64,83 @@
             /*-webkit-filter: grayscale(1);*/
             cursor: pointer;
             transition: all .5s ease;
+            max-width: 100%;
+            height: auto;
         }
+
         img:hover{
             -webkit-filter: grayscale(0);
             transform: scale(1.2,1.2);
         }
 
+        .content{
+            width: 100%;
+            height: 100%;
+            position: inherit;
+            top: 0;
+            left: 0;
+            margin: 0;
+            overflow: auto;
+            box-sizing: inherit;
+        }
 
+
+
+
+        }
     </style>
 </head>
 <body id="app-layout">
 <div class="wrapper">
-    <nav class=" navbar navbar-default navbar-static-top navbar-dark bg-primary">
-        <div class="container">
-            <div class="navbar-header">
-                <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="Logo2.png">
-                </a>
-            </div>
+<nav class="navbar navbar-dark bg-primary">
 
-            <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                <!-- Left Side Of Navbar -->
+    <!-- Collapse button-->
+    <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapseEx2">
+        <i class="fa fa-bars"></i>
+    </button>
+
+    <div class="container">
+        <a class="navbar-brand" href="{{ url('/') }}">
+            <img src="Logo2.png">
+        </a>
+        <!--Collapse content-->
+        <div class="collapse navbar-toggleable-xs" id="collapseEx2">
+
+            <!--Navbar Brand-->
+
+            <!--Links-->
+            <ul class="navbar-nav navbar-right active">
+
+                <!-- Authentication Links -->
+                @if (Auth::guest())
+                    <li class="nav-item"><a class="nav-link" href="{{ url('/login') }}">Вхід</a></li>
+                    <li class="nav-item" id="menu"><a  class="nav-link" href="#about-us">Про нас</a></li>
+                @else
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/teacher') }}" class="nav-item"  role="button" aria-expanded="false" style="position: relative; padding-left: 50px;">
+                            <img src="/uploads/avatars/{{Auth::user()->avatar}}" style="width: 32px; height: 32px; position: absolute; left: 10px; top: 0px;  border-radius: 50%;">
+                            {{ Auth::user()->name }}
+                        </a>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link" href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out "></i>Вийти</a></li>
+                    <li class="nav-item" id="menu"><a class="nav-link"  href="#about-us">Про нас</a></li>
 
 
-                <!-- Right Side Of Navbar -->
-                <ul class="nav navbar-nav navbar-right">
-                    <!-- Authentication Links -->
-                    @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Вхід</a></li>
-                        <li id="menu"><a   href="#about-us">Про нас</a></li>
-                    @else
 
-                        <li>
-                            <a href="{{ url('/teacher') }}" class="nav-item"  role="button" aria-expanded="false" style="position: relative; padding-left: 50px;">
-                                <img src="/uploads/avatars/{{Auth::user()->avatar}}" style="width: 32px; height: 32px; position: absolute; left: 10px; top: 10px;  border-radius: 50%;">
-                                {{ Auth::user()->name }}
-                            </a>
-                        </li>
+                @endif
+            </ul>
+            <!--Search form-->
 
-                        <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out "></i>Вийти</a></li>
-                        <li id="menu"><a   href="#about-us">Про нас</a></li>
-
-                        </li>
-
-                    @endif
-                </ul>
-            </div>
         </div>
-    </nav>
+        <!--/.Collapse content-->
+
+    </div>
+
+</nav>
+
+
     <div class="content">
     @yield('content')
     </div>
