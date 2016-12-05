@@ -63,7 +63,10 @@
             <a class="nav-link" data-toggle="tab" href="#panel6" role="tab"><i class="fa fa-heart"></i> Розклад</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#panel8" role="tab"><i class="fa fa-envelope"></i> Журнал</a>
+            <!-- Single button -->
+                    @foreach($dailies as $daily)
+                    <li><a href="#">{{$daily->subject}}</a></li>
+                    @endforeach
         </li>
     </ul>
 
