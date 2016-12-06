@@ -115,13 +115,7 @@ class DatabaseSeeder extends Seeder
         $arr_name = ['Yulia Mysienko', 'Yulia Storozhuk', 'Nazar Kushniruk', 'Oleksandr Kushnir', 'Vasya'];
         $arr_email = ['Yulia_Mysienko', 'Yulia_Storozhuk', 'Nazar_Kushniruk', 'Oleksandr_Kushnir', 'Vasya'];
         $type = 'admin';
-        for ($users = 0; $users < 5; $users++) {
-            DB::table('users')->insert([
-                'name' => $arr_name[$users],
-                'type' => $type.'_type',
-                'email' => $arr_email[$users].'@gmail.com'
-            ]);
-        }
+
         for($schools = 1; $schools < 37; $schools++) {
             DB::table('schoolList')->insert([
                 'name' => str_random(3).$schools,
@@ -136,6 +130,14 @@ class DatabaseSeeder extends Seeder
                     ]);
                 }
             }
+        }
+        for ($users = 0; $users < 5; $users++) {
+            DB::table('users')->insert([
+                'name' => $arr_name[$users],
+                'type' => $type.'_type',
+                'email' => $arr_email[$users].'@gmail.com',
+                'class_id' => \App\ClassList::first()->id
+            ]);
         }
     }
 }

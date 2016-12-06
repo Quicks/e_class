@@ -19,6 +19,7 @@ Route::get('/password', 'UsersController@password');
 Route::get('/login', 'UsersController@login');
 Route::get('/register', 'UsersController@register');
 Route::auth();
+
 Route::get('/home', 'HomeController@index');
 Route::resource('user', 'UsersController');
 Route::resource('teachers', 'Teacher\TeacherController');
@@ -39,6 +40,7 @@ Route::group(['namespace'=>'Admin', 'prefix'=>'admin'], function() {
 });
 Route::group(['middleware'=>'teacher'], function() {
     Route::get('/teacher', 'UsersController@teacher');
+
     Route::resource('roles', 'Admin\UserRolesController');
 });
 
@@ -49,4 +51,9 @@ Route::group( ['middleware' => 'admin'], function () {
 });
 //'middleware'=>'admin'
 //
+Route::group(['namespace' => 'Teacher', 'prefix' => 'teacher'], function() {
+    Route::get('cabinet', 'TeacherController@cabinet');
+    Route::resource('classList.daily', 'Teacher\DailyController' );
+});
 
+//, 'middleware'=>'teacher'

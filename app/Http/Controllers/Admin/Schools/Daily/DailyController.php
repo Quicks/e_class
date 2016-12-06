@@ -30,7 +30,6 @@ class DailyController extends Controller
 //        dd($school);
 //        dd($klass);
         $dailies = $klass->daily;
-        dd($users = $klass->user);
         return view ('admin.school.daily.index', ['dailies' => $dailies, 'klass' => $klass, 'school' => $school]);
     }
 

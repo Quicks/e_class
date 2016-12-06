@@ -30,7 +30,8 @@ class ValueController extends Controller
         $klass = ClassList::find($classList);
         $daily = Daily::find($daily);
         $values = $daily->value;
-        return view ('admin.school.value.index', ['school' => $school, 'klass' => $klass, 'daily' => $daily, 'values' => $values]);
+       $users = $klass->user;
+        return view ('admin.school.value.index', ['school' => $school, 'klass' => $klass, 'daily' => $daily, 'values' => $values, 'users'=>$users]);
     }
 
     /**

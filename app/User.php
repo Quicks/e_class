@@ -17,7 +17,7 @@ class User extends Authenticatable
     ];
     public function classList() {
 
-        return $this->belongsTo('App\ClassList');
+        return $this->belongsTo('App\ClassList', 'class_id');
     }
     public function daily() {
 
