@@ -67,7 +67,7 @@
             <!-- Single button -->
         </li>
     </ul>
-
+<button><a href="{{route('teacher.daily.index')}}">Journal</a></button>
     <!-- Tab panels -->
     <div class="tab-content">
 

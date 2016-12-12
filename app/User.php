@@ -16,6 +16,7 @@ class User extends Authenticatable
         'name', 'email', 'password',
     ];
     public function value() {
+
         return $this->hasMany('App\Value');
     }
     public function classList() {

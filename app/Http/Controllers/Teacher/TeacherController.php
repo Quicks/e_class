@@ -15,6 +15,7 @@ class TeacherController extends Controller
         $teacher = Auth::user();
         $dailies = $teacher -> classList -> daily;
         $subjects = [];
+
         foreach($dailies as $daily) {
             $subject = [];
             $subject[$daily->id] = $daily->subject;

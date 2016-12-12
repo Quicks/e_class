@@ -15,17 +15,16 @@ use Html;
 use Form;
 use Session;
 use App\Http\Requests;
+use Auth;
 
 class DailyController extends Controller
 {
-    public function index($cabinet)
+    public function index()
     {
-        $cabinet = User::find($cabinet);
-        $klass = ClassList::find($classList);
-//        dd($school);
-//        dd($klass);
-        $dailies = $klass->daily;
-        return view ('admin.school.daily.index', ['dailies' => $dailies, 'klass' => $klass, 'school' => $school]);
+
+       $teacher = Auth::user();
+       $dailies = $teacher->classList->daily;
+       return view ('teacher.daily.index', ['dailies' => $dailies]);
     }
 
     /**
@@ -61,14 +60,12 @@ class DailyController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($schoolList, $classList, $id)
+    public function show($daily)
     {
-        // dd($id);
-        $school = School::find($schoolList);
-        $klass = ClassList::find($classList);
-        $daily = $klass->daily->find($id);
-//        dd($daily = Daily::find($id));
-        return view ('admin.school.daily.show', ['daily' => $daily, 'school' => $school, 'klass' => $klass]);
+        $teacher = Auth::user();
+        $daily = $teacher->classList->daily()->find($daily);
+        $users = $teacher->classList->user;
+       return view ('teacher.daily.show', ['daily' => $daily, 'users' => $users]);
     }
 
     /**
