@@ -10,8 +10,12 @@ class Value extends Model
     protected $table = 'values';
     protected $fillable = ['value', 'date', 'id_student', 'daily_id'];
 
-    public function class_register()
+    public function daily()
     {
         return $this->belongsTo('App\Daily', 'daily_id');
+    }
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'id_student');
     }
 }

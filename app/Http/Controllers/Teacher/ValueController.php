@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Schools\Value;
+namespace App\Http\Controllers\Teacher;
 
 use App\Daily;
 use App\Value;
@@ -29,9 +29,9 @@ class ValueController extends Controller
         $school = School::find($schoolList);
         $klass = ClassList::find($classList);
         $daily = Daily::find($daily);
-        $values = $daily->value;
-       $users = $klass->user;
-        return view ('admin.school.value.index', ['school' => $school, 'klass' => $klass, 'daily' => $daily, 'values' => $values, 'users'=>$users]);
+        $users = $daily->classList->user;
+        //dd($value = $daily->classList->user->value());
+        return view ('admin.school.value.index', ['school' => $school, 'klass' => $klass, 'daily' => $daily, 'users' => $users]);
     }
 
     /**

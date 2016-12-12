@@ -60,13 +60,11 @@
             <a class="nav-link active" data-toggle="tab" href="#panel5" role="tab"><i class="fa fa-user"></i> Організаційні питання</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#panel6" role="tab"><i class="fa fa-heart"></i> Розклад</a>
+            <a class="nav-link" data-toggle="tab" href="#panel6" role="tab"><i class="fa fa-heart"></i> Розклад
+                {{Form::select('$subject', $subjects)}}</a>
         </li>
         <li class="nav-item">
             <!-- Single button -->
-                    @foreach($dailies as $daily)
-                    <li><a href="#">{{$daily->subject}}</a></li>
-                    @endforeach
         </li>
     </ul>
 

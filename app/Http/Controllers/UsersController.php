@@ -26,10 +26,10 @@ class UsersController extends Controller
     }
     
     
-    public function teacher(){
-//        dd(Auth::user()->name);
-        return view('teacher', array('user'=>Auth::user()));
-    }
+//    public function teacher(){   ?????????
+//
+//        return view('teacher.teacher.cabinet', array('user'=>Auth::user()));
+//    }
 
     public function profile()
     {

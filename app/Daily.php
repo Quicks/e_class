@@ -24,7 +24,7 @@ class Daily extends Model
     }
     public function user() {
 
-        return $this->hasManyThrough(User::class, ClassList::class);
+        return $this->hasManyThrough('App\User', 'App\ClassList', 'daily_id', 'class_id', 'id');
     }
 
 }
