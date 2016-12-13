@@ -16,6 +16,6 @@ class Value extends Model
     }
     public function user()
     {
-        return $this->belongsTo('App\User', 'id_student');
+        return $this->belongsTo('App\User');
     }
 }

@@ -17,7 +17,7 @@ class User extends Authenticatable
     ];
     public function value() {
 
-        return $this->hasMany('App\Value');
+        return $this->hasMany('App\Value',  'id_student');
     }
     public function classList() {
 

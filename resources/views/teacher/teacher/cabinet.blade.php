@@ -62,6 +62,7 @@
         <li class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#panel6" role="tab"><i class="fa fa-heart"></i> Розклад
                 {{Form::select('$subject', $subjects)}}</a>
+
         </li>
         <li class="nav-item">
             <!-- Single button -->

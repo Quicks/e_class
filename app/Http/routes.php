@@ -38,7 +38,7 @@ Route::group(['namespace'=>'Admin', 'prefix'=>'admin'], function() {
 
 });
 Route::group([], function() {
-//    Route::get('/teacher', 'UsersController@teacher');
+    Route::get('/teacher', 'UsersController@teacher');
     Route::resource('roles', 'Admin\UserRolesController');
 });
 //'middleware'=>'teacher'
@@ -51,8 +51,8 @@ Route::group( ['middleware' => 'admin'], function () {
 //
 Route::group(['namespace' => 'Teacher', 'prefix' => 'teacher'], function() {
     Route::get('/cabinet', 'TeacherController@cabinet');
-//    Route::resource('/cabinet', 'TeacherController@cabinet');
     Route::resource('daily', 'DailyController' );
+    Route::resource('daily.value', 'ValueController' );
 });
 
 //, 'middleware'=>'teacher'

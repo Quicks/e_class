@@ -2,8 +2,8 @@
 @section('content')
     <nav class="navbar navbar-inverse">
         <ul class="nav navbar-nav">
-            <li><a href="#">View All Daily</a></li>
-            <li><a href="#">Create a Daily</a>
+            <li><a href="{{ route('teacher.daily.index') }}">View All Daily</a></li>
+            <li><a href="{{ route('teacher.daily.create') }}">Create a Daily</a>
         </ul>
     </nav>
     <div class="jumbotron text-center">
@@ -21,7 +21,12 @@
                 <tr>
                      <td>{{$user->name}}</td>
                     @for($day_of_month = 1; $day_of_month <= cal_days_in_month(CAL_GREGORIAN, date('m'), date('y')); $day_of_month++)
-                        <td>{{$user->value()->where('date' => )}}</td>
+                        <td>
+                            <a href="#">@foreach($user->value as $value)
+                                {{$value->value}}
+                            @endforeach
+                            </a>
+                        </td>
                     @endfor
                 </tr>
             @endforeach

@@ -10,6 +10,7 @@ use App\User;
 use App\ClassList;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Redirect;
 use Validator;
 use Html;
@@ -24,14 +25,16 @@ class ValueController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($schoolList, $classList, $daily)
+    public function index($daily)
     {
-        $school = School::find($schoolList);
-        $klass = ClassList::find($classList);
         $daily = Daily::find($daily);
-        $users = $daily->classList->user;
+        $students = $daily->classList->user;
+        foreach ($students as $student) {
+            dd($value = $student->value);
+            dd($value = $student->value->first()->value);
+        }
         //dd($value = $daily->classList->user->value());
-        return view ('admin.school.value.index', ['school' => $school, 'klass' => $klass, 'daily' => $daily, 'users' => $users]);
+        return view ('teacher.daily.value.index', ['daily' => $daily]);
     }
 
     /**
