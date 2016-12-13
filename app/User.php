@@ -15,6 +15,10 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password',
     ];
+    public function value() {
+
+        return $this->hasMany('App\Value',  'id_student');
+    }
     public function classList() {
 
         return $this->belongsTo('App\ClassList', 'class_id');

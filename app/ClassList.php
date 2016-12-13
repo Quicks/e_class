@@ -24,4 +24,8 @@ class ClassList extends Model
 
         return $this->hasMany('App\User', 'class_id');
     }
+    public function teacher() {
+
+        return $this->hasOne('App\Teacher');
+    }
 }

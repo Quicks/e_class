@@ -9,9 +9,9 @@ class Teacher extends Model
     public $fillable = ['class_name','name', 'email'];
     public $timestamps = false;
 
-    public function class_registers() {
+    public function classList() {
 
-        return $this->hasMany('App\Class_register');
+        return $this->belongsTo('App\ClassList');
     }
 
 }

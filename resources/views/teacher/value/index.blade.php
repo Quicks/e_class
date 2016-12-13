@@ -2,7 +2,7 @@
 @section('content')
     <nav class="navbar navbar-inverse">
         <ul class="nav navbar-nav">
-            <li><a href="{{ route('admin.schoolList.classList.daily.value.create', [$school->id, $klass->id, $daily->id]) }}">Create a Value</a>
+            <li><a href="{{ route('teacher.daily.value.create', [$daily->id]) }}">Create a Value</a>
         </ul>
     </nav>
     <table class="table">
@@ -11,14 +11,13 @@
             <th>User</th>
             <th>Value</th>
             <th>Date</th>
-
         </tr>
         </thead>
         <tbody>
-        @foreach($users as $user)
+        @foreach($students as $student)
         <tr>
-            <td>{{$user->email}}</td>
-            @foreach($user->value as $value)
+            <td>{{$student->name}}</td>
+            @foreach($student->value as $value)
                 <td>{{$value->value}}</td>
                 <td>{{$value->date}}</td>
             @endforeach
