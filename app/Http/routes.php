@@ -10,7 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
+Route::get('/classes_by_school', 'PostController@selectClassesBySchool');
 Route::get('/', 'PostController@index');
 Route::post('/profile', 'UsersController@update_avatar');
 Route::get('/profile', 'UsersController@profile');

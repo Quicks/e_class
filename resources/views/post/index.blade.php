@@ -13,8 +13,6 @@
         }
     </style>
 
-
-
     <div class="view hm-black-strong">
         <div class="select-test">
             <select id="test">
@@ -30,6 +28,7 @@
             <a> <img src="Logo.png">
             </a>
         </div>
+    </div>
          {{--work with Panchenko--}}
         {{--<form action="">--}}
             {{--<select name="school_id">--}}
@@ -41,26 +40,44 @@
     {{--</div>--}}
 <script> $(document).ready(function(){
 
-        $('select').select2({
-
-            placeholder: "Школы",
-            allowClear: true
-        }).on('change',function (e) {
-           var stabData = [
-               { id: 12, title: '7-a' },
-               { id: 18, title: '10-d' },
-               { id: 25, title: '9-c' }
-           ]
-            renderClassesSelect(stabData)
+        $('select').select2().on('change',function (e) {
+//           var stabData = [
+//               { id: 12, title: '7-a' },
+//               { id: 18, title: '10-d' },
+//               { id: 25, title: '9-c' }
+//           ]
+//            renderClassesSelect(stabData)
             var schoolId = e.target.value
-//            $.ajax({
-//                url: 'classes_by_school',
-//                data: {school_Id:schoolId},
-//                dataType: 'Json',
-//                success: function(data){
+            $.ajax({
+                url: 'classes_by_school',
+                data: {school_Id:schoolId},
+                dataType: 'Json',
+                success: function(data){
+                    var select_of_classes = $('<select></select>')
+                    data.forEach(function(item, i, data) {
+                        var option = $('<option></option>')
+                        option.val(item.id);
+                        option.text(item.class_name);
+                        select_of_classes.append(option);
+                    });
+
+                    $('.select-test').append(select_of_classes);
+                    select_of_classes.select2();
+
+                    //////////////////////////////////////////////////////////////
 //                    renderClassesSelect(data)
-//                }
-//            })
+//                        out = JSON.parse(data);
+//                        title = out.title;
+
+                    //{
+                    //    placeholder: "Школы",
+                    //            allowClear: true
+                    //}
+
+                }
+            })
+
+
         })
 
         function renderClassesSelect(data){
@@ -73,8 +90,16 @@
                 select_of_classes.append(option);
             });
 
+
+
            $('.select-test').append(select_of_classes);
             select_of_classes.select2();
         }
     })</script>
+
 @stop
+
+
+
+
+
