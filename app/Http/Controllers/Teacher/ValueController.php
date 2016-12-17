@@ -25,16 +25,16 @@ class ValueController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($daily)
+    public function index($daily, $student)
     {
         $daily = Daily::find($daily);
+        $student = User::find($student);
         $students = $daily->classList->user;
         foreach ($students as $student) {
             dd($value = $student->value);
             dd($value = $student->value->first()->value);
         }
-        //dd($value = $daily->classList->user->value());
-        return view ('teacher.daily.value.index', ['daily' => $daily]);
+//        return view ('teacher.daily.value.index', ['daily' => $daily]);
     }
 
     /**

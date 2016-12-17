@@ -1,10 +1,5 @@
 @extends('layouts.app')
 @section('content')
-    <nav class="navbar navbar-inverse">
-        <ul class="nav navbar-nav">
-            <li><a href="{{ route('teacher.daily.value.create', [$daily->id]) }}">Create a Value</a>
-        </ul>
-    </nav>
     <table class="table">
         <thead>
         <tr>
@@ -14,16 +9,14 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($students as $student)
         <tr>
-            <td>{{$student->name}}</td>
-            @foreach($student->value as $value)
-                <td>{{$value->value}}</td>
-                <td>{{$value->date}}</td>
+            @foreach($value as $value)
+                <td>{{dd($value->value)}}</td>
             @endforeach
+            {{--<td>{{$value->daily->classList->user}}</td>--}}
+            {{--<td>{{$value->value}}</td>--}}
+            {{--<td>{{$value->date}}</td>--}}
         </tr>
-
-        @endforeach
         {{--@foreach($users as $user)--}}
             {{--<tr>--}}
                 {{--<td>{{$user->email}}</td>--}}
