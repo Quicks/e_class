@@ -15,7 +15,7 @@
                 </tr>
             </tbody>
         </table>
-        <a href="{{route('teacher.daily.user.value.show', [$daily, $user, $value])}}" class="btn btn-primary">Show</a>
-        <a href="{{route('teacher.daily.user.value.edit', [$daily, $user, $value])}}" class="btn btn-primary">Edit</a>
     </div>
+    <a href="{{route('teacher.daily.user.value.edit', [$daily, $student, $value])}}" class="btn btn-primary">Edit</a>
+    <a href="{{route('teacher.daily.user.value.create', [$daily, $student])}}" class="btn btn-primary">Create</a>
 @endsection

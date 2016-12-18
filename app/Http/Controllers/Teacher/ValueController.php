@@ -41,7 +41,6 @@ class ValueController extends Controller
      */
     public function create($daily, $user)
     {
-
         $daily = Daily::find($daily);
         $student = User::find($user);
         $values = $student->value;
@@ -60,7 +59,7 @@ class ValueController extends Controller
         $value->save();
 
         Session::flash('message', 'Successfully created Value!');
-        return Redirect()->route('admin.schoolList.classList.daily.value.index', [$schoolList, $classList, $daily_id]);
+        return Redirect()->route('admin.schoolList.classList.daily.value.index', [$user, $daily]);
     }
 
     /**
@@ -69,12 +68,12 @@ class ValueController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($daily, $id)
+    public function show($daily, $user, $id)
     {
         $daily = Daily::find($daily);
-        $students = $daily->classList->user;
-        $value = $daily->value->find($id);
-        return view ('teacher.value.show', ['daily' => $daily, 'value' => $value]);
+        $student = User::find($user);
+        $value = Value::find($id);
+        return view ('teacher.value.show', ['daily' => $daily, 'student' => $user, 'value' => $value]);
     }
 
     /**
@@ -83,11 +82,12 @@ class ValueController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($daily, $id)
+    public function edit($daily, $user, $id)
     {
         $daily = Daily::find($daily);
-        $value = $daily->value->find($id);
-        return view ('teacher.value.edit', ['value' => $value, 'daily' => $daily]);
+        $student = User::find($user);
+        $value = Value::find($id);
+        return view ('teacher.value.edit', ['daily' => $daily, 'student' => $student, 'value' => $value]);
     }
 
     /**
@@ -97,7 +97,7 @@ class ValueController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $daily, $id)
+    public function update(Request $request, $daily, $user, $id)
     {
 
         $value = Value::find($id);
@@ -105,7 +105,7 @@ class ValueController extends Controller
 
         // redirect
         Session::flash('message', 'Successfully updated value!');
-        return Redirect()->route('teacher.daily.value.index', [$daily]);
+        return Redirect()->route('teacher.daily.user.value.index', [$daily, $user]);
 
     }
 

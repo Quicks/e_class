@@ -2,7 +2,7 @@
 @section('content')
     {{ Html::ul($errors->all()) }}
 
-    {{ Form::model($value, array('route' => array('teacher.daily.value.update', $daily->id, $value->id), 'method' => 'PUT')) }}
+    {{ Form::model($value, array('route' => array('teacher.daily.user.value.update', $daily->id, $student->id, $value->id), 'method' => 'PUT')) }}
 
     <div class="form-group">
         {{ Form::label('value', 'Value') }}
