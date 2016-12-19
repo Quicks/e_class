@@ -72,8 +72,8 @@ class ValueController extends Controller
     {
         $daily = Daily::find($daily);
         $student = User::find($user);
-        $value = Value::find($id);
-        return view ('teacher.value.show', ['daily' => $daily, 'student' => $user, 'value' => $value]);
+        $values = $student->value;
+        return view ('teacher.value.show', ['daily' => $daily, 'student' => $student, 'values' => $values]);
     }
 
     /**

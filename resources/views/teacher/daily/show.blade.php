@@ -25,7 +25,6 @@
                             @foreach($user->value as $value)
                             <a href="{{route('teacher.daily.user.value.show', [$daily, $user, $value])}}">
                                   {{Form::text('value', $user->value->first()->value)}}
-                                  {{Form::hidden('date', $day_of_month)}}
                             </a>
                             @endforeach
                         </td>
