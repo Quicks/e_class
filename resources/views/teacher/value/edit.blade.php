@@ -1,14 +1,8 @@
 @extends('layouts.app')
 @section('content')
-    <nav class="navbar navbar-inverse">
-        <ul class="nav navbar-nav">
-            <li><a href="{{ route('admin.schoolList.classList.daily.value.index', [$school->id, $klass->id, $daily->id]) }}">View All Value</a></li>
-            <li><a href="{{ route('admin.schoolList.classList.daily.value.create', [$school->id, $klass->id, $daily->id]) }}">Create a Value</a>
-        </ul>
-    </nav>
     {{ Html::ul($errors->all()) }}
 
-    {{ Form::model($value, array('route' => array('admin.schoolList.classList.daily.value.update', $school->id, $klass->id, $daily->id, $value->id), 'method' => 'PUT')) }}
+    {{ Form::model($value, array('route' => array('teacher.daily.user.value.update', $daily->id, $student->id, $value->id), 'method' => 'PUT')) }}
 
     <div class="form-group">
         {{ Form::label('value', 'Value') }}

@@ -22,9 +22,8 @@
                      <td>{{$user->name}}</td>
                     @for($day_of_month = 1; $day_of_month <= cal_days_in_month(CAL_GREGORIAN, date('m'), date('y')); $day_of_month++)
                         <td>
-                            <a href="#">@foreach($user->value as $value)
-                                {{$value->value}}
-                            @endforeach
+                            <a href="{{route('teacher.daily.user.value.index', [$daily, $user])}}">
+                                  {{Form::text('value', $user->value->first())}}
                             </a>
                         </td>
                     @endfor
