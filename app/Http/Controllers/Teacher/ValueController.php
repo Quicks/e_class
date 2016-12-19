@@ -44,7 +44,7 @@ class ValueController extends Controller
         $daily = Daily::find($daily);
         $student = User::find($user);
         $values = $student->value;
-        return view ('teacher.daily.user.value.create', ['student' => $student, 'daily' => $daily, 'values' => $values]);
+        return view ('teacher.value.create', ['student' => $student, 'daily' => $daily, 'value' => $value]);
     }
 
     /**
@@ -59,7 +59,7 @@ class ValueController extends Controller
         $value->save();
 
         Session::flash('message', 'Successfully created Value!');
-        return Redirect()->route('admin.schoolList.classList.daily.value.index', [$user, $daily]);
+        return Redirect()->route('teacher.daily.user.value.index', [$user, $daily]);
     }
 
     /**

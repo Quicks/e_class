@@ -22,9 +22,12 @@
                      <td>{{$user->name}}</td>
                     @for($day_of_month = 1; $day_of_month <= cal_days_in_month(CAL_GREGORIAN, date('m'), date('y')); $day_of_month++)
                         <td>
-                            <a href="{{route('teacher.daily.user.value.index', [$daily, $user])}}">
-                                  {{Form::text('value', $user->value->first())}}
+                            @foreach($user->value as $value)
+                            <a href="{{route('teacher.daily.user.value.show', [$daily, $user, $value])}}">
+                                  {{Form::text('value', $user->value->first()->value)}}
+                                  {{Form::hidden('date', $day_of_month)}}
                             </a>
+                            @endforeach
                         </td>
                     @endfor
                 </tr>
