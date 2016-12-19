@@ -13,11 +13,15 @@
                 <td>{{$student->name}}</td>
                 @for($day_of_month = 1; $day_of_month <= cal_days_in_month(CAL_GREGORIAN, date('m'), date('y')); $day_of_month++)
                     <td>
-                        @foreach($values as $value)
-                            <a href="{{route('teacher.daily.user.value.edit', [$daily, $student, $value])}}">
-                                {{$value->value}}
-                                @endforeach
-                            </a>
+                        {{--{{$temp = date('y') + date('m') + $day_of_month}}--}}
+                        {{--{{dd($temp)}}--}}
+                        {{--{{$student->getValueByDate($daily,DateTime::createFromFormat('Y-m-d', '23/05/2013') )}}--}}
+                        {{--@foreach($values as $value)--}}
+
+                            {{--<a href="{{route('teacher.daily.user.value.edit', [$daily, $student, $value])}}">--}}
+                                {{--{{$value->value}}--}}
+                            {{--</a>--}}
+                        {{--@endforeach--}}
                     </td>
                 @endfor
             </tr>

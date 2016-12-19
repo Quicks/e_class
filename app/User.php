@@ -27,7 +27,17 @@ class User extends Authenticatable
 
         return $this->belongsTo('App\Daily');
     }
-
+    public function getValueByDate($daily, $date) {
+        $res = '';
+        $value = $this->value()->where('daily_id', $daily->id)->where('date', $date)->first();
+        if($value){
+            $res = $value->value;
+        }
+        return $res;
+//            $this->value()->where('date', $date->format('Y-m-d'))->get();
+//        $comments = App\Post::find(1)->comments()->where('title', 'foo')->first();
+//        self->$this->value()
+    }
     /**
      * The attributes that should be hidden for arrays.
      *
