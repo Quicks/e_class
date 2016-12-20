@@ -52,7 +52,7 @@ Route::group( ['middleware' => 'admin'], function () {
 Route::group(['namespace' => 'Teacher', 'prefix' => 'teacher'], function() {
     Route::get('/cabinet', 'TeacherController@cabinet');
     Route::resource('daily', 'DailyController' );
-    Route::resource('daily.user.value', 'ValueController' );
+    Route::resource('daily.user.value', 'ValueController');
 });
 
 //, 'middleware'=>'teacher'

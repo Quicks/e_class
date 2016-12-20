@@ -9,7 +9,7 @@
     <div class="jumbotron text-center">
         <p>
         {{--<td>{{$daily->subject}}</td>--}}
-        <table>
+        <table class="daily-table" data-daily-id="{{$daily->id}}">
             <tr>
                 <th>Name/Date</th>
                 @for($day_of_month = 1; $day_of_month <= cal_days_in_month(CAL_GREGORIAN, date('m'), date('y')); $day_of_month++)
@@ -21,10 +21,9 @@
                 <tr>
                      <td>{{$user->name}}</td>
                     @for($day_of_month = 1; $day_of_month <= cal_days_in_month(CAL_GREGORIAN, date('m'), date('y')); $day_of_month++)
-                        <td>
-                            <a href="{{route('teacher.daily.user.value.index', [$daily, $user])}}">
-                                  {{Form::text('value', $user->value->first())}}
-                            </a>
+                        <td class="value" data-user-id="{{$user->id}}" data-date="{{date('Y').'-'.date('m').'-'.$day_of_month}}">
+                            {{$user->getValueByDate($daily,date('Y').'-'.date('m').'-'.$day_of_month) }}
+                            {{--dd({{$user->value}})--}}
                         </td>
                     @endfor
                 </tr>
@@ -33,4 +32,14 @@
         </table>
         </p>
     </div>
+    <script>
+        $(document).ready(function () {
+            $('.value').click(function() {
+                console.log($('.daily-table').data('daily-id'));
+                console.log($(this).data('user-id'));
+                console.log($(this).data('date'));
+                //todo при клике делаем этот элемент контент-едитабле, он станет редактируемым
+            })
+        })
+    </script>
 @endsection
